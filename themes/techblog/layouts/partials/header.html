@@ -1,10 +1,10 @@
 <header class="site-header">
     <div class="container">
         <nav class="navbar">
-            <a href="{{ "/" | relURL }}" class="site-logo">
+            <a href="{{ .Site.BaseURL }}" class="site-logo">
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="32" height="32" rx="6" fill="currentColor"/>
-                    <path d="M8 24V8h4v12h8v4H8Z" fill="white"/>
+                    <path d="M10 8h12v4h-4v12h-4V12h-4V8Z" fill="white"/>
                 </svg>
                 <span class="site-name">{{ .Site.Title }}</span>
             </a>
@@ -30,7 +30,7 @@
                 </div>
                 
                 <ul class="nav-menu">
-                    <li><a href="{{ "/" | relURL }}" class="{{ if .IsHome }}active{{ end }}">Home</a></li>
+                    <li><a href="{{ .Site.BaseURL }}" class="{{ if .IsHome }}active{{ end }}">Home</a></li>
                     <li><a href="{{ "blog" | relURL }}" class="{{ if eq .Section "blog" }}active{{ end }}">Blog</a></li>
                     <li><a href="{{ "about" | relURL }}" class="{{ if eq .Title "About" }}active{{ end }}">Về tôi</a></li>
                 </ul>

@@ -4,11 +4,16 @@
 <div class="hero">
     <div class="container">
         <div class="hero-content">
-            <h1 class="hero-title">{{ .Site.Params.heroTitle | default "Chào mừng đến với Blog của tôi" }}</h1>
-            <p class="hero-subtitle">{{ .Site.Params.heroSubtitle | default "Chia sẻ kiến thức về lập trình Java & JavaScript" }}</p>
-            <div class="hero-buttons">
-                <a href="{{ "blog" | relURL }}" class="btn btn-primary">Xem Blog</a>
-                <a href="{{ "about" | relURL }}" class="btn btn-secondary">Về tôi</a>
+            <div class="hero-avatar">
+                <img src="{{ "images/avatar.jpg" | relURL }}" alt="{{ .Site.Title }}" class="avatar-image">
+            </div>
+            <div class="hero-text">
+                <h1 class="hero-title">{{ .Site.Params.heroTitle | default "Chào mừng đến với Blog của tôi" }}</h1>
+                <p class="hero-subtitle">{{ .Site.Params.heroSubtitle | default "Chia sẻ kiến thức về lập trình Java & JavaScript" }}</p>
+                <div class="hero-buttons">
+                    <a href="{{ "blog" | relURL }}" class="btn btn-primary">Xem Blog</a>
+                    <a href="{{ "about" | relURL }}" class="btn btn-secondary">Về tôi</a>
+                </div>
             </div>
         </div>
     </div>

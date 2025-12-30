@@ -7,7 +7,7 @@ publishDir = 'docs'
 [params]
   subtitle = 'Chia sẻ kiến thức về lập trình mạng'
   description = 'Blog cá nhân chia sẻ về lập trình Java và JavaScript'
-  heroTitle = 'Chào mừng đến với Tech Blog của tôi'
+  heroTitle = 'Chào mừng đến với Blog của tôi'
   heroSubtitle = 'Chia sẻ kiến thức về Java & JavaScript'
   
   [params.social]
