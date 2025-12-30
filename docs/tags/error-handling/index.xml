@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Error Handling on TaiTH Tech Blog</title>
-    <link>https://taith-blog.github.io/tags/error-handling/</link>
-    <description>Recent content in Error Handling on TaiTH Tech Blog</description>
+    <title>Error Handling on Trần Hữu Tài</title>
+    <link>https://tranhuutai2273.github.io/22DTHE7_TaiTH_Profile/tags/error-handling/</link>
+    <description>Recent content in Error Handling on Trần Hữu Tài</description>
     <generator>Hugo</generator>
     <language>vi</language>
     <lastBuildDate>Mon, 23 Dec 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://taith-blog.github.io/tags/error-handling/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://tranhuutai2273.github.io/22DTHE7_TaiTH_Profile/tags/error-handling/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Exception Handling trong Java - Xử lý ngoại lệ</title>
-      <link>https://taith-blog.github.io/blog/java-exception/</link>
+      <link>https://tranhuutai2273.github.io/22DTHE7_TaiTH_Profile/blog/java-exception/</link>
       <pubDate>Mon, 23 Dec 2024 00:00:00 +0000</pubDate>
-      <guid>https://taith-blog.github.io/blog/java-exception/</guid>
+      <guid>https://tranhuutai2273.github.io/22DTHE7_TaiTH_Profile/blog/java-exception/</guid>
       <description>&lt;h2 id=&#34;exception-là-gì&#34;&gt;Exception là gì?&lt;/h2&gt;&#xA;&lt;p&gt;Exception (ngoại lệ) là một sự kiện xảy ra trong quá trình thực thi chương trình, làm gián đoạn luồng bình thường của chương trình.&lt;/p&gt;&#xA;&lt;h2 id=&#34;phân-loại-exception&#34;&gt;Phân loại Exception&lt;/h2&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Throwable&#xD;&#xA;├── Error (Lỗi hệ thống, không nên catch)&#xD;&#xA;│   ├── OutOfMemoryError&#xD;&#xA;│   └── StackOverflowError&#xD;&#xA;└── Exception&#xD;&#xA;    ├── IOException (Checked Exception)&#xD;&#xA;    ├── SQLException&#xD;&#xA;    └── RuntimeException (Unchecked Exception)&#xD;&#xA;        ├── NullPointerException&#xD;&#xA;        ├── ArrayIndexOutOfBoundsException&#xD;&#xA;        └── ArithmeticException&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;checked-exception-vs-unchecked-exception&#34;&gt;Checked Exception vs Unchecked Exception&lt;/h3&gt;&#xA;&lt;p&gt;&lt;strong&gt;Checked Exception:&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
   </channel>

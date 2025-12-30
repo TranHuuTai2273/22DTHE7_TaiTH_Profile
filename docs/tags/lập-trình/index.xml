@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Lập Trình on TaiTH Tech Blog</title>
-    <link>https://taith-blog.github.io/tags/l%E1%BA%ADp-tr%C3%ACnh/</link>
-    <description>Recent content in Lập Trình on TaiTH Tech Blog</description>
+    <title>Lập Trình on Trần Hữu Tài</title>
+    <link>https://tranhuutai2273.github.io/22DTHE7_TaiTH_Profile/tags/l%E1%BA%ADp-tr%C3%ACnh/</link>
+    <description>Recent content in Lập Trình on Trần Hữu Tài</description>
     <generator>Hugo</generator>
     <language>vi</language>
     <lastBuildDate>Fri, 20 Dec 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://taith-blog.github.io/tags/l%E1%BA%ADp-tr%C3%ACnh/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://tranhuutai2273.github.io/22DTHE7_TaiTH_Profile/tags/l%E1%BA%ADp-tr%C3%ACnh/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tổng quan về Java - Ngôn ngữ lập trình hướng đối tượng</title>
-      <link>https://taith-blog.github.io/blog/java-co-ban/</link>
+      <link>https://tranhuutai2273.github.io/22DTHE7_TaiTH_Profile/blog/java-co-ban/</link>
       <pubDate>Fri, 20 Dec 2024 00:00:00 +0000</pubDate>
-      <guid>https://taith-blog.github.io/blog/java-co-ban/</guid>
+      <guid>https://tranhuutai2273.github.io/22DTHE7_TaiTH_Profile/blog/java-co-ban/</guid>
       <description>&lt;h2 id=&#34;java-là-gì&#34;&gt;Java là gì?&lt;/h2&gt;&#xA;&lt;p&gt;Java là ngôn ngữ lập trình hướng đối tượng, được phát triển bởi Sun Microsystems (nay thuộc Oracle) vào năm 1995. Một trong những đặc điểm nổi bật nhất của Java là khả năng &amp;ldquo;Write Once, Run Anywhere&amp;rdquo; (WORA) - viết một lần, chạy mọi nơi.&lt;/p&gt;&#xA;&lt;h2 id=&#34;đặc-điểm-chính-của-java&#34;&gt;Đặc điểm chính của Java&lt;/h2&gt;&#xA;&lt;h3 id=&#34;1-hướng-đối-tượng-object-oriented&#34;&gt;1. Hướng đối tượng (Object-Oriented)&lt;/h3&gt;&#xA;&lt;p&gt;Java được thiết kế hoàn toàn theo mô hình hướng đối tượng, giúp:&lt;/p&gt;</description>
     </item>
   </channel>

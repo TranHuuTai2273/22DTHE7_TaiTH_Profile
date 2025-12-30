@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>OOP on Trần Hữu Tài</title>
-    <link>http://localhost:1313/tags/oop/</link>
+    <link>http://localhost:1313/22DTHE7_TaiTH_Profile/tags/oop/</link>
     <description>Recent content in OOP on Trần Hữu Tài</description>
     <generator>Hugo</generator>
     <language>vi</language>
     <lastBuildDate>Sat, 21 Dec 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/oop/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/22DTHE7_TaiTH_Profile/tags/oop/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>OOP trong Java - Lập trình hướng đối tượng</title>
-      <link>http://localhost:1313/blog/java-oop/</link>
+      <link>http://localhost:1313/22DTHE7_TaiTH_Profile/blog/java-oop/</link>
       <pubDate>Sat, 21 Dec 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/java-oop/</guid>
+      <guid>http://localhost:1313/22DTHE7_TaiTH_Profile/blog/java-oop/</guid>
       <description>&lt;h2 id=&#34;lập-trình-hướng-đối-tượng-oop-là-gì&#34;&gt;Lập trình hướng đối tượng (OOP) là gì?&lt;/h2&gt;&#xA;&lt;p&gt;OOP (Object-Oriented Programming) là một phương pháp lập trình dựa trên khái niệm &amp;ldquo;đối tượng&amp;rdquo;, có thể chứa dữ liệu (thuộc tính) và code (phương thức).&lt;/p&gt;&#xA;&lt;h2 id=&#34;4-tính-chất-cơ-bản-của-oop&#34;&gt;4 Tính chất cơ bản của OOP&lt;/h2&gt;&#xA;&lt;h3 id=&#34;1-tính-đóng-gói-encapsulation&#34;&gt;1. Tính đóng gói (Encapsulation)&lt;/h3&gt;&#xA;&lt;p&gt;Đóng gói là việc ẩn giấu thông tin bên trong đối tượng và chỉ cho phép truy cập thông qua các phương thức public.&lt;/p&gt;</description>
     </item>
   </channel>
