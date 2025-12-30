@@ -1,0 +1,13 @@
+# theme.toml template for a Hugo theme
+name = "TechBlog"
+license = "MIT"
+licenselink = "https://github.com/yourname/techblog/blob/master/LICENSE"
+description = "A modern, minimal tech blog theme for Hugo"
+homepage = "https://github.com/yourname/techblog"
+tags = ["blog", "minimal", "responsive", "modern", "tech"]
+features = ["responsive", "blog", "syntax highlighting"]
+min_version = "0.41.0"
+
+[author]
+  name = "TaiTH"
+  homepage = "https://example.com"

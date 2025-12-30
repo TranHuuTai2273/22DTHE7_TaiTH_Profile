@@ -1,0 +1,43 @@
+baseURL = 'https://taith-blog.github.io/'
+languageCode = 'vi'
+title = 'TaiTH Tech Blog'
+theme = 'techblog'
+
+[params]
+  subtitle = 'Chia sẻ kiến thức về lập trình mạng'
+  description = 'Blog cá nhân chia sẻ về lập trình Java và JavaScript'
+  heroTitle = 'Chào mừng đến với Tech Blog của tôi'
+  heroSubtitle = 'Chia sẻ kiến thức về Java & JavaScript'
+  
+  [params.social]
+    github = 'https://github.com/taith'
+    linkedin = 'https://linkedin.com/in/taith'
+
+[menu]
+  [[menu.main]]
+    identifier = 'home'
+    name = 'Home'
+    url = '/'
+    weight = 1
+    
+  [[menu.main]]
+    identifier = 'blog'
+    name = 'Blog'
+    url = '/blog/'
+    weight = 2
+    
+  [[menu.main]]
+    identifier = 'about'
+    name = 'Về tôi'
+    url = '/about/'
+    weight = 3
+
+[taxonomies]
+  tag = 'tags'
+  category = 'categories'
+
+[markup]
+  [markup.highlight]
+    style = 'monokai'
+    lineNos = true
+    lineNumbersInTable = true
