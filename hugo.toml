@@ -1,7 +1,8 @@
 baseURL = 'https://taith-blog.github.io/'
 languageCode = 'vi'
-title = 'TaiTH Tech Blog'
+title = 'Trần Hữu Tài'
 theme = 'techblog'
+publishDir = 'docs'
 
 [params]
   subtitle = 'Chia sẻ kiến thức về lập trình mạng'
@@ -10,8 +11,7 @@ theme = 'techblog'
   heroSubtitle = 'Chia sẻ kiến thức về Java & JavaScript'
   
   [params.social]
-    github = 'https://github.com/taith'
-    linkedin = 'https://linkedin.com/in/taith'
+    github = 'https://github.com/TranHuuTai2273'
 
 [menu]
   [[menu.main]]
