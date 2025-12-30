@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Nắm vững lập trình bất đồng bộ trong JavaScript với Callbacks, Promises và Async/Await">
-    <title>JavaScript Async Programming - Promise và Async/Await - Trần Hữu Tài</title>
+    <meta name="description" content="Callbacks, Promises, Async/Await, Fetch API">
+    <title>JavaScript Async - Lập trình Bất đồng bộ - Trần Hữu Tài</title>
     <link rel="stylesheet" href="/22DTHE7_TaiTH_Profile/css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,25 +58,28 @@
 <div class="container">
     <article class="post-single">
         <header class="post-header">
-            <h1 class="post-title">JavaScript Async Programming - Promise và Async/Await</h1>
+            
+            <div class="post-featured-image">
+                <img src="https://images.unsplash.com/photo-1537884944318-390069bb8665?w=800&amp;h=400&amp;fit=crop" alt="JavaScript Async - Lập trình Bất đồng bộ" loading="lazy">
+            </div>
+            
+            <h1 class="post-title">JavaScript Async - Lập trình Bất đồng bộ</h1>
             <div class="post-meta-info">
-                <time datetime="2024-12-28">
+                <time datetime="2025-12-23">
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                         <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
                     </svg>
-                    28 December 2024
+                    23 Tháng 12 2025
                 </time>
                 
                 <div class="post-tags">
                     
-                    <a href="/tags/javascript" class="tag">#JavaScript</a>
+                    <a href="https://tranhuutai2273.github.io/22DTHE7_TaiTH_Profile/tags/javascript/" class="tag">#JavaScript</a>
                     
-                    <a href="/tags/async" class="tag">#Async</a>
+                    <a href="https://tranhuutai2273.github.io/22DTHE7_TaiTH_Profile/tags/async/" class="tag">#Async</a>
                     
-                    <a href="/tags/promises" class="tag">#Promises</a>
-                    
-                    <a href="/tags/modern-javascript" class="tag">#Modern JavaScript</a>
+                    <a href="https://tranhuutai2273.github.io/22DTHE7_TaiTH_Profile/tags/promises/" class="tag">#Promises</a>
                     
                 </div>
                 
@@ -84,10 +87,10 @@
         </header>
         
         <div class="post-content">
-            <h2 id="lập-trình-bất-đồng-bộ-là-gì">Lập trình bất đồng bộ là gì?</h2>
-<p>Asynchronous programming cho phép thực hiện các tác vụ mất thời gian (API calls, file operations) mà không block main thread.</p>
-<h2 id="callback-functions">Callback Functions</h2>
-<p>Cách cổ điển để xử lý async operations.</p>
+            <h2 id="async-là-gì">Async là gì?</h2>
+<p>JavaScript single-threaded. Async programming cho phép tasks (network, timers) chạy không block main thread.</p>
+<h2 id="callbacks">Callbacks</h2>
+<p>Function được gọi khi task hoàn thành.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -100,62 +103,43 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Callback example
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">fetchData</span>(<span style="color:#a6e22e">callback</span>) {
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getData</span>(<span style="color:#a6e22e">callback</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">setTimeout</span>(() =&gt; {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Tài&#34;</span> };
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Tai&#34;</span>};
 </span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">callback</span>(<span style="color:#a6e22e">data</span>);
 </span></span><span style="display:flex;"><span>    }, <span style="color:#ae81ff">1000</span>);
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fetchData</span>((<span style="color:#a6e22e">data</span>) =&gt; {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Data received:&#39;</span>, <span style="color:#a6e22e">data</span>);
-</span></span><span style="display:flex;"><span>});
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;This runs first!&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">getData</span>((<span style="color:#a6e22e">result</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">result</span>);  <span style="color:#75715e">// Sau 1 giây
+</span></span></span><span style="display:flex;"><span>});
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="callback-hell-pyramid-of-doom">Callback Hell (Pyramid of Doom)</h3>
+</div><p><strong>Callback Hell</strong>:</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// ❌ Callback hell - khó đọc, khó maintain
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">fetchUser</span>(<span style="color:#a6e22e">userId</span>, (<span style="color:#a6e22e">user</span>) =&gt; {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fetchPosts</span>(<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">id</span>, (<span style="color:#a6e22e">posts</span>) =&gt; {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fetchComments</span>(<span style="color:#a6e22e">posts</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">id</span>, (<span style="color:#a6e22e">comments</span>) =&gt; {
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">fetchLikes</span>(<span style="color:#a6e22e">comments</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">id</span>, (<span style="color:#a6e22e">likes</span>) =&gt; {
-</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">likes</span>);
-</span></span><span style="display:flex;"><span>            });
-</span></span><span style="display:flex;"><span>        });
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">getData</span>((<span style="color:#a6e22e">data</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">processData</span>(<span style="color:#a6e22e">data</span>, (<span style="color:#a6e22e">processed</span>) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">saveData</span>(<span style="color:#a6e22e">processed</span>, (<span style="color:#a6e22e">result</span>) =&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Quá sâu!
+</span></span></span><span style="display:flex;"><span>        });
 </span></span><span style="display:flex;"><span>    });
 </span></span><span style="display:flex;"><span>});
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="promises">Promises</h2>
-<p>Promise là đối tượng đại diện cho kết quả của async operation trong tương lai.</p>
-<h3 id="promise-states">Promise States</h3>
-<ul>
-<li><strong>Pending</strong>: Đang chờ</li>
-<li><strong>Fulfilled</strong>: Thành công</li>
-<li><strong>Rejected</strong>: Thất bại</li>
-</ul>
-<h3 id="creating-a-promise">Creating a Promise</h3>
+<p>Đại diện cho giá trị trong tương lai.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -173,82 +157,23 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">myPromise</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Async operation
-</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">setTimeout</span>(() =&gt; {
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">promise</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">setTimeout</span>(() =&gt; {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">success</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
-</span></span><span style="display:flex;"><span>        
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">success</span>) {
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#39;Thành công!&#39;</span>); <span style="color:#75715e">// Fulfilled
-</span></span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">reject</span>(<span style="color:#e6db74">&#39;Có lỗi xảy ra!&#39;</span>); <span style="color:#75715e">// Rejected
-</span></span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#34;Thành công!&#34;</span>);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">reject</span>(<span style="color:#e6db74">&#34;Lỗi!&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }, <span style="color:#ae81ff">1000</span>);
 </span></span><span style="display:flex;"><span>});
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Consuming the promise
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">myPromise</span>
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">result</span> =&gt; {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">result</span>); <span style="color:#75715e">// &#34;Thành công!&#34;
-</span></span></span><span style="display:flex;"><span>    })
-</span></span><span style="display:flex;"><span>    .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">error</span>);
-</span></span><span style="display:flex;"><span>    });
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="practical-promise-example">Practical Promise Example</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">fetchUser</span>(<span style="color:#a6e22e">userId</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">setTimeout</span>(() =&gt; {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">userId</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {
-</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">resolve</span>({ <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">userId</span>, <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Tài&#34;</span>, <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">25</span> });
-</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">reject</span>(<span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Invalid user ID&#39;</span>));
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }, <span style="color:#ae81ff">1000</span>);
-</span></span><span style="display:flex;"><span>    });
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Usage
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">fetchUser</span>(<span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">user</span> =&gt; {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;User:&#39;</span>, <span style="color:#a6e22e">user</span>);
-</span></span><span style="display:flex;"><span>    })
-</span></span><span style="display:flex;"><span>    .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Error:&#39;</span>, <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span>);
-</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Sử dụng
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">promise</span>
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">result</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">result</span>))
+</span></span><span style="display:flex;"><span>    .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">error</span>));
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="promise-chaining">Promise Chaining</h3>
@@ -270,78 +195,6 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// ✅ Promise chain - dễ đọc hơn callback hell
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">fetchUser</span>(<span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">user</span> =&gt; {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;User:&#39;</span>, <span style="color:#a6e22e">user</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fetchPosts</span>(<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">id</span>); <span style="color:#75715e">// Return promise
-</span></span></span><span style="display:flex;"><span>    })
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">posts</span> =&gt; {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Posts:&#39;</span>, <span style="color:#a6e22e">posts</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fetchComments</span>(<span style="color:#a6e22e">posts</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">id</span>);
-</span></span><span style="display:flex;"><span>    })
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">comments</span> =&gt; {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Comments:&#39;</span>, <span style="color:#a6e22e">comments</span>);
-</span></span><span style="display:flex;"><span>    })
-</span></span><span style="display:flex;"><span>    .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Error:&#39;</span>, <span style="color:#a6e22e">error</span>);
-</span></span><span style="display:flex;"><span>    });
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="finally">finally()</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">showLoadingSpinner</span>();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fetchData</span>()
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">data</span> =&gt; {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">data</span>);
-</span></span><span style="display:flex;"><span>    })
-</span></span><span style="display:flex;"><span>    .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">error</span>);
-</span></span><span style="display:flex;"><span>    })
-</span></span><span style="display:flex;"><span>    .<span style="color:#66d9ef">finally</span>(() =&gt; {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">hideLoadingSpinner</span>(); <span style="color:#75715e">// Luôn chạy
-</span></span></span><span style="display:flex;"><span>    });
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="promise-static-methods">Promise Static Methods</h2>
-<h3 id="promiseall">Promise.all()</h3>
-<p>Chờ TẤT CẢ promises hoàn thành.</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
@@ -352,242 +205,108 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">promise1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fetchUser</span>(<span style="color:#ae81ff">1</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">promise2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fetchUser</span>(<span style="color:#ae81ff">2</span>);
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">promise3</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fetchUser</span>(<span style="color:#ae81ff">3</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Promise.<span style="color:#a6e22e">all</span>([<span style="color:#a6e22e">promise1</span>, <span style="color:#a6e22e">promise2</span>, <span style="color:#a6e22e">promise3</span>])
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>(([<span style="color:#a6e22e">user1</span>, <span style="color:#a6e22e">user2</span>, <span style="color:#a6e22e">user3</span>]) =&gt; {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;All users:&#39;</span>, <span style="color:#a6e22e">user1</span>, <span style="color:#a6e22e">user2</span>, <span style="color:#a6e22e">user3</span>);
-</span></span><span style="display:flex;"><span>    })
-</span></span><span style="display:flex;"><span>    .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;One of them failed:&#39;</span>, <span style="color:#a6e22e">error</span>);
-</span></span><span style="display:flex;"><span>    });
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Practical example
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">urls</span> <span style="color:#f92672">=</span> [
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;https://api.example.com/user/1&#39;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;https://api.example.com/user/2&#39;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;https://api.example.com/user/3&#39;</span>
-</span></span><span style="display:flex;"><span>];
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Promise.<span style="color:#a6e22e">all</span>(<span style="color:#a6e22e">urls</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">url</span> =&gt; <span style="color:#a6e22e">fetch</span>(<span style="color:#a6e22e">url</span>)))
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">responses</span> =&gt; Promise.<span style="color:#a6e22e">all</span>(<span style="color:#a6e22e">responses</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">r</span> =&gt; <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">json</span>())))
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">users</span> =&gt; {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;All users loaded:&#39;</span>, <span style="color:#a6e22e">users</span>);
-</span></span><span style="display:flex;"><span>    });
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="promiserace">Promise.race()</h3>
-<p>Trả về promise đầu tiên hoàn thành (fulfilled hoặc rejected).</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">slow</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Promise(<span style="color:#a6e22e">resolve</span> =&gt; 
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">setTimeout</span>(() =&gt; <span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#39;Slow&#39;</span>), <span style="color:#ae81ff">3000</span>)
-</span></span><span style="display:flex;"><span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fast</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Promise(<span style="color:#a6e22e">resolve</span> =&gt; 
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">setTimeout</span>(() =&gt; <span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#39;Fast&#39;</span>), <span style="color:#ae81ff">1000</span>)
-</span></span><span style="display:flex;"><span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Promise.<span style="color:#a6e22e">race</span>([<span style="color:#a6e22e">slow</span>, <span style="color:#a6e22e">fast</span>])
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">result</span> =&gt; {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">result</span>); <span style="color:#75715e">// &#34;Fast&#34;
-</span></span></span><span style="display:flex;"><span>    });
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Timeout pattern
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">timeout</span>(<span style="color:#a6e22e">ms</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">setTimeout</span>(() =&gt; <span style="color:#a6e22e">reject</span>(<span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Timeout!&#39;</span>)), <span style="color:#a6e22e">ms</span>);
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getUser</span>(<span style="color:#a6e22e">id</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">setTimeout</span>(() =&gt; <span style="color:#a6e22e">resolve</span>({<span style="color:#a6e22e">id</span>, <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Tai&#34;</span>}), <span style="color:#ae81ff">1000</span>);
 </span></span><span style="display:flex;"><span>    });
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Promise.<span style="color:#a6e22e">race</span>([
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fetchData</span>(),
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">timeout</span>(<span style="color:#ae81ff">5000</span>)
-</span></span><span style="display:flex;"><span>])
-</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">data</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">data</span>))
-</span></span><span style="display:flex;"><span>.<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">error</span>)); <span style="color:#75715e">// Timeout sau 5s
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getPosts</span>(<span style="color:#a6e22e">userId</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">setTimeout</span>(() =&gt; <span style="color:#a6e22e">resolve</span>([{<span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Post 1&#34;</span>}]), <span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Chain
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">getUser</span>(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">user</span> =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;User:&#34;</span>, <span style="color:#a6e22e">user</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">getPosts</span>(<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">id</span>);
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">posts</span> =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Posts:&#34;</span>, <span style="color:#a6e22e">posts</span>);
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Lỗi:&#34;</span>, <span style="color:#a6e22e">error</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="promise-methods">Promise Methods</h3>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">p1</span> <span style="color:#f92672">=</span> Promise.<span style="color:#a6e22e">resolve</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">p2</span> <span style="color:#f92672">=</span> Promise.<span style="color:#a6e22e">resolve</span>(<span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">p3</span> <span style="color:#f92672">=</span> Promise.<span style="color:#a6e22e">resolve</span>(<span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Promise.all - đợi tất cả
+</span></span></span><span style="display:flex;"><span>Promise.<span style="color:#a6e22e">all</span>([<span style="color:#a6e22e">p1</span>, <span style="color:#a6e22e">p2</span>, <span style="color:#a6e22e">p3</span>])
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">values</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">values</span>));  <span style="color:#75715e">// [1, 2, 3]
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Promise.race - cái nào xong trước
+</span></span></span><span style="display:flex;"><span>Promise.<span style="color:#a6e22e">race</span>([<span style="color:#a6e22e">p1</span>, <span style="color:#a6e22e">p2</span>, <span style="color:#a6e22e">p3</span>])
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">value</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">value</span>));  <span style="color:#75715e">// 1
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="promiseallsettled">Promise.allSettled()</h3>
-<p>Chờ TẤT CẢ promises hoàn thành, không quan tâm thành công hay thất bại.</p>
+</div><h2 id="asyncawait---cách-tốt-nhất">Async/Await - Cách tốt nhất</h2>
+<p>Làm async code trông như sync!</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">promises</span> <span style="color:#f92672">=</span> [
-</span></span><span style="display:flex;"><span>    Promise.<span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#39;Success 1&#39;</span>),
-</span></span><span style="display:flex;"><span>    Promise.<span style="color:#a6e22e">reject</span>(<span style="color:#e6db74">&#39;Error 1&#39;</span>),
-</span></span><span style="display:flex;"><span>    Promise.<span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#39;Success 2&#39;</span>),
-</span></span><span style="display:flex;"><span>    Promise.<span style="color:#a6e22e">reject</span>(<span style="color:#e6db74">&#39;Error 2&#39;</span>)
-</span></span><span style="display:flex;"><span>];
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Promise.<span style="color:#a6e22e">allSettled</span>(<span style="color:#a6e22e">promises</span>)
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">results</span> =&gt; {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">results</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">result</span> =&gt; {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">status</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;fulfilled&#39;</span>) {
-</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Success:&#39;</span>, <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">value</span>);
-</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Failed:&#39;</span>, <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">reason</span>);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        });
-</span></span><span style="display:flex;"><span>    });
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="promiseany">Promise.any()</h3>
-<p>Trả về promise đầu tiên FULFILLED.</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">promises</span> <span style="color:#f92672">=</span> [
-</span></span><span style="display:flex;"><span>    Promise.<span style="color:#a6e22e">reject</span>(<span style="color:#e6db74">&#39;Error 1&#39;</span>),
-</span></span><span style="display:flex;"><span>    Promise.<span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#39;Success 1&#39;</span>),
-</span></span><span style="display:flex;"><span>    Promise.<span style="color:#a6e22e">resolve</span>(<span style="color:#e6db74">&#39;Success 2&#39;</span>)
-</span></span><span style="display:flex;"><span>];
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Promise.<span style="color:#a6e22e">any</span>(<span style="color:#a6e22e">promises</span>)
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">result</span> =&gt; {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">result</span>); <span style="color:#75715e">// &#34;Success 1&#34;
-</span></span></span><span style="display:flex;"><span>    })
-</span></span><span style="display:flex;"><span>    .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;All failed&#39;</span>);
-</span></span><span style="display:flex;"><span>    });
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="asyncawait">Async/Await</h2>
-<p>Cú pháp hiện đại để viết async code như sync code.</p>
-<h3 id="basic-syntax">Basic Syntax</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Async function luôn return Promise
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">fetchUser</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Tài&#34;</span> };
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fetchUser</span>().<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">user</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">user</span>));
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Await chỉ dùng trong async function
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getUser</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetchUser</span>(); <span style="color:#75715e">// Chờ promise resolve
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">fetchUser</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">getUser</span>(<span style="color:#ae81ff">1</span>);  <span style="color:#75715e">// Đợi promise
 </span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">user</span>);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">user</span>;
 </span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Async function luôn trả về promise
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">fetchUser</span>().<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">user</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">user</span>));
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="error-handling-with-try-catch">Error Handling with try-catch</h3>
+</div><h3 id="error-handling">Error Handling</h3>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getUserData</span>(<span style="color:#a6e22e">userId</span>) {
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getData</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetchUser</span>(<span style="color:#a6e22e">userId</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">posts</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetchPosts</span>(<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">id</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">comments</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetchComments</span>(<span style="color:#a6e22e">posts</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">id</span>);
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">user</span>, <span style="color:#a6e22e">posts</span>, <span style="color:#a6e22e">comments</span> };
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#39;/api/data&#39;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">json</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">data</span>);
 </span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Error:&#39;</span>, <span style="color:#a6e22e">error</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">throw</span> <span style="color:#a6e22e">error</span>; <span style="color:#75715e">// Re-throw nếu cần
-</span></span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Lỗi:&#34;</span>, <span style="color:#a6e22e">error</span>);
+</span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Usage
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">getUserData</span>(<span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">data</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">data</span>))
-</span></span><span style="display:flex;"><span>    .<span style="color:#66d9ef">catch</span>(<span style="color:#a6e22e">error</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">error</span>));
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="sequential-vs-parallel">Sequential vs Parallel</h3>
@@ -612,27 +331,104 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// ❌ Sequential - chậm (tổng 3s)
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Sequential - chậm (3 giây)
 </span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">sequential</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetchUser</span>(<span style="color:#ae81ff">1</span>);  <span style="color:#75715e">// 1s
-</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetchUser</span>(<span style="color:#ae81ff">2</span>);  <span style="color:#75715e">// 1s
-</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user3</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetchUser</span>(<span style="color:#ae81ff">3</span>);  <span style="color:#75715e">// 1s
-</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> [<span style="color:#a6e22e">user1</span>, <span style="color:#a6e22e">user2</span>, <span style="color:#a6e22e">user3</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">getUser</span>(<span style="color:#ae81ff">1</span>);     <span style="color:#75715e">// 1s
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">posts</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">getPosts</span>(<span style="color:#ae81ff">1</span>);   <span style="color:#75715e">// 1s
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">comments</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">getComments</span>(<span style="color:#ae81ff">1</span>); <span style="color:#75715e">// 1s
+</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {<span style="color:#a6e22e">user</span>, <span style="color:#a6e22e">posts</span>, <span style="color:#a6e22e">comments</span>};
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// ✅ Parallel - nhanh (tổng 1s)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Parallel - nhanh (1 giây)
 </span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">parallel</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">user1</span>, <span style="color:#a6e22e">user2</span>, <span style="color:#a6e22e">user3</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> Promise.<span style="color:#a6e22e">all</span>([
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fetchUser</span>(<span style="color:#ae81ff">1</span>),
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fetchUser</span>(<span style="color:#ae81ff">2</span>),
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fetchUser</span>(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">user</span>, <span style="color:#a6e22e">posts</span>, <span style="color:#a6e22e">comments</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> Promise.<span style="color:#a6e22e">all</span>([
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">getUser</span>(<span style="color:#ae81ff">1</span>),
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">getPosts</span>(<span style="color:#ae81ff">1</span>),
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">getComments</span>(<span style="color:#ae81ff">1</span>)
 </span></span><span style="display:flex;"><span>    ]);
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> [<span style="color:#a6e22e">user1</span>, <span style="color:#a6e22e">user2</span>, <span style="color:#a6e22e">user3</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {<span style="color:#a6e22e">user</span>, <span style="color:#a6e22e">posts</span>, <span style="color:#a6e22e">comments</span>};
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="real-world-example-fetch-api">Real-world Example: Fetch API</h3>
+</div><h2 id="fetch-api---http-requests">Fetch API - HTTP Requests</h2>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// GET request
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getUser</span>(<span style="color:#a6e22e">username</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">`https://api.github.com/users/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">username</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">ok</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">`Lỗi HTTP! status: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">status</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">json</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">data</span>;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Lỗi:&#34;</span>, <span style="color:#a6e22e">error</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// POST request
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createUser</span>(<span style="color:#a6e22e">userData</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#39;/api/users&#39;</span>, {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;POST&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;Content-Type&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;application/json&#39;</span>
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">body</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">userData</span>)
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">json</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="ví-dụ-github-user-search">Ví dụ: GitHub User Search</h2>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;username&#34;</span> <span style="color:#a6e22e">placeholder</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;GitHub username&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;search&#34;</span>&gt;Tìm&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;result&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
@@ -665,129 +461,54 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getUsers</span>() {
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">input</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;username&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">searchBtn</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;search&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">resultDiv</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;result&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">searchUser</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">username</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">value</span>.<span style="color:#a6e22e">trim</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">username</span>) <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">resultDiv</span>.<span style="color:#a6e22e">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&lt;p&gt;Đang tải...&lt;/p&gt;&#39;</span>;
+</span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Fetch data
-</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#39;https://api.example.com/users&#39;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">`https://api.github.com/users/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">username</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
 </span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Check response
-</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">ok</span>) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">`HTTP error! status: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">status</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">ok</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Không tìm thấy user&#39;</span>);
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Parse JSON
-</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">users</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">json</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">json</span>();
 </span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">users</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">resultDiv</span>.<span style="color:#a6e22e">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &lt;img src=&#34;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">avatar_url</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34; width=&#34;100&#34;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &lt;h2&gt;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">login</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/h2&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &lt;p&gt;Followers: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">followers</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/p&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &lt;p&gt;Repos: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">public_repos</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/p&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &lt;a href=&#34;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">html_url</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34; target=&#34;_blank&#34;&gt;Xem Profile&lt;/a&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        `</span>;
+</span></span><span style="display:flex;"><span>        
 </span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Failed to fetch users:&#39;</span>, <span style="color:#a6e22e">error</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">throw</span> <span style="color:#a6e22e">error</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">resultDiv</span>.<span style="color:#a6e22e">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`&lt;p class=&#34;error&#34;&gt;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/p&gt;`</span>;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Usage
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">displayUsers</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">users</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">getUsers</span>();
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">user</span> =&gt; {
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">name</span>);
-</span></span><span style="display:flex;"><span>        });
-</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Error displaying users:&#39;</span>, <span style="color:#a6e22e">error</span>);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="multiple-async-operations">Multiple Async Operations</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getUserProfile</span>(<span style="color:#a6e22e">userId</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Parallel requests
-</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">user</span>, <span style="color:#a6e22e">posts</span>, <span style="color:#a6e22e">friends</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> Promise.<span style="color:#a6e22e">all</span>([
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">`/api/users/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">userId</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>).<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">r</span> =&gt; <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">json</span>()),
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">`/api/users/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">userId</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/posts`</span>).<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">r</span> =&gt; <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">json</span>()),
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">`/api/users/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">userId</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/friends`</span>).<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">r</span> =&gt; <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">json</span>())
-</span></span><span style="display:flex;"><span>        ]);
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">user</span>,
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">posts</span>,
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">friends</span>
-</span></span><span style="display:flex;"><span>        };
-</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Error loading profile:&#39;</span>, <span style="color:#a6e22e">error</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">throw</span> <span style="color:#a6e22e">error</span>;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="async-iteration">Async Iteration</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">processUsers</span>(<span style="color:#a6e22e">userIds</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">userId</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">userIds</span>) {
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Sequential processing
-</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetchUser</span>(<span style="color:#a6e22e">userId</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">processUser</span>(<span style="color:#a6e22e">user</span>);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">searchBtn</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;click&#39;</span>, <span style="color:#a6e22e">searchUser</span>);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Parallel processing
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">processUsersParallel</span>(<span style="color:#a6e22e">userIds</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> Promise.<span style="color:#a6e22e">all</span>(
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">userIds</span>.<span style="color:#a6e22e">map</span>(<span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">userId</span>) =&gt; {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetchUser</span>(<span style="color:#a6e22e">userId</span>);
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">processUser</span>(<span style="color:#a6e22e">user</span>);
-</span></span><span style="display:flex;"><span>        })
-</span></span><span style="display:flex;"><span>    );
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#39;keypress&#39;</span>, (<span style="color:#a6e22e">e</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">key</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;Enter&#39;</span>) <span style="color:#a6e22e">searchUser</span>();
+</span></span><span style="display:flex;"><span>});
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="practical-examples">Practical Examples</h2>
-<h3 id="api-call-with-loading-state">API Call with Loading State</h3>
+</div><h2 id="retry-logic">Retry Logic</h2>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -802,61 +523,23 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserService</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#a6e22e">fetchUsers</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">loadingEl</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;#loading&#39;</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">errorEl</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;#error&#39;</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">usersEl</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;#users&#39;</span>);
-</span></span><span style="display:flex;"><span>        
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">fetchWithRetry</span>(<span style="color:#a6e22e">url</span>, <span style="color:#a6e22e">maxRetries</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">maxRetries</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Show loading
-</span></span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">loadingEl</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">display</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;block&#39;</span>;
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">errorEl</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">display</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;none&#39;</span>;
-</span></span><span style="display:flex;"><span>            
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#39;/api/users&#39;</span>);
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">ok</span>) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Failed to fetch users&#39;</span>);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">users</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">json</span>();
-</span></span><span style="display:flex;"><span>            
-</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Display users
-</span></span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">usersEl</span>.<span style="color:#a6e22e">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">users</span>
-</span></span><span style="display:flex;"><span>                .<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">user</span> =&gt; <span style="color:#e6db74">`&lt;div&gt;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/div&gt;`</span>)
-</span></span><span style="display:flex;"><span>                .<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#39;&#39;</span>);
-</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#a6e22e">url</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">json</span>();
 </span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">errorEl</span>.<span style="color:#a6e22e">textContent</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span>;
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">errorEl</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">display</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;block&#39;</span>;
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">finally</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">loadingEl</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">display</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;none&#39;</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">i</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">maxRetries</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">throw</span> <span style="color:#a6e22e">error</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Thử lại </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">i</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">maxRetries</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">await</span> <span style="color:#66d9ef">new</span> Promise(<span style="color:#a6e22e">resolve</span> =&gt; <span style="color:#a6e22e">setTimeout</span>(<span style="color:#a6e22e">resolve</span>, <span style="color:#ae81ff">1000</span>));
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="retry-logic">Retry Logic</h3>
+</div><h2 id="timeout">Timeout</h2>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -876,71 +559,11 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">fetchWithRetry</span>(<span style="color:#a6e22e">url</span>, <span style="color:#a6e22e">options</span> <span style="color:#f92672">=</span> {}, <span style="color:#a6e22e">retries</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">retries</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#a6e22e">url</span>, <span style="color:#a6e22e">options</span>);
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">ok</span>) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">json</span>();
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">i</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">retries</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">throw</span> <span style="color:#a6e22e">error</span>;
-</span></span><span style="display:flex;"><span>            
-</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Wait before retry (exponential backoff)
-</span></span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">await</span> <span style="color:#66d9ef">new</span> Promise(<span style="color:#a6e22e">resolve</span> =&gt; 
-</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">setTimeout</span>(<span style="color:#a6e22e">resolve</span>, Math.<span style="color:#a6e22e">pow</span>(<span style="color:#ae81ff">2</span>, <span style="color:#a6e22e">i</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">1000</span>)
-</span></span><span style="display:flex;"><span>            );
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Usage
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetchWithRetry</span>(<span style="color:#e6db74">&#39;/api/data&#39;</span>, {}, <span style="color:#ae81ff">3</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">data</span>);
-</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Failed after 3 retries:&#39;</span>, <span style="color:#a6e22e">error</span>);
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="timeout-with-asyncawait">Timeout with Async/Await</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">timeout</span>(<span style="color:#a6e22e">ms</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">setTimeout</span>(() =&gt; <span style="color:#a6e22e">reject</span>(<span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Timeout!&#39;</span>)), <span style="color:#a6e22e">ms</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">setTimeout</span>(() =&gt; <span style="color:#a6e22e">reject</span>(<span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Timeout&#39;</span>)), <span style="color:#a6e22e">ms</span>);
 </span></span><span style="display:flex;"><span>    });
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
@@ -952,16 +575,12 @@
 </span></span><span style="display:flex;"><span>        ]);
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">json</span>();
 </span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;Timeout!&#39;</span>) {
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Request timed out&#39;</span>);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">throw</span> <span style="color:#a6e22e">error</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Timeout hoặc lỗi&#34;</span>);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="best-practices">Best Practices</h2>
-<h3 id="1-always-handle-errors">1. Always handle errors</h3>
+</div><h2 id="lỗi-thường-gặp">Lỗi thường gặp</h2>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -980,120 +599,50 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// ❌ Bad
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">bad</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetchData</span>(); <span style="color:#75715e">// Không xử lý error
-</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">data</span>;
-</span></span><span style="display:flex;"><span>}
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// 1. Quên await
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#39;/api&#39;</span>);  <span style="color:#75715e">// Trả về promise, không phải data!
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Đúng
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#39;/api&#39;</span>).<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">r</span> =&gt; <span style="color:#a6e22e">r</span>.<span style="color:#a6e22e">json</span>());
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// ✅ Good
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">good</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetchData</span>();
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">data</span>;
-</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Error:&#39;</span>, <span style="color:#a6e22e">error</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">throw</span> <span style="color:#a6e22e">error</span>;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 2. Không check response.ok
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">&#39;/api&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">ok</span>) <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#39;Lỗi&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 3. Sequential không cần thiết
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Chậm
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">getUser</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">posts</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">getPosts</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Nhanh
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">user</span>, <span style="color:#a6e22e">posts</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> Promise.<span style="color:#a6e22e">all</span>([<span style="color:#a6e22e">getUser</span>(), <span style="color:#a6e22e">getPosts</span>()]);
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="2-avoid-mixing-patterns">2. Avoid mixing patterns</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// ❌ Bad - mixing async/await và .then()
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">mixed</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetchUser</span>();
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">fetchPosts</span>(<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">id</span>).<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">posts</span> =&gt; <span style="color:#a6e22e">posts</span>);
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// ✅ Good - consistent async/await
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">consistent</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetchUser</span>();
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">posts</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetchPosts</span>(<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">id</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">posts</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="3-use-promiseall-for-parallel-operations">3. Use Promise.all for parallel operations</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// ❌ Bad - sequential
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">sequential</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetchUser</span>();
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">posts</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetchPosts</span>();
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">user</span>, <span style="color:#a6e22e">posts</span> };
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// ✅ Good - parallel
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">parallel</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">user</span>, <span style="color:#a6e22e">posts</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> Promise.<span style="color:#a6e22e">all</span>([
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fetchUser</span>(),
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">fetchPosts</span>()
-</span></span><span style="display:flex;"><span>    ]);
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">user</span>, <span style="color:#a6e22e">posts</span> };
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="kết-luận">Kết luận</h2>
-<p>Async programming trong JavaScript:</p>
-<ul>
-<li><strong>Callbacks</strong>: Cơ bản nhưng dễ callback hell</li>
-<li><strong>Promises</strong>: Giải quyết callback hell với chaining</li>
-<li><strong>Async/Await</strong>: Cú pháp hiện đại, dễ đọc nhất</li>
-</ul>
-<p>Best practices:</p>
-<ul>
-<li>Luôn xử lý errors</li>
-<li>Sử dụng Promise.all cho parallel operations</li>
-<li>Consistent coding style</li>
-<li>Timeout cho long-running operations</li>
-</ul>
-<p>Async/await là cách hiện đại nhất và nên được sử dụng trong code mới!</p>
+</div><h2 id="lời-khuyên">Lời khuyên</h2>
+<ol>
+<li><strong>Async/await</strong> thay vì promise chains</li>
+<li><strong>Try-catch</strong> cho error handling</li>
+<li><strong>Promise.all()</strong> cho parallel operations</li>
+<li><strong>Check response.ok</strong> với fetch</li>
+<li><strong>Loading states</strong> cho UX tốt</li>
+<li><strong>Timeout</strong> tránh requests treo</li>
+</ol>
+<h2 id="tổng-kết">Tổng kết</h2>
+<p>Async programming essential cho JavaScript hiện đại. Evolution: callbacks → promises → async/await. Fetch API cho HTTP. Luôn xử lý errors và optimize với parallel execution.</p>
 
         </div>
         
         
         <nav class="post-navigation">
             
-            <a href="/22DTHE7_TaiTH_Profile/blog/javascript-dom/" class="nav-prev">
-                <span class="nav-label">← Bài trước</span>
-                <span class="nav-title">JavaScript DOM Manipulation - Tương tác với HTML</span>
-            </a>
             
+            <a href="/22DTHE7_TaiTH_Profile/blog/javascript-es6/" class="nav-next">
+                <span class="nav-label">Bài tiếp →</span>
+                <span class="nav-title">JavaScript ES6&#43; - Tính năng hiện đại</span>
+            </a>
             
         </nav>
         

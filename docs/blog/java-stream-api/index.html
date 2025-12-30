@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lập trình functional với Stream">
+    <title>Java Stream API - Trần Hữu Tài</title>
+    <link rel="stylesheet" href="/22DTHE7_TaiTH_Profile/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+    <div class="container">
+        <nav class="navbar">
+            <a href="https://tranhuutai2273.github.io/22DTHE7_TaiTH_Profile/" class="site-logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="32" height="32" rx="6" fill="currentColor"/>
+                    <path d="M10 8h12v4h-4v12h-4V12h-4V8Z" fill="white"/>
+                </svg>
+                <span class="site-name">Trần Hữu Tài</span>
+            </a>
+            
+            <div class="nav-right">
+                <div class="header-search">
+                    <div class="search-container-header" id="search-container-header">
+                        <button id="search-toggle" class="search-toggle" aria-label="Tìm kiếm">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                        </button>
+                        <div class="search-box-header">
+                            <input type="text" id="search-input" class="search-input-header" placeholder="Tìm kiếm bài viết...">
+                            <button id="close-search" class="close-search-header">
+                                <svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="search-results" class="search-dropdown"></div>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li><a href="https://tranhuutai2273.github.io/22DTHE7_TaiTH_Profile/" class="">Home</a></li>
+                    <li><a href="/22DTHE7_TaiTH_Profile/blog" class="active">Blog</a></li>
+                    <li><a href="/22DTHE7_TaiTH_Profile/about" class="">Về tôi</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+
+    
+    <main class="main-content">
+        
+<div class="container">
+    <article class="post-single">
+        <header class="post-header">
+            
+            <div class="post-featured-image">
+                <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=800&amp;h=400&amp;fit=crop" alt="Java Stream API" loading="lazy">
+            </div>
+            
+            <h1 class="post-title">Java Stream API</h1>
+            <div class="post-meta-info">
+                <time datetime="2025-12-29">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+                    </svg>
+                    29 Tháng 12 2025
+                </time>
+                
+                <div class="post-tags">
+                    
+                    <a href="https://tranhuutai2273.github.io/22DTHE7_TaiTH_Profile/tags/java/" class="tag">#Java</a>
+                    
+                    <a href="https://tranhuutai2273.github.io/22DTHE7_TaiTH_Profile/tags/stream/" class="tag">#Stream</a>
+                    
+                    <a href="https://tranhuutai2273.github.io/22DTHE7_TaiTH_Profile/tags/java-8/" class="tag">#Java 8</a>
+                    
+                </div>
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h2 id="stream-là-gì">Stream là gì?</h2>
+<p>Stream API (Java 8+) cho phép xử lý collections theo phong cách functional: filter, map, reduce&hellip;</p>
+<p><strong>Đặc điểm</strong>:</p>
+<ul>
+<li>Không lưu trữ dữ liệu</li>
+<li>Không thay đổi nguồn</li>
+<li>Lazy evaluation</li>
+<li>Có thể vô hạn</li>
+</ul>
+<h2 id="tạo-stream">Tạo Stream</h2>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.stream.*;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.*;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Từ collection</span>
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(<span style="color:#e6db74">&#34;Java&#34;</span>, <span style="color:#e6db74">&#34;Python&#34;</span>, <span style="color:#e6db74">&#34;JavaScript&#34;</span>);
+</span></span><span style="display:flex;"><span>Stream<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> stream1 <span style="color:#f92672">=</span> list.<span style="color:#a6e22e">stream</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Từ array</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> numbers <span style="color:#f92672">=</span> {1, 2, 3, 4, 5};
+</span></span><span style="display:flex;"><span>IntStream stream2 <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">stream</span>(numbers);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Từ giá trị</span>
+</span></span><span style="display:flex;"><span>Stream<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> stream3 <span style="color:#f92672">=</span> Stream.<span style="color:#a6e22e">of</span>(<span style="color:#e6db74">&#34;A&#34;</span>, <span style="color:#e6db74">&#34;B&#34;</span>, <span style="color:#e6db74">&#34;C&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Vô hạn</span>
+</span></span><span style="display:flex;"><span>Stream<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> infinite <span style="color:#f92672">=</span> Stream.<span style="color:#a6e22e">iterate</span>(0, n <span style="color:#f92672">-&gt;</span> n <span style="color:#f92672">+</span> 1);  <span style="color:#75715e">// 0, 1, 2, 3...</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="intermediate-operations">Intermediate Operations</h2>
+<p>Trả về Stream mới, có thể chain.</p>
+<h3 id="filter---lọc">Filter - Lọc</h3>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> numbers <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(1, 2, 3, 4, 5, 6);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> chan <span style="color:#f92672">=</span> numbers.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">filter</span>(n <span style="color:#f92672">-&gt;</span> n <span style="color:#f92672">%</span> 2 <span style="color:#f92672">==</span> 0)  <span style="color:#75715e">// Lọc số chẵn</span>
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">collect</span>(Collectors.<span style="color:#a6e22e">toList</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(chan);  <span style="color:#75715e">// [2, 4, 6]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="map---biến-đổi">Map - Biến đổi</h3>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> names <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(<span style="color:#e6db74">&#34;tai&#34;</span>, <span style="color:#e6db74">&#34;nam&#34;</span>, <span style="color:#e6db74">&#34;linh&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> upper <span style="color:#f92672">=</span> names.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">map</span>(String::toUpperCase)  <span style="color:#75715e">// Method reference</span>
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">collect</span>(Collectors.<span style="color:#a6e22e">toList</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(upper);  <span style="color:#75715e">// [TAI, NAM, LINH]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="sorted---sắp-xếp">Sorted - Sắp xếp</h3>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> numbers <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(5, 2, 8, 1, 9);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> sapXep <span style="color:#f92672">=</span> numbers.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">sorted</span>()  <span style="color:#75715e">// Tăng dần</span>
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">collect</span>(Collectors.<span style="color:#a6e22e">toList</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Giảm dần</span>
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> giamDan <span style="color:#f92672">=</span> numbers.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">sorted</span>(Comparator.<span style="color:#a6e22e">reverseOrder</span>())
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">collect</span>(Collectors.<span style="color:#a6e22e">toList</span>());
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="distinct---loại-bỏ-trùng">Distinct - Loại bỏ trùng</h3>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> numbers <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(1, 2, 2, 3, 3, 3, 4);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> unique <span style="color:#f92672">=</span> numbers.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">distinct</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">collect</span>(Collectors.<span style="color:#a6e22e">toList</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(unique);  <span style="color:#75715e">// [1, 2, 3, 4]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="terminal-operations">Terminal Operations</h2>
+<p>Kết thúc stream, trả về kết quả.</p>
+<h3 id="collect">Collect</h3>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> names <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(<span style="color:#e6db74">&#34;Tai&#34;</span>, <span style="color:#e6db74">&#34;Nam&#34;</span>, <span style="color:#e6db74">&#34;Linh&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Thành List</span>
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> names.<span style="color:#a6e22e">stream</span>().<span style="color:#a6e22e">collect</span>(Collectors.<span style="color:#a6e22e">toList</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Thành Set</span>
+</span></span><span style="display:flex;"><span>Set<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> set <span style="color:#f92672">=</span> names.<span style="color:#a6e22e">stream</span>().<span style="color:#a6e22e">collect</span>(Collectors.<span style="color:#a6e22e">toSet</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Join string</span>
+</span></span><span style="display:flex;"><span>String joined <span style="color:#f92672">=</span> names.<span style="color:#a6e22e">stream</span>().<span style="color:#a6e22e">collect</span>(Collectors.<span style="color:#a6e22e">joining</span>(<span style="color:#e6db74">&#34;, &#34;</span>));
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(joined);  <span style="color:#75715e">// &#34;Tai, Nam, Linh&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="foreach---duyệt">ForEach - Duyệt</h3>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> numbers <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(1, 2, 3);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>numbers.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">forEach</span>(n <span style="color:#f92672">-&gt;</span> System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(n));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Method reference</span>
+</span></span><span style="display:flex;"><span>numbers.<span style="color:#a6e22e">stream</span>().<span style="color:#a6e22e">forEach</span>(System.<span style="color:#a6e22e">out</span>::println);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="count-sum-average">Count, Sum, Average</h3>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> numbers <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(1, 2, 3, 4, 5);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">long</span> count <span style="color:#f92672">=</span> numbers.<span style="color:#a6e22e">stream</span>().<span style="color:#a6e22e">count</span>();  <span style="color:#75715e">// 5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> sum <span style="color:#f92672">=</span> numbers.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">mapToInt</span>(Integer::intValue)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">sum</span>();  <span style="color:#75715e">// 15</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">double</span> avg <span style="color:#f92672">=</span> numbers.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">mapToInt</span>(Integer::intValue)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">average</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">orElse</span>(0.<span style="color:#a6e22e">0</span>);  <span style="color:#75715e">// 3.0</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="findfirst-anymatch">FindFirst, AnyMatch</h3>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> numbers <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(1, 2, 3, 4, 5);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Optional<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> first <span style="color:#f92672">=</span> numbers.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">filter</span>(n <span style="color:#f92672">-&gt;</span> n <span style="color:#f92672">&gt;</span> 3)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">findFirst</span>();  <span style="color:#75715e">// Optional[4]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">boolean</span> coChan <span style="color:#f92672">=</span> numbers.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">anyMatch</span>(n <span style="color:#f92672">-&gt;</span> n <span style="color:#f92672">%</span> 2 <span style="color:#f92672">==</span> 0);  <span style="color:#75715e">// true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">boolean</span> tatCaChan <span style="color:#f92672">=</span> numbers.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">allMatch</span>(n <span style="color:#f92672">-&gt;</span> n <span style="color:#f92672">%</span> 2 <span style="color:#f92672">==</span> 0);  <span style="color:#75715e">// false</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="reduce---tổng-hợp">Reduce - Tổng hợp</h3>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> numbers <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(1, 2, 3, 4, 5);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tổng</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> sum <span style="color:#f92672">=</span> numbers.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">reduce</span>(0, (a, b) <span style="color:#f92672">-&gt;</span> a <span style="color:#f92672">+</span> b);  <span style="color:#75715e">// 15</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Max</span>
+</span></span><span style="display:flex;"><span>Optional<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> max <span style="color:#f92672">=</span> numbers.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">reduce</span>((a, b) <span style="color:#f92672">-&gt;</span> a <span style="color:#f92672">&gt;</span> b <span style="color:#f92672">?</span> a : b);  <span style="color:#75715e">// Optional[5]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Nối chuỗi</span>
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> words <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(<span style="color:#e6db74">&#34;Java&#34;</span>, <span style="color:#e6db74">&#34;is&#34;</span>, <span style="color:#e6db74">&#34;fun&#34;</span>);
+</span></span><span style="display:flex;"><span>String sentence <span style="color:#f92672">=</span> words.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">reduce</span>(<span style="color:#e6db74">&#34;&#34;</span>, (a, b) <span style="color:#f92672">-&gt;</span> a <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">+</span> b);  <span style="color:#75715e">// &#34; Java is fun&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="ví-dụ-xử-lý-sinh-viên">Ví dụ: Xử lý Sinh viên</h2>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SinhVien</span> {
+</span></span><span style="display:flex;"><span>    String ten;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">double</span> diem;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">SinhVien</span>(String ten, <span style="color:#66d9ef">double</span> diem) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">ten</span> <span style="color:#f92672">=</span> ten;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">diem</span> <span style="color:#f92672">=</span> diem;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">getTen</span>() { <span style="color:#66d9ef">return</span> ten; }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getDiem</span>() { <span style="color:#66d9ef">return</span> diem; }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>SinhVien<span style="color:#f92672">&gt;</span> danhSach <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> SinhVien(<span style="color:#e6db74">&#34;Tai&#34;</span>, 8.<span style="color:#a6e22e">5</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> SinhVien(<span style="color:#e6db74">&#34;Nam&#34;</span>, 7.<span style="color:#a6e22e">0</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> SinhVien(<span style="color:#e6db74">&#34;Linh&#34;</span>, 9.<span style="color:#a6e22e">0</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">new</span> SinhVien(<span style="color:#e6db74">&#34;Hoa&#34;</span>, 6.<span style="color:#a6e22e">5</span>)
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tìm sinh viên điểm &gt;= 8</span>
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>SinhVien<span style="color:#f92672">&gt;</span> gioi <span style="color:#f92672">=</span> danhSach.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">filter</span>(sv <span style="color:#f92672">-&gt;</span> sv.<span style="color:#a6e22e">getDiem</span>() <span style="color:#f92672">&gt;=</span> 8.<span style="color:#a6e22e">0</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">collect</span>(Collectors.<span style="color:#a6e22e">toList</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Điểm trung bình</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">double</span> dtb <span style="color:#f92672">=</span> danhSach.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">mapToDouble</span>(SinhVien::getDiem)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">average</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">orElse</span>(0.<span style="color:#a6e22e">0</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;ĐTB: &#34;</span> <span style="color:#f92672">+</span> dtb);  <span style="color:#75715e">// 7.75</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tên sinh viên giỏi</span>
+</span></span><span style="display:flex;"><span>String tenGioi <span style="color:#f92672">=</span> danhSach.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">filter</span>(sv <span style="color:#f92672">-&gt;</span> sv.<span style="color:#a6e22e">getDiem</span>() <span style="color:#f92672">&gt;=</span> 8.<span style="color:#a6e22e">0</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">map</span>(SinhVien::getTen)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">collect</span>(Collectors.<span style="color:#a6e22e">joining</span>(<span style="color:#e6db74">&#34;, &#34;</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Sinh viên giỏi: &#34;</span> <span style="color:#f92672">+</span> tenGioi);  <span style="color:#75715e">// Tai, Linh</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Nhóm theo điểm</span>
+</span></span><span style="display:flex;"><span>Map<span style="color:#f92672">&lt;</span>Double, List<span style="color:#f92672">&lt;</span>SinhVien<span style="color:#f92672">&gt;&gt;</span> nhom <span style="color:#f92672">=</span> danhSach.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">collect</span>(Collectors.<span style="color:#a6e22e">groupingBy</span>(SinhVien::getDiem));
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="parallel-stream">Parallel Stream</h2>
+<p>Xử lý song song, tăng hiệu suất với dữ liệu lớn.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> numbers <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Sequential</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">long</span> sum1 <span style="color:#f92672">=</span> numbers.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">mapToLong</span>(i <span style="color:#f92672">-&gt;</span> i)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">sum</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Parallel - nhanh hơn với dữ liệu lớn</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">long</span> sum2 <span style="color:#f92672">=</span> numbers.<span style="color:#a6e22e">parallelStream</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">mapToLong</span>(i <span style="color:#f92672">-&gt;</span> i)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">sum</span>();
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="method-reference">Method Reference</h2>
+<p>Cú pháp ngắn gọn cho lambda.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Lambda</span>
+</span></span><span style="display:flex;"><span>names.<span style="color:#a6e22e">stream</span>().<span style="color:#a6e22e">map</span>(s <span style="color:#f92672">-&gt;</span> s.<span style="color:#a6e22e">toUpperCase</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Method reference</span>
+</span></span><span style="display:flex;"><span>names.<span style="color:#a6e22e">stream</span>().<span style="color:#a6e22e">map</span>(String::toUpperCase);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Các loại</span>
+</span></span><span style="display:flex;"><span>String::toUpperCase          <span style="color:#75715e">// Instance method</span>
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>::println          <span style="color:#75715e">// Instance method</span>
+</span></span><span style="display:flex;"><span>Integer::parseInt            <span style="color:#75715e">// Static method</span>
+</span></span><span style="display:flex;"><span>ArrayList::<span style="color:#66d9ef">new</span>               <span style="color:#75715e">// Constructor</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="lời-khuyên">Lời khuyên</h2>
+<ol>
+<li><strong>Dùng Stream</strong> cho operations phức tạp trên collections</li>
+<li><strong>Không lạm dụng</strong>: Simple loop đôi khi dễ đọc hơn</li>
+<li><strong>Parallel stream</strong>: Chỉ với dữ liệu lớn, overhead với data nhỏ</li>
+<li><strong>Immutable</strong>: Stream không thay đổi nguồn</li>
+<li><strong>Method reference</strong>: Ngắn gọn hơn lambda khi có thể</li>
+</ol>
+<h2 id="tổng-kết">Tổng kết</h2>
+<p>Stream API giúp xử lý collections theo phong cách functional, code ngắn gọn và dễ đọc. Filter lọc, map biến đổi, reduce tổng hợp. Parallel stream tăng hiệu suất với dữ liệu lớn.</p>
+
+        </div>
+        
+        
+        <nav class="post-navigation">
+            
+            <a href="/22DTHE7_TaiTH_Profile/blog/java-exception/" class="nav-prev">
+                <span class="nav-label">← Bài trước</span>
+                <span class="nav-title">Java Exception Handling</span>
+            </a>
+            
+            
+            <a href="/22DTHE7_TaiTH_Profile/blog/javascript-dom/" class="nav-next">
+                <span class="nav-label">Bài tiếp →</span>
+                <span class="nav-title">JavaScript DOM - Thao tác HTML</span>
+            </a>
+            
+        </nav>
+        
+    </article>
+</div>
+
+    </main>
+    
+    <footer class="site-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-info">
+                <p>&copy; 2025 Trần Hữu Tài. All rights reserved.</p>
+                <p class="footer-subtitle">Chia sẻ kiến thức về lập trình mạng</p>
+            </div>
+            <div class="footer-links">
+                
+                <div class="social-links">
+                    
+                    <a href="https://github.com/TranHuuTai2273" target="_blank" rel="noopener" aria-label="GitHub">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                    </a>
+                    
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</footer>
+
+    
+    <script src="/22DTHE7_TaiTH_Profile/js/search.js"></script>
+</body>
+</html>

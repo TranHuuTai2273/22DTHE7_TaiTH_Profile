@@ -29,13 +29,20 @@
         <div class="posts-grid" id="posts-grid">
             {{ range first 6 (where .Site.RegularPages "Section" "blog") }}
             <article class="post-card">
+                {{ if .Params.image }}
+                <div class="post-card-image">
+                    <a href="{{ .RelPermalink }}">
+                        <img src="{{ .Params.image }}" alt="{{ .Title }}" loading="lazy">
+                    </a>
+                </div>
+                {{ end }}
                 <div class="post-card-content">
                     <div class="post-meta">
-                        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02/01/2006" }}</time>
+                        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Day }} Tháng {{ printf "%d" .Date.Month }} {{ .Date.Year }}</time>
                         {{ with .Params.tags }}
                         <div class="post-tags">
                             {{ range first 2 . }}
-                            <span class="tag">{{ . }}</span>
+                            <a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}/" class="tag">{{ . }}</a>
                             {{ end }}
                         </div>
                         {{ end }}

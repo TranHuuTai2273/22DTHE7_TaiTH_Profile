@@ -1,280 +1,248 @@
 ---
-title: "OOP trong Java - Lập trình hướng đối tượng"
-date: 2024-12-21
-description: "Tìm hiểu chi tiết về 4 tính chất của OOP trong Java: Tính đóng gói, kế thừa, đa hình và trừu tượng"
-tags: ["Java", "OOP", "Hướng đối tượng"]
+title: "Java OOP - Lập trình Hướng đối tượng"
+date: 2025-12-26
+description: "4 trụ cột OOP: Đóng gói, Kế thừa, Đa hình, Trừu tượng"
+tags: ["Java", "OOP"]
+image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop"
 draft: false
 ---
 
-## Lập trình hướng đối tượng (OOP) là gì?
+## OOP là gì?
 
-OOP (Object-Oriented Programming) là một phương pháp lập trình dựa trên khái niệm "đối tượng", có thể chứa dữ liệu (thuộc tính) và code (phương thức).
+Lập trình hướng đối tượng tổ chức code thành objects có attributes (dữ liệu) và methods (hành vi).
 
-## 4 Tính chất cơ bản của OOP
+## 4 trụ cột OOP
 
-### 1. Tính đóng gói (Encapsulation)
+### 1. Encapsulation (Đóng gói)
 
-Đóng gói là việc ẩn giấu thông tin bên trong đối tượng và chỉ cho phép truy cập thông qua các phương thức public.
+Ẩn dữ liệu nội bộ, chỉ truy cập qua methods.
 
 ```java
-public class Student {
-    // Thuộc tính private
-    private String name;
-    private int age;
-    private double gpa;
+public class TaiKhoan {
+    private double soDu;  // Private - không truy cập trực tiếp
     
-    // Constructor
-    public Student(String name, int age, double gpa) {
-        this.name = name;
-        this.age = age;
-        this.gpa = gpa;
+    public double getSoDu() {
+        return soDu;
     }
     
-    // Getter methods
-    public String getName() {
-        return name;
-    }
-    
-    public int getAge() {
-        return age;
-    }
-    
-    public double getGpa() {
-        return gpa;
-    }
-    
-    // Setter methods với validation
-    public void setAge(int age) {
-        if (age > 0 && age < 100) {
-            this.age = age;
+    public void napTien(double soTien) {
+        if (soTien > 0) {
+            soDu += soTien;
         }
     }
     
-    public void setGpa(double gpa) {
-        if (gpa >= 0.0 && gpa <= 4.0) {
-            this.gpa = gpa;
+    public boolean rutTien(double soTien) {
+        if (soTien > 0 && soTien <= soDu) {
+            soDu -= soTien;
+            return true;
         }
+        return false;
     }
 }
 ```
 
-**Lợi ích:**
-- Bảo vệ dữ liệu khỏi truy cập trái phép
-- Kiểm soát được việc thay đổi dữ liệu
-- Dễ bảo trì và nâng cấp code
+**Lợi ích**: Kiểm soát dữ liệu, dễ bảo trì.
 
-### 2. Tính kế thừa (Inheritance)
+### 2. Inheritance (Kế thừa)
 
-Kế thừa cho phép class con thừa hưởng các thuộc tính và phương thức từ class cha.
+Class con kế thừa properties/methods từ class cha.
 
 ```java
 // Class cha
-public class Person {
-    protected String name;
-    protected int age;
+public class NhanVien {
+    protected String ten;
+    protected double luongCoBan;
     
-    public Person(String name, int age) {
-        this.name = name;
-        this.age = age;
+    public NhanVien(String ten, double luong) {
+        this.ten = ten;
+        this.luongCoBan = luong;
     }
     
-    public void introduce() {
-        System.out.println("Tôi là " + name + ", " + age + " tuổi");
+    public double tinhLuong() {
+        return luongCoBan;
     }
 }
 
-// Class con kế thừa từ Person
-public class Developer extends Person {
-    private String programmingLanguage;
+// Class con
+public class QuanLy extends NhanVien {
+    private double thuong;
     
-    public Developer(String name, int age, String language) {
-        super(name, age); // Gọi constructor của class cha
-        this.programmingLanguage = language;
+    public QuanLy(String ten, double luong, double thuong) {
+        super(ten, luong);  // Gọi constructor cha
+        this.thuong = thuong;
     }
     
-    // Override method
     @Override
-    public void introduce() {
-        super.introduce();
-        System.out.println("Tôi lập trình " + programmingLanguage);
-    }
-    
-    public void code() {
-        System.out.println("Đang code " + programmingLanguage + "...");
+    public double tinhLuong() {
+        return luongCoBan + thuong;
     }
 }
 ```
 
-**Sử dụng:**
+**Lợi ích**: Tái sử dụng code, mở rộng dễ dàng.
+
+### 3. Polymorphism (Đa hình)
+
+Cùng method, hành vi khác nhau.
+
 ```java
-Developer dev = new Developer("Tài", 22, "Java");
-dev.introduce(); // Tôi là Tài, 22 tuổi. Tôi lập trình Java
-dev.code();      // Đang code Java...
-```
-
-### 3. Tính đa hình (Polymorphism)
-
-Đa hình cho phép một đối tượng có thể được xử lý theo nhiều cách khác nhau.
-
-#### 3.1 Đa hình lúc biên dịch (Method Overloading)
-```java
-public class Calculator {
-    // Cộng 2 số nguyên
-    public int add(int a, int b) {
-        return a + b;
-    }
-    
-    // Cộng 3 số nguyên
-    public int add(int a, int b, int c) {
-        return a + b + c;
-    }
-    
-    // Cộng 2 số thực
-    public double add(double a, double b) {
-        return a + b;
+public class DongVat {
+    public void keu() {
+        System.out.println("Động vật kêu...");
     }
 }
-```
 
-#### 3.2 Đa hình lúc runtime (Method Overriding)
-```java
-public abstract class Animal {
-    public abstract void makeSound();
-}
-
-public class Dog extends Animal {
+public class Cho extends DongVat {
     @Override
-    public void makeSound() {
+    public void keu() {
         System.out.println("Gâu gâu!");
     }
 }
 
-public class Cat extends Animal {
+public class Meo extends DongVat {
     @Override
-    public void makeSound() {
+    public void keu() {
         System.out.println("Meo meo!");
     }
 }
 
 // Sử dụng
-Animal myDog = new Dog();
-Animal myCat = new Cat();
-
-myDog.makeSound(); // Gâu gâu!
-myCat.makeSound(); // Meo meo!
+DongVat dv1 = new Cho();
+DongVat dv2 = new Meo();
+dv1.keu();  // "Gâu gâu!"
+dv2.keu();  // "Meo meo!"
 ```
 
-### 4. Tính trừu tượng (Abstraction)
+**Lợi ích**: Linh hoạt, dễ mở rộng.
 
-Trừu tượng là việc ẩn đi các chi tiết cài đặt phức tạp, chỉ hiển thị những thông tin cần thiết.
+### 4. Abstraction (Trừu tượng)
 
-#### 4.1 Abstract Class
+Ẩn chi tiết triển khai, chỉ hiển thị chức năng.
+
 ```java
-public abstract class Shape {
-    protected String color;
+// Abstract class
+public abstract class HinhHoc {
+    protected String mau;
     
-    public Shape(String color) {
-        this.color = color;
-    }
-    
-    // Abstract method (không có implementation)
-    public abstract double getArea();
+    // Abstract method - bắt buộc override
+    public abstract double tinhDienTich();
     
     // Concrete method
-    public void displayColor() {
-        System.out.println("Màu: " + color);
+    public void hienThiMau() {
+        System.out.println("Màu: " + mau);
     }
 }
 
-public class Circle extends Shape {
-    private double radius;
+public class HinhTron extends HinhHoc {
+    private double banKinh;
     
-    public Circle(String color, double radius) {
-        super(color);
-        this.radius = radius;
+    public HinhTron(double r, String mau) {
+        this.banKinh = r;
+        this.mau = mau;
     }
     
     @Override
-    public double getArea() {
-        return Math.PI * radius * radius;
+    public double tinhDienTich() {
+        return Math.PI * banKinh * banKinh;
     }
 }
 
-public class Rectangle extends Shape {
-    private double width;
-    private double height;
-    
-    public Rectangle(String color, double width, double height) {
-        super(color);
-        this.width = width;
-        this.height = height;
-    }
-    
-    @Override
-    public double getArea() {
-        return width * height;
-    }
+// Interface
+public interface VeHinh {
+    void ve();
+    void xoa();
 }
 ```
 
-#### 4.2 Interface
-```java
-public interface Drawable {
-    void draw();
-    void resize(double scale);
-}
+**Lợi ích**: Tập trung vào "cái gì", không phải "như thế nào".
 
-public class Button implements Drawable {
-    @Override
-    public void draw() {
-        System.out.println("Vẽ nút bấm");
-    }
-    
-    @Override
-    public void resize(double scale) {
-        System.out.println("Thay đổi kích thước: " + scale);
-    }
-}
-```
+## Constructor
 
-## So sánh Abstract Class vs Interface
-
-| Đặc điểm | Abstract Class | Interface |
-|----------|---------------|-----------|
-| Từ khóa | `abstract` | `interface` |
-| Kế thừa | Một class chỉ extends 1 abstract class | Một class có thể implements nhiều interface |
-| Constructor | Có | Không |
-| Phương thức | Có thể có concrete và abstract methods | Chỉ có abstract methods (Java 7), từ Java 8 có thể có default methods |
-| Biến | Có thể có biến instance | Chỉ có static final constants |
-
-## Ví dụ tổng hợp
+Khởi tạo object.
 
 ```java
-// Sử dụng tất cả 4 tính chất
-public class OOPDemo {
-    public static void main(String[] args) {
-        // Tính kế thừa và đa hình
-        Shape circle = new Circle("Đỏ", 5.0);
-        Shape rectangle = new Rectangle("Xanh", 4.0, 6.0);
-        
-        // Tính trừu tượng
-        System.out.println("Diện tích hình tròn: " + circle.getArea());
-        System.out.println("Diện tích hình chữ nhật: " + rectangle.getArea());
-        
-        // Tính đóng gói
-        Student student = new Student("Tài", 22, 3.5);
-        System.out.println("Tên: " + student.getName());
-        student.setGpa(3.8); // Kiểm soát thông qua setter
+public class SinhVien {
+    private String ten;
+    private int tuoi;
+    
+    // Constructor mặc định
+    public SinhVien() {
+        this.ten = "Chưa đặt tên";
+        this.tuoi = 18;
+    }
+    
+    // Constructor có tham số
+    public SinhVien(String ten, int tuoi) {
+        this.ten = ten;
+        this.tuoi = tuoi;
     }
 }
 ```
 
-## Kết luận
+## Static & Final
 
-4 tính chất của OOP trong Java là nền tảng quan trọng giúp:
-- Code dễ đọc, dễ hiểu
-- Tái sử dụng code hiệu quả
-- Bảo trì và mở rộng ứng dụng dễ dàng
-- Tăng tính bảo mật và ổn định
+```java
+public class VatLy {
+    // Static - thuộc class, không thuộc object
+    public static final double TOC_DO_ANH_SANG = 299792458;
+    private static int soDoiTuong = 0;
+    
+    public VatLy() {
+        soDoiTuong++;
+    }
+    
+    public static int demDoiTuong() {
+        return soDoiTuong;
+    }
+}
 
-Việc nắm vững OOP là chìa khóa để trở thành một Java developer giỏi!
+// Sử dụng
+double c = VatLy.TOC_DO_ANH_SANG;  // Không cần tạo object
+int dem = VatLy.demDoiTuong();
+```
+
+## Ví dụ: Quản lý Nhân viên
+
+```java
+public abstract class NhanVien {
+    protected String ten;
+    protected double luongCoBan;
+    
+    public NhanVien(String ten, double luong) {
+        this.ten = ten;
+        this.luongCoBan = luong;
+    }
+    
+    public abstract double tinhLuong();
+}
+
+public class LapTrinhVien extends NhanVien {
+    private int gioLamThem;
+    
+    public LapTrinhVien(String ten, double luong, int gio) {
+        super(ten, luong);
+        this.gioLamThem = gio;
+    }
+    
+    @Override
+    public double tinhLuong() {
+        return luongCoBan + (gioLamThem * 50000);
+    }
+}
+
+// Test
+NhanVien nv = new LapTrinhVien("Tai", 10000000, 20);
+System.out.println("Lương: " + nv.tinhLuong());
+```
+
+## Lời khuyên
+
+1. Dùng **private** cho fields, **public** cho methods
+2. **Constructor** khởi tạo giá trị hợp lệ
+3. **Override** methods khi cần hành vi khác
+4. **Abstract/Interface** cho abstraction
+5. **Static** cho utilities, không thay đổi theo object
+
+## Tổng kết
+
+OOP giúp code có tổ chức, dễ bảo trì và mở rộng. 4 trụ cột: Encapsulation bảo vệ dữ liệu, Inheritance tái sử dụng code, Polymorphism linh hoạt, Abstraction đơn giản hóa.

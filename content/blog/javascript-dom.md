@@ -1,485 +1,251 @@
 ---
-title: "JavaScript DOM Manipulation - Tương tác với HTML"
-date: 2024-12-27
-description: "Học cách thao tác với DOM để tạo trang web động và tương tác"
-tags: ["JavaScript", "DOM", "Web Development"]
+title: "JavaScript DOM - Thao tác HTML"
+date: 2025-12-30
+description: "Chọn elements, thay đổi nội dung, xử lý sự kiện"
+tags: ["JavaScript", "DOM"]
+image: "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?w=800&h=400&fit=crop"
 draft: false
 ---
 
 ## DOM là gì?
 
-DOM (Document Object Model) là cây cấu trúc biểu diễn HTML document, cho phép JavaScript tương tác và thay đổi nội dung, cấu trúc và style của trang web.
+Document Object Model - cây đối tượng đại diện cho HTML, cho phép JavaScript thao tác trang web.
 
-## Selecting Elements
+## Chọn Elements
 
-### getElementById
 ```javascript
-// Lấy element theo ID (trả về 1 element)
+// Chọn theo ID
 const header = document.getElementById('header');
-console.log(header);
-```
 
-### getElementsByClassName
-```javascript
-// Lấy elements theo class (trả về HTMLCollection)
+// Chọn theo selector (giống CSS)
+const btn = document.querySelector('.btn');
+const allBtns = document.querySelectorAll('.btn');
+
+// Chọn theo class/tag
 const items = document.getElementsByClassName('item');
-console.log(items); // HTMLCollection
-
-// Convert to array để dùng array methods
-const itemsArray = Array.from(items);
-itemsArray.forEach(item => console.log(item));
-```
-
-### getElementsByTagName
-```javascript
-// Lấy elements theo tag name
 const paragraphs = document.getElementsByTagName('p');
-const allDivs = document.getElementsByTagName('div');
-```
 
-### querySelector
-```javascript
-// Lấy element đầu tiên match CSS selector
-const firstItem = document.querySelector('.item');
-const title = document.querySelector('#title');
-const input = document.querySelector('input[type="text"]');
-
-// Nested selector
-const firstLink = document.querySelector('.menu a');
-```
-
-### querySelectorAll
-```javascript
-// Lấy TẤT CẢ elements match CSS selector (NodeList)
-const allItems = document.querySelectorAll('.item');
-const allLinks = document.querySelectorAll('a');
-
-// NodeList có forEach
-allItems.forEach(item => {
-    console.log(item.textContent);
+// Duyệt NodeList
+allBtns.forEach(btn => {
+    console.log(btn.textContent);
 });
 ```
 
-## Modifying Content
-
-### textContent
-```javascript
-const title = document.querySelector('h1');
-
-// Đọc text
-console.log(title.textContent);
-
-// Ghi text (chỉ text, không parse HTML)
-title.textContent = 'Tiêu đề mới';
-```
-
-### innerHTML
-```javascript
-const container = document.querySelector('.container');
-
-// Đọc HTML
-console.log(container.innerHTML);
-
-// Ghi HTML (parse và render HTML)
-container.innerHTML = '<p>Đoạn văn mới</p>';
-container.innerHTML += '<p>Thêm đoạn nữa</p>';
-
-// ⚠️ Cẩn thận với XSS attacks
-const userInput = '<img src=x onerror="alert(1)">';
-// container.innerHTML = userInput; // Nguy hiểm!
-```
-
-### innerText
-```javascript
-const element = document.querySelector('.text');
-
-// innerText chỉ lấy text hiển thị (không lấy hidden)
-console.log(element.innerText);
-```
-
-## Modifying Attributes
+## Thay đổi nội dung
 
 ```javascript
-const img = document.querySelector('img');
+const elem = document.querySelector('#message');
 
-// Get attribute
-console.log(img.getAttribute('src'));
-console.log(img.src); // Hoặc direct property
+// Text thuần
+elem.textContent = "Xin chào";
 
-// Set attribute
-img.setAttribute('src', 'new-image.jpg');
-img.setAttribute('alt', 'New image');
+// HTML (cẩn thận XSS!)
+elem.innerHTML = "<strong>Xin chào</strong>";
 
-img.src = 'another-image.jpg';
-img.alt = 'Another image';
-
-// Remove attribute
-img.removeAttribute('alt');
-
-// Check attribute exists
-if (img.hasAttribute('src')) {
-    console.log('Image has src');
-}
+// Attributes
+const link = document.querySelector('a');
+link.setAttribute('href', 'https://google.com');
+link.href = 'https://github.com';  // Truy cập trực tiếp
 
 // Data attributes
-const element = document.querySelector('.item');
-element.setAttribute('data-id', '123');
-console.log(element.dataset.id); // "123"
+link.dataset.userId = '123';
+console.log(link.dataset.userId);  // "123"
 ```
 
-## Modifying Styles
+## Styling
 
-### Inline styles
 ```javascript
 const box = document.querySelector('.box');
 
-// Single style
-box.style.backgroundColor = 'red';
-box.style.color = 'white';
-box.style.padding = '20px';
+// CSS Classes (khuyên dùng)
+box.classList.add('active');
+box.classList.remove('hidden');
+box.classList.toggle('dark');  // Thêm/xóa
 
-// Multiple styles
-Object.assign(box.style, {
-    backgroundColor: 'blue',
-    color: 'white',
-    padding: '20px',
-    borderRadius: '10px'
-});
-
-// Get computed style
-const styles = window.getComputedStyle(box);
-console.log(styles.backgroundColor);
-console.log(styles.fontSize);
-```
-
-### CSS Classes
-```javascript
-const element = document.querySelector('.item');
-
-// Add class
-element.classList.add('active');
-element.classList.add('highlight', 'selected');
-
-// Remove class
-element.classList.remove('active');
-
-// Toggle class (thêm nếu chưa có, xóa nếu đã có)
-element.classList.toggle('active');
-
-// Check class exists
-if (element.classList.contains('active')) {
-    console.log('Element is active');
+// Kiểm tra class
+if (box.classList.contains('active')) {
+    console.log('Active!');
 }
 
-// Replace class
-element.classList.replace('old-class', 'new-class');
+// Inline styles (tránh)
+box.style.backgroundColor = 'blue';
+box.style.padding = '10px';
 ```
 
-## Creating Elements
+## Tạo và xóa Elements
 
 ```javascript
-// Tạo element mới
-const newDiv = document.createElement('div');
-newDiv.textContent = 'Tôi là div mới';
-newDiv.className = 'box';
-newDiv.id = 'new-box';
+// Tạo element
+const div = document.createElement('div');
+div.textContent = 'Hello';
+div.className = 'box';
 
-// Tạo element với attributes
-const link = document.createElement('a');
-link.href = 'https://example.com';
-link.textContent = 'Click me';
-link.target = '_blank';
+// Thêm vào DOM
+document.body.appendChild(div);
 
-// Tạo text node
-const textNode = document.createTextNode('Plain text');
-```
-
-## Adding Elements to DOM
-
-```javascript
+// Thêm vị trí cụ thể
 const container = document.querySelector('.container');
-const newElement = document.createElement('p');
-newElement.textContent = 'New paragraph';
+container.prepend(div);      // Đầu
+container.appendChild(div);  // Cuối
+container.before(div);       // Trước container
+container.after(div);        // Sau container
 
-// Append (thêm vào cuối)
-container.appendChild(newElement);
-
-// Prepend (thêm vào đầu)
-container.insertBefore(newElement, container.firstChild);
-
-// Modern methods (IE không support)
-container.append(newElement);    // Thêm cuối
-container.prepend(newElement);   // Thêm đầu
-
-// Insert adjacent
-const reference = document.querySelector('.reference');
-
-// beforebegin: trước element
-reference.insertAdjacentHTML('beforebegin', '<p>Before</p>');
-
-// afterbegin: đầu element (first child)
-reference.insertAdjacentHTML('afterbegin', '<p>First child</p>');
-
-// beforeend: cuối element (last child)
-reference.insertAdjacentHTML('beforeend', '<p>Last child</p>');
-
-// afterend: sau element
-reference.insertAdjacentHTML('afterend', '<p>After</p>');
+// Xóa element
+div.remove();
 ```
 
-## Removing Elements
+## Xử lý sự kiện
 
 ```javascript
-const element = document.querySelector('.remove-me');
-
-// Modern way
-element.remove();
-
-// Old way
-element.parentNode.removeChild(element);
-
-// Remove all children
-const container = document.querySelector('.container');
-container.innerHTML = ''; // Cách đơn giản nhất
-
-// Hoặc
-while (container.firstChild) {
-    container.removeChild(container.firstChild);
-}
-```
-
-## Traversing the DOM
-
-### Parent, Children, Siblings
-```javascript
-const element = document.querySelector('.item');
-
-// Parent
-const parent = element.parentElement;
-const parentNode = element.parentNode;
-
-// Closest parent matching selector
-const container = element.closest('.container');
-
-// Children
-const children = element.children; // HTMLCollection (chỉ elements)
-const childNodes = element.childNodes; // NodeList (gồm cả text nodes)
-
-const firstChild = element.firstElementChild;
-const lastChild = element.lastElementChild;
-
-// Siblings
-const nextSibling = element.nextElementSibling;
-const prevSibling = element.previousElementSibling;
-```
-
-### Practical example
-```html
-<div class="container">
-    <div class="item" data-id="1">Item 1</div>
-    <div class="item active" data-id="2">Item 2</div>
-    <div class="item" data-id="3">Item 3</div>
-</div>
-```
-
-```javascript
-const activeItem = document.querySelector('.item.active');
-
-// Get parent container
-const container = activeItem.parentElement;
-
-// Get next item
-const nextItem = activeItem.nextElementSibling;
-
-// Get all siblings
-const allItems = Array.from(container.children);
-const siblings = allItems.filter(item => item !== activeItem);
-```
-
-## Event Handling
-
-### addEventListener
-```javascript
-const button = document.querySelector('button');
+const btn = document.querySelector('#myBtn');
 
 // Click event
-button.addEventListener('click', function(event) {
-    console.log('Button clicked!');
-    console.log('Event:', event);
-    console.log('Target:', event.target);
+btn.addEventListener('click', function(e) {
+    console.log('Clicked!');
+    console.log(e.target);  // Element được click
 });
 
 // Arrow function
-button.addEventListener('click', (e) => {
+btn.addEventListener('click', (e) => {
     console.log('Clicked!');
 });
 
-// Multiple listeners
-button.addEventListener('click', handler1);
-button.addEventListener('click', handler2);
+// Form events
+const input = document.querySelector('#email');
 
-// Remove listener
-button.removeEventListener('click', handler1);
-```
-
-### Common Events
-```javascript
-const input = document.querySelector('input');
-
-// Input events
 input.addEventListener('input', (e) => {
-    console.log('Value:', e.target.value);
-});
-
-input.addEventListener('change', (e) => {
-    console.log('Changed to:', e.target.value);
+    console.log(e.target.value);  // Giá trị hiện tại
 });
 
 input.addEventListener('focus', () => {
     console.log('Input focused');
 });
 
-input.addEventListener('blur', () => {
-    console.log('Input blurred');
-});
-
-// Form events
+// Form submit
 const form = document.querySelector('form');
 form.addEventListener('submit', (e) => {
-    e.preventDefault(); // Ngăn submit mặc định
+    e.preventDefault();  // Chặn submit
     console.log('Form submitted');
 });
 
-// Mouse events
-const box = document.querySelector('.box');
-box.addEventListener('mouseenter', () => console.log('Mouse enter'));
-box.addEventListener('mouseleave', () => console.log('Mouse leave'));
-box.addEventListener('mousemove', (e) => {
-    console.log('Position:', e.clientX, e.clientY);
-});
-
-// Keyboard events
+// Keyboard
 document.addEventListener('keydown', (e) => {
-    console.log('Key:', e.key);
     if (e.key === 'Enter') {
-        console.log('Enter pressed');
+        console.log('Enter pressed!');
     }
 });
 ```
 
-### Event Delegation
-```javascript
-// ❌ Inefficient: Attach listener to each item
-const items = document.querySelectorAll('.item');
-items.forEach(item => {
-    item.addEventListener('click', () => {
-        console.log('Item clicked');
-    });
-});
+## Event Delegation
 
-// ✅ Efficient: Event delegation
+Gắn listener cho parent, xử lý events từ children.
+
+```javascript
+// Tốt - một listener
 const list = document.querySelector('.list');
+
 list.addEventListener('click', (e) => {
     if (e.target.classList.contains('item')) {
         console.log('Item clicked:', e.target.textContent);
     }
 });
+
+// Xấu - listener cho từng item
+const items = document.querySelectorAll('.item');
+items.forEach(item => {
+    item.addEventListener('click', () => {
+        console.log('Clicked');
+    });
+});
 ```
 
-## Practical Examples
+## Ví dụ: Todo List
 
-### Todo List
+```html
+<input type="text" id="todoInput" placeholder="Thêm việc...">
+<button id="addBtn">Thêm</button>
+<ul id="todoList"></ul>
+```
+
 ```javascript
-const todoForm = document.querySelector('#todo-form');
-const todoInput = document.querySelector('#todo-input');
-const todoList = document.querySelector('#todo-list');
+const input = document.getElementById('todoInput');
+const addBtn = document.getElementById('addBtn');
+const list = document.getElementById('todoList');
 
-todoForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+function themTodo() {
+    const text = input.value.trim();
+    if (!text) return;
     
-    const todoText = todoInput.value.trim();
-    if (!todoText) return;
-    
-    // Create todo item
+    // Tạo li
     const li = document.createElement('li');
-    li.className = 'todo-item';
     li.innerHTML = `
-        <span>${todoText}</span>
-        <button class="delete-btn">Xóa</button>
+        <span class="text">${text}</span>
+        <button class="delete">Xóa</button>
     `;
     
-    todoList.appendChild(li);
-    todoInput.value = '';
+    list.appendChild(li);
+    input.value = '';
+}
+
+// Click nút Thêm
+addBtn.addEventListener('click', themTodo);
+
+// Enter trong input
+input.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        themTodo();
+    }
 });
 
-// Event delegation for delete
-todoList.addEventListener('click', (e) => {
-    if (e.target.classList.contains('delete-btn')) {
+// Event delegation cho xóa
+list.addEventListener('click', (e) => {
+    // Xóa todo
+    if (e.target.classList.contains('delete')) {
         e.target.parentElement.remove();
     }
-});
-```
-
-### Show/Hide Toggle
-```javascript
-const toggleBtn = document.querySelector('#toggle-btn');
-const content = document.querySelector('#content');
-
-toggleBtn.addEventListener('click', () => {
-    content.classList.toggle('hidden');
     
-    if (content.classList.contains('hidden')) {
-        toggleBtn.textContent = 'Hiện';
-    } else {
-        toggleBtn.textContent = 'Ẩn';
+    // Toggle hoàn thành
+    if (e.target.classList.contains('text')) {
+        e.target.classList.toggle('completed');
     }
 });
 ```
 
-### Dynamic Form Validation
-```javascript
-const form = document.querySelector('#register-form');
-const emailInput = document.querySelector('#email');
-const passwordInput = document.querySelector('#password');
-
-emailInput.addEventListener('input', () => {
-    const email = emailInput.value;
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    
-    if (!emailPattern.test(email)) {
-        emailInput.classList.add('invalid');
-        showError(emailInput, 'Email không hợp lệ');
-    } else {
-        emailInput.classList.remove('invalid');
-        clearError(emailInput);
-    }
-});
-
-function showError(input, message) {
-    let error = input.nextElementSibling;
-    if (!error || !error.classList.contains('error-message')) {
-        error = document.createElement('span');
-        error.className = 'error-message';
-        input.after(error);
-    }
-    error.textContent = message;
-}
-
-function clearError(input) {
-    const error = input.nextElementSibling;
-    if (error && error.classList.contains('error-message')) {
-        error.remove();
-    }
+```css
+.completed {
+    text-decoration: line-through;
+    color: #999;
 }
 ```
 
-## Kết luận
+## Performance Tips
 
-DOM Manipulation cho phép:
-- Truy cập và modify elements
-- Tạo/xóa elements động
-- Thay đổi styles và classes
-- Xử lý user interactions
-- Tạo ứng dụng web động và interactive
+```javascript
+// 1. Cache DOM references
+const container = document.querySelector('.container');
+for (let i = 0; i < 100; i++) {
+    container.innerHTML += '<p>Text</p>';  // Chậm
+}
 
-Đây là kỹ năng nền tảng cho mọi web developer!
+// 2. Dùng DocumentFragment
+const fragment = document.createDocumentFragment();
+for (let i = 0; i < 100; i++) {
+    const li = document.createElement('li');
+    li.textContent = i;
+    fragment.appendChild(li);
+}
+list.appendChild(fragment);  // Một lần reflow
+```
+
+## Lời khuyên
+
+1. **querySelector** cho selector CSS
+2. **classList** thay vì inline styles
+3. **Event delegation** cho dynamic content
+4. **textContent** an toàn hơn innerHTML
+5. **Cache DOM** references
+6. **addEventListener** thay vì onclick
+
+## Tổng kết
+
+DOM manipulation để tạo website tương tác. Chọn elements, thay đổi nội dung, xử lý events. Event delegation hiệu quả cho dynamic content.

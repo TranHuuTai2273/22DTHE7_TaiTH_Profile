@@ -1,0 +1,55 @@
+{{ define "title" }}Tags - {{ .Site.Title }}{{ end }}
+
+{{ define "main" }}
+<div class="container">
+    <div class="page-header">
+        <h1 class="page-title">Tất cả Tags</h1>
+        <p class="page-description">Khám phá nội dung theo chủ đề</p>
+    </div>
+    
+    <div class="tags-cloud">
+        {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+        <a href="{{ $.Site.BaseURL }}tags/{{ $name | urlize }}/" class="tag-cloud-item" style="font-size: {{ add 1 (mul (len $taxonomy.Pages) 0.15) }}rem;">
+            {{ $name }}
+            <span class="tag-count">{{ len $taxonomy.Pages }}</span>
+        </a>
+        {{ end }}
+    </div>
+</div>
+
+<style>
+.tags-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 2rem 0;
+    justify-content: center;
+}
+
+.tag-cloud-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    text-decoration: none;
+    border-radius: 2rem;
+    font-weight: 600;
+    transition: all 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tag-cloud-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.tag-count {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+}
+</style>
+{{ end }}

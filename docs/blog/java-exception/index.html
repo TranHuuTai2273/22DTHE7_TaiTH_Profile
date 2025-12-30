@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tìm hiểu cách xử lý exception trong Java với try-catch, throw, throws và custom exceptions">
-    <title>Exception Handling trong Java - Xử lý ngoại lệ - Trần Hữu Tài</title>
+    <meta name="description" content="Xử lý ngoại lệ và lỗi trong Java">
+    <title>Java Exception Handling - Trần Hữu Tài</title>
     <link rel="stylesheet" href="/22DTHE7_TaiTH_Profile/css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,23 +58,26 @@
 <div class="container">
     <article class="post-single">
         <header class="post-header">
-            <h1 class="post-title">Exception Handling trong Java - Xử lý ngoại lệ</h1>
+            
+            <div class="post-featured-image">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&amp;h=400&amp;fit=crop" alt="Java Exception Handling" loading="lazy">
+            </div>
+            
+            <h1 class="post-title">Java Exception Handling</h1>
             <div class="post-meta-info">
-                <time datetime="2024-12-23">
+                <time datetime="2025-12-28">
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                         <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
                     </svg>
-                    23 December 2024
+                    28 Tháng 12 2025
                 </time>
                 
                 <div class="post-tags">
                     
-                    <a href="/tags/java" class="tag">#Java</a>
+                    <a href="https://tranhuutai2273.github.io/22DTHE7_TaiTH_Profile/tags/java/" class="tag">#Java</a>
                     
-                    <a href="/tags/exception" class="tag">#Exception</a>
-                    
-                    <a href="/tags/error-handling" class="tag">#Error Handling</a>
+                    <a href="https://tranhuutai2273.github.io/22DTHE7_TaiTH_Profile/tags/exception/" class="tag">#Exception</a>
                     
                 </div>
                 
@@ -83,554 +86,19 @@
         
         <div class="post-content">
             <h2 id="exception-là-gì">Exception là gì?</h2>
-<p>Exception (ngoại lệ) là một sự kiện xảy ra trong quá trình thực thi chương trình, làm gián đoạn luồng bình thường của chương trình.</p>
+<p>Exception là sự kiện bất thường xảy ra khi chương trình chạy, làm gián đoạn luồng thực thi.</p>
 <h2 id="phân-loại-exception">Phân loại Exception</h2>
 <pre tabindex="0"><code>Throwable
-├── Error (Lỗi hệ thống, không nên catch)
-│   ├── OutOfMemoryError
-│   └── StackOverflowError
+├── Error (Lỗi hệ thống - không xử lý)
 └── Exception
-    ├── IOException (Checked Exception)
-    ├── SQLException
-    └── RuntimeException (Unchecked Exception)
-        ├── NullPointerException
-        ├── ArrayIndexOutOfBoundsException
-        └── ArithmeticException
-</code></pre><h3 id="checked-exception-vs-unchecked-exception">Checked Exception vs Unchecked Exception</h3>
-<p><strong>Checked Exception:</strong></p>
+    ├── RuntimeException (Unchecked)
+    └── IOException, SQLException... (Checked)
+</code></pre><p><strong>Checked vs Unchecked</strong>:</p>
 <ul>
-<li>Phải xử lý tại compile time</li>
-<li>Bắt buộc dùng try-catch hoặc throws</li>
-<li>Ví dụ: IOException, SQLException</li>
+<li><strong>Checked</strong>: Bắt buộc xử lý (try-catch hoặc throws)</li>
+<li><strong>Unchecked</strong>: Không bắt buộc (RuntimeException)</li>
 </ul>
-<p><strong>Unchecked Exception:</strong></p>
-<ul>
-<li>Không bắt buộc xử lý</li>
-<li>Xảy ra tại runtime</li>
-<li>Ví dụ: NullPointerException, ArrayIndexOutOfBoundsException</li>
-</ul>
-<h2 id="xử-lý-exception-với-try-catch">Xử lý Exception với try-catch</h2>
-<h3 id="cú-pháp-cơ-bản">Cú pháp cơ bản</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ExceptionExample</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> 10 <span style="color:#f92672">/</span> 0; <span style="color:#75715e">// ArithmeticException</span>
-</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(result);
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (ArithmeticException e) {
-</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Lỗi: Không thể chia cho 0!&#34;</span>);
-</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Chi tiết: &#34;</span> <span style="color:#f92672">+</span> e.<span style="color:#a6e22e">getMessage</span>());
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Chương trình tiếp tục chạy...&#34;</span>);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="multiple-catch-blocks">Multiple catch blocks</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MultipleCatchExample</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>            String text <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
-</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(text.<span style="color:#a6e22e">length</span>()); <span style="color:#75715e">// NullPointerException</span>
-</span></span><span style="display:flex;"><span>            
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> arr <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>5<span style="color:#f92672">]</span>;
-</span></span><span style="display:flex;"><span>            arr<span style="color:#f92672">[</span>10<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 100; <span style="color:#75715e">// ArrayIndexOutOfBoundsException</span>
-</span></span><span style="display:flex;"><span>            
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (NullPointerException e) {
-</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Lỗi: Biến null!&#34;</span>);
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (ArrayIndexOutOfBoundsException e) {
-</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Lỗi: Index vượt quá mảng!&#34;</span>);
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (Exception e) {
-</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Lỗi khác: &#34;</span> <span style="color:#f92672">+</span> e.<span style="color:#a6e22e">getMessage</span>());
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="multi-catch-java-7">Multi-catch (Java 7+)</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MultiCatchExample</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Code có thể gây exception</span>
-</span></span><span style="display:flex;"><span>            performOperation();
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (IOException <span style="color:#f92672">|</span> SQLException e) {
-</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Lỗi I/O hoặc SQL: &#34;</span> <span style="color:#f92672">+</span> e.<span style="color:#a6e22e">getMessage</span>());
-</span></span><span style="display:flex;"><span>            e.<span style="color:#a6e22e">printStackTrace</span>();
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="finally-block">Finally block</h2>
-<p>Finally block luôn được thực thi, dù có exception hay không.</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.*;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FinallyExample</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">readFile</span>(String filename) {
-</span></span><span style="display:flex;"><span>        BufferedReader reader <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>            reader <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BufferedReader(<span style="color:#66d9ef">new</span> FileReader(filename));
-</span></span><span style="display:flex;"><span>            String line <span style="color:#f92672">=</span> reader.<span style="color:#a6e22e">readLine</span>();
-</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(line);
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (IOException e) {
-</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Lỗi đọc file: &#34;</span> <span style="color:#f92672">+</span> e.<span style="color:#a6e22e">getMessage</span>());
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">finally</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Luôn đóng resource</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (reader <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>) {
-</span></span><span style="display:flex;"><span>                    reader.<span style="color:#a6e22e">close</span>();
-</span></span><span style="display:flex;"><span>                    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Đã đóng file&#34;</span>);
-</span></span><span style="display:flex;"><span>                }
-</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">catch</span> (IOException e) {
-</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Lỗi đóng file&#34;</span>);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="try-with-resources-java-7">Try-with-resources (Java 7+)</h2>
-<p>Tự động đóng resource, code gọn hơn.</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.*;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TryWithResourcesExample</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">readFile</span>(String filename) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> (BufferedReader reader <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BufferedReader(<span style="color:#66d9ef">new</span> FileReader(filename))) {
-</span></span><span style="display:flex;"><span>            String line <span style="color:#f92672">=</span> reader.<span style="color:#a6e22e">readLine</span>();
-</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(line);
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (IOException e) {
-</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Lỗi: &#34;</span> <span style="color:#f92672">+</span> e.<span style="color:#a6e22e">getMessage</span>());
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// reader tự động đóng</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Nhiều resources</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">copyFile</span>(String source, String dest) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> (
-</span></span><span style="display:flex;"><span>            FileInputStream in <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileInputStream(source);
-</span></span><span style="display:flex;"><span>            FileOutputStream out <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileOutputStream(dest)
-</span></span><span style="display:flex;"><span>        ) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> buffer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[</span>1024<span style="color:#f92672">]</span>;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> length;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span> ((length <span style="color:#f92672">=</span> in.<span style="color:#a6e22e">read</span>(buffer)) <span style="color:#f92672">&gt;</span> 0) {
-</span></span><span style="display:flex;"><span>                out.<span style="color:#a6e22e">write</span>(buffer, 0, length);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (IOException e) {
-</span></span><span style="display:flex;"><span>            e.<span style="color:#a6e22e">printStackTrace</span>();
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="throw-và-throws">Throw và Throws</h2>
-<h3 id="throw---ném-exception">throw - Ném exception</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ThrowExample</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">validateAge</span>(<span style="color:#66d9ef">int</span> age) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (age <span style="color:#f92672">&lt;</span> 18) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IllegalArgumentException(<span style="color:#e6db74">&#34;Tuổi phải &gt;= 18&#34;</span>);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Tuổi hợp lệ: &#34;</span> <span style="color:#f92672">+</span> age);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>            validateAge(15);
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (IllegalArgumentException e) {
-</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Lỗi: &#34;</span> <span style="color:#f92672">+</span> e.<span style="color:#a6e22e">getMessage</span>());
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="throws---khai-báo-exception">throws - Khai báo exception</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.*;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ThrowsExample</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Khai báo method có thể throw exception</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">readFile</span>(String filename) <span style="color:#66d9ef">throws</span> IOException {
-</span></span><span style="display:flex;"><span>        BufferedReader reader <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BufferedReader(<span style="color:#66d9ef">new</span> FileReader(filename));
-</span></span><span style="display:flex;"><span>        String line <span style="color:#f92672">=</span> reader.<span style="color:#a6e22e">readLine</span>();
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(line);
-</span></span><span style="display:flex;"><span>        reader.<span style="color:#a6e22e">close</span>();
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>            readFile(<span style="color:#e6db74">&#34;data.txt&#34;</span>);
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (IOException e) {
-</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Không thể đọc file: &#34;</span> <span style="color:#f92672">+</span> e.<span style="color:#a6e22e">getMessage</span>());
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="custom-exception">Custom Exception</h2>
-<p>Tạo exception riêng cho ứng dụng.</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Tạo custom exception</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">InsufficientBalanceException</span> <span style="color:#66d9ef">extends</span> Exception {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">double</span> amount;
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">InsufficientBalanceException</span>(<span style="color:#66d9ef">double</span> amount) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">super</span>(<span style="color:#e6db74">&#34;Số dư không đủ. Thiếu: &#34;</span> <span style="color:#f92672">+</span> amount);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">amount</span> <span style="color:#f92672">=</span> amount;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getAmount</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> amount;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Sử dụng custom exception</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BankAccount</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">double</span> balance;
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">BankAccount</span>(<span style="color:#66d9ef">double</span> initialBalance) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">balance</span> <span style="color:#f92672">=</span> initialBalance;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">withdraw</span>(<span style="color:#66d9ef">double</span> amount) <span style="color:#66d9ef">throws</span> InsufficientBalanceException {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (amount <span style="color:#f92672">&gt;</span> balance) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">double</span> shortage <span style="color:#f92672">=</span> amount <span style="color:#f92672">-</span> balance;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> InsufficientBalanceException(shortage);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        balance <span style="color:#f92672">-=</span> amount;
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Rút thành công: &#34;</span> <span style="color:#f92672">+</span> amount);
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Số dư còn lại: &#34;</span> <span style="color:#f92672">+</span> balance);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
-</span></span><span style="display:flex;"><span>        BankAccount account <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BankAccount(1000);
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>            account.<span style="color:#a6e22e">withdraw</span>(500);  <span style="color:#75715e">// OK</span>
-</span></span><span style="display:flex;"><span>            account.<span style="color:#a6e22e">withdraw</span>(700);  <span style="color:#75715e">// Exception</span>
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (InsufficientBalanceException e) {
-</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Lỗi: &#34;</span> <span style="color:#f92672">+</span> e.<span style="color:#a6e22e">getMessage</span>());
-</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Thiếu: &#34;</span> <span style="color:#f92672">+</span> e.<span style="color:#a6e22e">getAmount</span>());
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="best-practices">Best Practices</h2>
-<h3 id="1-catch-specific-exceptions">1. Catch specific exceptions</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// ❌ Tránh</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// code</span>
-</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> (Exception e) {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Quá chung chung</span>
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// ✅ Nên</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// code</span>
-</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> (FileNotFoundException e) {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Xử lý cụ thể</span>
-</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> (IOException e) {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Xử lý cụ thể</span>
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="2-đừng-catch-và-không-làm-gì">2. Đừng catch và không làm gì</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// ❌ Tránh</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// code</span>
-</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> (Exception e) {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Im lặng, rất nguy hiểm!</span>
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// ✅ Nên</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// code</span>
-</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> (Exception e) {
-</span></span><span style="display:flex;"><span>    e.<span style="color:#a6e22e">printStackTrace</span>();
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// hoặc log error</span>
-</span></span><span style="display:flex;"><span>    logger.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#34;Error occurred&#34;</span>, e);
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="3-đóng-resources">3. Đóng resources</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// ✅ Tốt nhất</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> (Resource resource <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Resource()) {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Sử dụng resource</span>
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// ✅ Hoặc dùng finally</span>
-</span></span><span style="display:flex;"><span>Resource resource <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>    resource <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Resource();
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Sử dụng</span>
-</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">finally</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (resource <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>) {
-</span></span><span style="display:flex;"><span>        resource.<span style="color:#a6e22e">close</span>();
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="4-tạo-meaningful-exception-messages">4. Tạo meaningful exception messages</h3>
+<h2 id="try-catch-finally">Try-Catch-Finally</h2>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -642,16 +110,151 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// ❌ Tránh</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Exception(<span style="color:#e6db74">&#34;Error&#34;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// ✅ Nên</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IllegalArgumentException(
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;User ID không hợp lệ: &#34;</span> <span style="color:#f92672">+</span> userId <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;. Phải là số dương.&#34;</span>
-</span></span><span style="display:flex;"><span>);
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> ketQua <span style="color:#f92672">=</span> 10 <span style="color:#f92672">/</span> 0;  <span style="color:#75715e">// ArithmeticException</span>
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> (ArithmeticException e) {
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Lỗi: &#34;</span> <span style="color:#f92672">+</span> e.<span style="color:#a6e22e">getMessage</span>());
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">finally</span> {
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Luôn chạy&#34;</span>);  <span style="color:#75715e">// Dù có lỗi hay không</span>
+</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="ví-dụ-thực-tế">Ví dụ thực tế</h2>
+</div><h3 id="nhiều-catch-blocks">Nhiều catch blocks</h3>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    String text <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(text.<span style="color:#a6e22e">length</span>());  <span style="color:#75715e">// NullPointerException</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> mang <span style="color:#f92672">=</span> {1, 2};
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(mang<span style="color:#f92672">[</span>5<span style="color:#f92672">]</span>);  <span style="color:#75715e">// ArrayIndexOutOfBoundsException</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> (NullPointerException e) {
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Biến null!&#34;</span>);
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> (ArrayIndexOutOfBoundsException e) {
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Index vượt quá mảng!&#34;</span>);
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> (Exception e) {
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Lỗi khác: &#34;</span> <span style="color:#f92672">+</span> e);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="multi-catch">Multi-catch</h3>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// code có thể lỗi</span>
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> (NullPointerException <span style="color:#f92672">|</span> ArrayIndexOutOfBoundsException e) {
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Lỗi null hoặc array!&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="try-with-resources">Try-with-resources</h2>
+<p>Tự động đóng resources (file, connection&hellip;).</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.*;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tự động đóng file</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> (BufferedReader br <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BufferedReader(<span style="color:#66d9ef">new</span> FileReader(<span style="color:#e6db74">&#34;file.txt&#34;</span>))) {
+</span></span><span style="display:flex;"><span>    String line <span style="color:#f92672">=</span> br.<span style="color:#a6e22e">readLine</span>();
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(line);
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> (IOException e) {
+</span></span><span style="display:flex;"><span>    e.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Không cần br.close() - tự động!</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="throw-và-throws">Throw và Throws</h2>
+<h3 id="throw---ném-exception">Throw - Ném exception</h3>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">kiemTraTuoi</span>(<span style="color:#66d9ef">int</span> tuoi) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (tuoi <span style="color:#f92672">&lt;</span> 18) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IllegalArgumentException(<span style="color:#e6db74">&#34;Phải &gt;= 18 tuổi!&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Hợp lệ&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="throws---khai-báo-exception">Throws - Khai báo exception</h3>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">docFile</span>(String path) <span style="color:#66d9ef">throws</span> IOException {
+</span></span><span style="display:flex;"><span>    BufferedReader br <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BufferedReader(<span style="color:#66d9ef">new</span> FileReader(path));
+</span></span><span style="display:flex;"><span>    String line <span style="color:#f92672">=</span> br.<span style="color:#a6e22e">readLine</span>();
+</span></span><span style="display:flex;"><span>    br.<span style="color:#a6e22e">close</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Người gọi phải xử lý</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> su <span style="color:#a6e22e">dung</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        docFile(<span style="color:#e6db74">&#34;data.txt&#34;</span>);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (IOException e) {
+</span></span><span style="display:flex;"><span>        e.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="custom-exception">Custom Exception</h2>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -684,51 +287,170 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserService</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> User <span style="color:#a6e22e">findUser</span>(<span style="color:#66d9ef">int</span> userId) <span style="color:#66d9ef">throws</span> UserNotFoundException {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (userId <span style="color:#f92672">&lt;=</span> 0) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IllegalArgumentException(<span style="color:#e6db74">&#34;User ID phải &gt; 0&#34;</span>);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        User user <span style="color:#f92672">=</span> database.<span style="color:#a6e22e">findById</span>(userId);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (user <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> UserNotFoundException(<span style="color:#e6db74">&#34;Không tìm thấy user: &#34;</span> <span style="color:#f92672">+</span> userId);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> user;
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Tạo exception riêng</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">KhongDuTienException</span> <span style="color:#66d9ef">extends</span> Exception {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">KhongDuTienException</span>(String message) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">super</span>(message);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TaiKhoan</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">double</span> soDu;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">TaiKhoan</span>(<span style="color:#66d9ef">double</span> soDuBanDau) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">soDu</span> <span style="color:#f92672">=</span> soDuBanDau;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">updateUser</span>(User user) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>            validateUser(user);
-</span></span><span style="display:flex;"><span>            database.<span style="color:#a6e22e">update</span>(user);
-</span></span><span style="display:flex;"><span>            logger.<span style="color:#a6e22e">info</span>(<span style="color:#e6db74">&#34;Updated user: &#34;</span> <span style="color:#f92672">+</span> user.<span style="color:#a6e22e">getId</span>());
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (ValidationException e) {
-</span></span><span style="display:flex;"><span>            logger.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#34;Validation failed: &#34;</span> <span style="color:#f92672">+</span> e.<span style="color:#a6e22e">getMessage</span>());
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> e;
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (DatabaseException e) {
-</span></span><span style="display:flex;"><span>            logger.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#34;Database error: &#34;</span> <span style="color:#f92672">+</span> e.<span style="color:#a6e22e">getMessage</span>());
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> ServiceException(<span style="color:#e6db74">&#34;Không thể cập nhật user&#34;</span>, e);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">rutTien</span>(<span style="color:#66d9ef">double</span> soTien) <span style="color:#66d9ef">throws</span> KhongDuTienException {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (soTien <span style="color:#f92672">&gt;</span> soDu) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> KhongDuTienException(
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;Số dư không đủ! Còn: &#34;</span> <span style="color:#f92672">+</span> soDu <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;, cần: &#34;</span> <span style="color:#f92672">+</span> soTien
+</span></span><span style="display:flex;"><span>            );
 </span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        soDu <span style="color:#f92672">-=</span> soTien;
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Rút thành công: &#34;</span> <span style="color:#f92672">+</span> soTien);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">getSoDu</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> soDu;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="kết-luận">Kết luận</h2>
-<p>Exception handling giúp:</p>
-<ul>
-<li>Xử lý lỗi một cách có tổ chức</li>
-<li>Tăng tính ổn định của ứng dụng</li>
-<li>Debug dễ dàng hơn</li>
-<li>Code dễ maintain</li>
-</ul>
-<p>Nhớ:</p>
-<ul>
-<li>Luôn catch specific exceptions</li>
-<li>Không bỏ qua exceptions</li>
-<li>Sử dụng try-with-resources cho resources</li>
-<li>Tạo custom exceptions khi cần thiết</li>
-</ul>
+</div><h2 id="ví-dụ-quản-lý-tài-khoản">Ví dụ: Quản lý Tài khoản</h2>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">QuanLyTaiKhoan</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        TaiKhoan tk <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TaiKhoan(1000000);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>            tk.<span style="color:#a6e22e">rutTien</span>(500000);   <span style="color:#75715e">// OK</span>
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Còn: &#34;</span> <span style="color:#f92672">+</span> tk.<span style="color:#a6e22e">getSoDu</span>());
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            tk.<span style="color:#a6e22e">rutTien</span>(800000);   <span style="color:#75715e">// Lỗi!</span>
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (KhongDuTienException e) {
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Lỗi: &#34;</span> <span style="color:#f92672">+</span> e.<span style="color:#a6e22e">getMessage</span>());
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">finally</span> {
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Số dư cuối: &#34;</span> <span style="color:#f92672">+</span> tk.<span style="color:#a6e22e">getSoDu</span>());
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Output:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Rút thành công: 500000</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Còn: 500000.0</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Lỗi: Số dư không đủ! Còn: 500000.0, cần: 800000.0</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Số dư cuối: 500000.0</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="common-exceptions">Common Exceptions</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Exception</th>
+          <th>Nguyên nhân</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>NullPointerException</td>
+          <td>Truy cập object null</td>
+      </tr>
+      <tr>
+          <td>ArrayIndexOutOfBoundsException</td>
+          <td>Index vượt quá mảng</td>
+      </tr>
+      <tr>
+          <td>ArithmeticException</td>
+          <td>Chia cho 0</td>
+      </tr>
+      <tr>
+          <td>NumberFormatException</td>
+          <td>Parse string thành số thất bại</td>
+      </tr>
+      <tr>
+          <td>IllegalArgumentException</td>
+          <td>Tham số không hợp lệ</td>
+      </tr>
+      <tr>
+          <td>IOException</td>
+          <td>Lỗi I/O (file, network)</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="best-practices">Best Practices</h2>
+<ol>
+<li><strong>Catch cụ thể</strong>: Catch exception cụ thể trước, Exception chung sau</li>
+<li><strong>Không bỏ qua</strong>: Không để catch block trống</li>
+<li><strong>Throw sớm</strong>: Ném exception ngay khi phát hiện lỗi</li>
+<li><strong>Catch muộn</strong>: Xử lý ở nơi có đủ context</li>
+<li><strong>Custom exception</strong>: Tạo exception riêng cho logic nghiệp vụ</li>
+<li><strong>Try-with-resources</strong>: Dùng cho resources cần đóng</li>
+<li><strong>Logging</strong>: Log exception thay vì chỉ printStackTrace</li>
+</ol>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Tốt</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// code</span>
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> (SpecificException e) {
+</span></span><span style="display:flex;"><span>    logger.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#34;Chi tiết lỗi&#34;</span>, e);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> CustomException(<span style="color:#e6db74">&#34;Message rõ ràng&#34;</span>, e);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tránh</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// code</span>
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> (Exception e) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Bỏ qua - RẤT TỆ!</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="tổng-kết">Tổng kết</h2>
+<p>Exception handling giúp chương trình xử lý lỗi gracefully. Sử dụng try-catch cho lỗi có thể xảy ra, throw cho validate, và custom exception cho logic riêng.</p>
 
         </div>
         
@@ -737,13 +459,13 @@
             
             <a href="/22DTHE7_TaiTH_Profile/blog/java-collections/" class="nav-prev">
                 <span class="nav-label">← Bài trước</span>
-                <span class="nav-title">Java Collections Framework - Quản lý dữ liệu hiệu quả</span>
+                <span class="nav-title">Java Collections Framework</span>
             </a>
             
             
-            <a href="/22DTHE7_TaiTH_Profile/blog/java-stream/" class="nav-next">
+            <a href="/22DTHE7_TaiTH_Profile/blog/java-stream-api/" class="nav-next">
                 <span class="nav-label">Bài tiếp →</span>
-                <span class="nav-title">Java Stream API - Xử lý dữ liệu hiện đại</span>
+                <span class="nav-title">Java Stream API</span>
             </a>
             
         </nav>

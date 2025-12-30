@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Khám phá Collections Framework trong Java với List, Set, Map và các cấu trúc dữ liệu quan trọng">
-    <title>Java Collections Framework - Quản lý dữ liệu hiệu quả - Trần Hữu Tài</title>
+    <meta name="description" content="Làm việc với List, Set, Map">
+    <title>Java Collections Framework - Trần Hữu Tài</title>
     <link rel="stylesheet" href="/22DTHE7_TaiTH_Profile/css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,23 +58,26 @@
 <div class="container">
     <article class="post-single">
         <header class="post-header">
-            <h1 class="post-title">Java Collections Framework - Quản lý dữ liệu hiệu quả</h1>
+            
+            <div class="post-featured-image">
+                <img src="https://images.unsplash.com/photo-1509966756634-9c23dd6e6815?w=800&amp;h=400&amp;fit=crop" alt="Java Collections Framework" loading="lazy">
+            </div>
+            
+            <h1 class="post-title">Java Collections Framework</h1>
             <div class="post-meta-info">
-                <time datetime="2024-12-22">
+                <time datetime="2025-12-27">
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                         <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
                     </svg>
-                    22 December 2024
+                    27 Tháng 12 2025
                 </time>
                 
                 <div class="post-tags">
                     
-                    <a href="/tags/java" class="tag">#Java</a>
+                    <a href="https://tranhuutai2273.github.io/22DTHE7_TaiTH_Profile/tags/java/" class="tag">#Java</a>
                     
-                    <a href="/tags/collections" class="tag">#Collections</a>
-                    
-                    <a href="/tags/data-structures" class="tag">#Data Structures</a>
+                    <a href="https://tranhuutai2273.github.io/22DTHE7_TaiTH_Profile/tags/collections/" class="tag">#Collections</a>
                     
                 </div>
                 
@@ -82,29 +85,9 @@
         </header>
         
         <div class="post-content">
-            <h2 id="collections-framework-là-gì">Collections Framework là gì?</h2>
-<p>Java Collections Framework là một kiến trúc thống nhất để lưu trữ và thao tác với nhóm các đối tượng. Nó cung cấp các interface và class để làm việc với dữ liệu một cách hiệu quả.</p>
-<h2 id="cấu-trúc-phân-cấp-collections">Cấu trúc phân cấp Collections</h2>
-<pre tabindex="0"><code>Collection (Interface)
-├── List (Interface)
-│   ├── ArrayList
-│   ├── LinkedList
-│   └── Vector
-├── Set (Interface)
-│   ├── HashSet
-│   ├── LinkedHashSet
-│   └── TreeSet
-└── Queue (Interface)
-    ├── PriorityQueue
-    └── LinkedList
-
-Map (Interface)
-├── HashMap
-├── LinkedHashMap
-├── TreeMap
-└── Hashtable
-</code></pre><h2 id="1-list-interface">1. List Interface</h2>
-<p>List là collection có thứ tự, cho phép phần tử trùng lặp.</p>
+            <h2 id="collections-là-gì">Collections là gì?</h2>
+<p>Collections Framework cung cấp các cấu trúc dữ liệu để lưu trữ và xử lý nhóm objects.</p>
+<h2 id="list---danh-sách-có-thứ-tự">List - Danh sách có thứ tự</h2>
 <h3 id="arraylist">ArrayList</h3>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -132,57 +115,41 @@ Map (Interface)
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.ArrayList;
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.List;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ArrayListExample</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Tạo ArrayList</span>
-</span></span><span style="display:flex;"><span>        List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> fruits <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>();
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Thêm phần tử</span>
-</span></span><span style="display:flex;"><span>        fruits.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;Táo&#34;</span>);
-</span></span><span style="display:flex;"><span>        fruits.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;Cam&#34;</span>);
-</span></span><span style="display:flex;"><span>        fruits.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;Chuối&#34;</span>);
-</span></span><span style="display:flex;"><span>        fruits.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;Cam&#34;</span>); <span style="color:#75715e">// Cho phép trùng lặp</span>
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Truy cập theo index</span>
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Phần tử đầu: &#34;</span> <span style="color:#f92672">+</span> fruits.<span style="color:#a6e22e">get</span>(0));
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Kích thước</span>
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Số lượng: &#34;</span> <span style="color:#f92672">+</span> fruits.<span style="color:#a6e22e">size</span>());
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Duyệt qua List</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (String fruit : fruits) {
-</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(fruit);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Xóa phần tử</span>
-</span></span><span style="display:flex;"><span>        fruits.<span style="color:#a6e22e">remove</span>(<span style="color:#e6db74">&#34;Cam&#34;</span>); <span style="color:#75715e">// Xóa phần tử đầu tiên = &#34;Cam&#34;</span>
-</span></span><span style="display:flex;"><span>        fruits.<span style="color:#a6e22e">remove</span>(0);      <span style="color:#75715e">// Xóa theo index</span>
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Kiểm tra tồn tại</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (fruits.<span style="color:#a6e22e">contains</span>(<span style="color:#e6db74">&#34;Táo&#34;</span>)) {
-</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Có táo trong danh sách&#34;</span>);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> danhSach <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Thêm phần tử</span>
+</span></span><span style="display:flex;"><span>danhSach.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;Java&#34;</span>);
+</span></span><span style="display:flex;"><span>danhSach.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;Python&#34;</span>);
+</span></span><span style="display:flex;"><span>danhSach.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;JavaScript&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Truy cập</span>
+</span></span><span style="display:flex;"><span>String first <span style="color:#f92672">=</span> danhSach.<span style="color:#a6e22e">get</span>(0);  <span style="color:#75715e">// &#34;Java&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Kích thước</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> size <span style="color:#f92672">=</span> danhSach.<span style="color:#a6e22e">size</span>();  <span style="color:#75715e">// 3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Duyệt</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (String item : danhSach) {
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(item);
 </span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Xóa</span>
+</span></span><span style="display:flex;"><span>danhSach.<span style="color:#a6e22e">remove</span>(<span style="color:#e6db74">&#34;Python&#34;</span>);
+</span></span><span style="display:flex;"><span>danhSach.<span style="color:#a6e22e">remove</span>(0);  <span style="color:#75715e">// Xóa theo index</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="linkedlist">LinkedList</h3>
+</div><p><strong>ArrayList vs LinkedList</strong>:</p>
+<ul>
+<li>ArrayList: Truy cập nhanh <code>O(1)</code>, thêm/xóa chậm <code>O(n)</code></li>
+<li>LinkedList: Thêm/xóa nhanh <code>O(1)</code>, truy cập chậm <code>O(n)</code></li>
+</ul>
+<h2 id="set---không-trùng-lặp">Set - Không trùng lặp</h2>
+<h3 id="hashset">HashSet</h3>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -198,77 +165,48 @@ Map (Interface)
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.LinkedList;
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.HashSet;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.Set;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LinkedListExample</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
-</span></span><span style="display:flex;"><span>        LinkedList<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> numbers <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedList<span style="color:#f92672">&lt;&gt;</span>();
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Thêm vào đầu và cuối</span>
-</span></span><span style="display:flex;"><span>        numbers.<span style="color:#a6e22e">addFirst</span>(10);
-</span></span><span style="display:flex;"><span>        numbers.<span style="color:#a6e22e">addLast</span>(20);
-</span></span><span style="display:flex;"><span>        numbers.<span style="color:#a6e22e">add</span>(15);
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Lấy phần tử đầu/cuối</span>
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Đầu: &#34;</span> <span style="color:#f92672">+</span> numbers.<span style="color:#a6e22e">getFirst</span>());
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Cuối: &#34;</span> <span style="color:#f92672">+</span> numbers.<span style="color:#a6e22e">getLast</span>());
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Xóa đầu/cuối</span>
-</span></span><span style="display:flex;"><span>        numbers.<span style="color:#a6e22e">removeFirst</span>();
-</span></span><span style="display:flex;"><span>        numbers.<span style="color:#a6e22e">removeLast</span>();
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>Set<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> soNguyen <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>soNguyen.<span style="color:#a6e22e">add</span>(10);
+</span></span><span style="display:flex;"><span>soNguyen.<span style="color:#a6e22e">add</span>(20);
+</span></span><span style="display:flex;"><span>soNguyen.<span style="color:#a6e22e">add</span>(10);  <span style="color:#75715e">// Không thêm (trùng lặp)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(soNguyen.<span style="color:#a6e22e">size</span>());  <span style="color:#75715e">// 2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Kiểm tra</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">boolean</span> coChua <span style="color:#f92672">=</span> soNguyen.<span style="color:#a6e22e">contains</span>(10);  <span style="color:#75715e">// true</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="so-sánh-arraylist-vs-linkedlist">So sánh ArrayList vs LinkedList</h3>
-<table>
-  <thead>
-      <tr>
-          <th>Đặc điểm</th>
-          <th>ArrayList</th>
-          <th>LinkedList</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Cấu trúc</td>
-          <td>Mảng động</td>
-          <td>Danh sách liên kết đôi</td>
-      </tr>
-      <tr>
-          <td>Truy cập</td>
-          <td>O(1)</td>
-          <td>O(n)</td>
-      </tr>
-      <tr>
-          <td>Thêm/xóa đầu</td>
-          <td>O(n)</td>
-          <td>O(1)</td>
-      </tr>
-      <tr>
-          <td>Thêm/xóa cuối</td>
-          <td>O(1)</td>
-          <td>O(1)</td>
-      </tr>
-      <tr>
-          <td>Bộ nhớ</td>
-          <td>Ít hơn</td>
-          <td>Nhiều hơn (lưu con trỏ)</td>
-      </tr>
-  </tbody>
-</table>
-<h2 id="2-set-interface">2. Set Interface</h2>
-<p>Set không cho phép phần tử trùng lặp.</p>
-<h3 id="hashset">HashSet</h3>
+</div><h3 id="treeset---tự-động-sắp-xếp">TreeSet - Tự động sắp xếp</h3>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.TreeSet;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Set<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> sapXep <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeSet<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>sapXep.<span style="color:#a6e22e">add</span>(30);
+</span></span><span style="display:flex;"><span>sapXep.<span style="color:#a6e22e">add</span>(10);
+</span></span><span style="display:flex;"><span>sapXep.<span style="color:#a6e22e">add</span>(20);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(sapXep);  <span style="color:#75715e">// [10, 20, 30]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="map---cặp-key-value">Map - Cặp Key-Value</h2>
+<h3 id="hashmap">HashMap</h3>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -294,40 +232,82 @@ Map (Interface)
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.HashSet;
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.Set;
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.HashMap;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.Map;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HashSetExample</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
-</span></span><span style="display:flex;"><span>        Set<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> languages <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;&gt;</span>();
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Thêm phần tử</span>
-</span></span><span style="display:flex;"><span>        languages.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;Java&#34;</span>);
-</span></span><span style="display:flex;"><span>        languages.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;Python&#34;</span>);
-</span></span><span style="display:flex;"><span>        languages.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;JavaScript&#34;</span>);
-</span></span><span style="display:flex;"><span>        languages.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;Java&#34;</span>); <span style="color:#75715e">// Không thêm được (trùng)</span>
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Số ngôn ngữ: &#34;</span> <span style="color:#f92672">+</span> languages.<span style="color:#a6e22e">size</span>()); <span style="color:#75715e">// 3</span>
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Kiểm tra</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (languages.<span style="color:#a6e22e">contains</span>(<span style="color:#e6db74">&#34;Java&#34;</span>)) {
-</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Có Java&#34;</span>);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Duyệt (không đảm bảo thứ tự)</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (String lang : languages) {
-</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(lang);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>Map<span style="color:#f92672">&lt;</span>String, Integer<span style="color:#f92672">&gt;</span> tuoi <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Thêm</span>
+</span></span><span style="display:flex;"><span>tuoi.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;Tai&#34;</span>, 25);
+</span></span><span style="display:flex;"><span>tuoi.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;Nam&#34;</span>, 30);
+</span></span><span style="display:flex;"><span>tuoi.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;Linh&#34;</span>, 22);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Lấy giá trị</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> tuoiTai <span style="color:#f92672">=</span> tuoi.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;Tai&#34;</span>);  <span style="color:#75715e">// 25</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Kiểm tra key</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">boolean</span> coTai <span style="color:#f92672">=</span> tuoi.<span style="color:#a6e22e">containsKey</span>(<span style="color:#e6db74">&#34;Tai&#34;</span>);  <span style="color:#75715e">// true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Duyệt</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (Map.<span style="color:#a6e22e">Entry</span><span style="color:#f92672">&lt;</span>String, Integer<span style="color:#f92672">&gt;</span> entry : tuoi.<span style="color:#a6e22e">entrySet</span>()) {
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(entry.<span style="color:#a6e22e">getKey</span>() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;: &#34;</span> <span style="color:#f92672">+</span> entry.<span style="color:#a6e22e">getValue</span>());
 </span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Xóa</span>
+</span></span><span style="display:flex;"><span>tuoi.<span style="color:#a6e22e">remove</span>(<span style="color:#e6db74">&#34;Nam&#34;</span>);
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="treeset">TreeSet</h3>
+</div><h3 id="treemap---tự-động-sắp-xếp-theo-key">TreeMap - Tự động sắp xếp theo key</h3>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.TreeMap;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Map<span style="color:#f92672">&lt;</span>String, Integer<span style="color:#f92672">&gt;</span> sapXep <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeMap<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>sapXep.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;C&#34;</span>, 3);
+</span></span><span style="display:flex;"><span>sapXep.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;A&#34;</span>, 1);
+</span></span><span style="display:flex;"><span>sapXep.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;B&#34;</span>, 2);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(sapXep);  <span style="color:#75715e">// {A=1, B=2, C=3}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="generics">Generics</h2>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Không dùng generics - không an toàn</span>
+</span></span><span style="display:flex;"><span>List list <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList();
+</span></span><span style="display:flex;"><span>list.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;String&#34;</span>);
+</span></span><span style="display:flex;"><span>list.<span style="color:#a6e22e">add</span>(123);  <span style="color:#75715e">// OK nhưng nguy hiểm</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Dùng generics - type-safe</span>
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> strings <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>strings.<span style="color:#a6e22e">add</span>(<span style="color:#e6db74">&#34;String&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// strings.add(123);  // Lỗi compile!</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="collections-utility">Collections Utility</h2>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -350,37 +330,31 @@ Map (Interface)
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.TreeSet;
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.Collections;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.List;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TreeSetExample</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
-</span></span><span style="display:flex;"><span>        TreeSet<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> scores <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeSet<span style="color:#f92672">&lt;&gt;</span>();
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        scores.<span style="color:#a6e22e">add</span>(85);
-</span></span><span style="display:flex;"><span>        scores.<span style="color:#a6e22e">add</span>(92);
-</span></span><span style="display:flex;"><span>        scores.<span style="color:#a6e22e">add</span>(78);
-</span></span><span style="display:flex;"><span>        scores.<span style="color:#a6e22e">add</span>(95);
-</span></span><span style="display:flex;"><span>        scores.<span style="color:#a6e22e">add</span>(88);
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Tự động sắp xếp</span>
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(scores); <span style="color:#75715e">// [78, 85, 88, 92, 95]</span>
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Các phương thức đặc biệt</span>
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Điểm cao nhất: &#34;</span> <span style="color:#f92672">+</span> scores.<span style="color:#a6e22e">last</span>());
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Điểm thấp nhất: &#34;</span> <span style="color:#f92672">+</span> scores.<span style="color:#a6e22e">first</span>());
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Điểm &gt;= 85: &#34;</span> <span style="color:#f92672">+</span> scores.<span style="color:#a6e22e">tailSet</span>(85));
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Điểm &lt; 90: &#34;</span> <span style="color:#f92672">+</span> scores.<span style="color:#a6e22e">headSet</span>(90));
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> numbers <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>numbers.<span style="color:#a6e22e">add</span>(30);
+</span></span><span style="display:flex;"><span>numbers.<span style="color:#a6e22e">add</span>(10);
+</span></span><span style="display:flex;"><span>numbers.<span style="color:#a6e22e">add</span>(20);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Sắp xếp</span>
+</span></span><span style="display:flex;"><span>Collections.<span style="color:#a6e22e">sort</span>(numbers);  <span style="color:#75715e">// [10, 20, 30]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Đảo ngược</span>
+</span></span><span style="display:flex;"><span>Collections.<span style="color:#a6e22e">reverse</span>(numbers);  <span style="color:#75715e">// [30, 20, 10]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tìm max/min</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> max <span style="color:#f92672">=</span> Collections.<span style="color:#a6e22e">max</span>(numbers);  <span style="color:#75715e">// 30</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> min <span style="color:#f92672">=</span> Collections.<span style="color:#a6e22e">min</span>(numbers);  <span style="color:#75715e">// 10</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Trộn</span>
+</span></span><span style="display:flex;"><span>Collections.<span style="color:#a6e22e">shuffle</span>(numbers);  <span style="color:#75715e">// Random order</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="3-map-interface">3. Map Interface</h2>
-<p>Map lưu trữ dữ liệu dưới dạng cặp key-value.</p>
-<h3 id="hashmap">HashMap</h3>
+</div><h2 id="ví-dụ-quản-lý-sinh-viên">Ví dụ: Quản lý Sinh viên</h2>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -427,267 +401,117 @@ Map (Interface)
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.HashMap;
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.Map;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HashMapExample</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
-</span></span><span style="display:flex;"><span>        Map<span style="color:#f92672">&lt;</span>String, Integer<span style="color:#f92672">&gt;</span> studentScores <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;</span>();
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Thêm cặp key-value</span>
-</span></span><span style="display:flex;"><span>        studentScores.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;Tài&#34;</span>, 90);
-</span></span><span style="display:flex;"><span>        studentScores.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;An&#34;</span>, 85);
-</span></span><span style="display:flex;"><span>        studentScores.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;Bình&#34;</span>, 92);
-</span></span><span style="display:flex;"><span>        studentScores.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;Tài&#34;</span>, 95); <span style="color:#75715e">// Ghi đè giá trị cũ</span>
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Lấy giá trị</span>
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Điểm của Tài: &#34;</span> <span style="color:#f92672">+</span> studentScores.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;Tài&#34;</span>));
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Kiểm tra key</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (studentScores.<span style="color:#a6e22e">containsKey</span>(<span style="color:#e6db74">&#34;An&#34;</span>)) {
-</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;An có trong danh sách&#34;</span>);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Duyệt qua Map</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (Map.<span style="color:#a6e22e">Entry</span><span style="color:#f92672">&lt;</span>String, Integer<span style="color:#f92672">&gt;</span> entry : studentScores.<span style="color:#a6e22e">entrySet</span>()) {
-</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(entry.<span style="color:#a6e22e">getKey</span>() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;: &#34;</span> <span style="color:#f92672">+</span> entry.<span style="color:#a6e22e">getValue</span>());
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Duyệt chỉ keys</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (String name : studentScores.<span style="color:#a6e22e">keySet</span>()) {
-</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(name);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Duyệt chỉ values</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (Integer score : studentScores.<span style="color:#a6e22e">values</span>()) {
-</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(score);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// getOrDefault</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> score <span style="color:#f92672">=</span> studentScores.<span style="color:#a6e22e">getOrDefault</span>(<span style="color:#e6db74">&#34;Nam&#34;</span>, 0);
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Điểm Nam: &#34;</span> <span style="color:#f92672">+</span> score);
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// putIfAbsent</span>
-</span></span><span style="display:flex;"><span>        studentScores.<span style="color:#a6e22e">putIfAbsent</span>(<span style="color:#e6db74">&#34;Cường&#34;</span>, 88);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="linkedhashmap">LinkedHashMap</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.LinkedHashMap;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LinkedHashMapExample</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Giữ thứ tự insertion</span>
-</span></span><span style="display:flex;"><span>        LinkedHashMap<span style="color:#f92672">&lt;</span>String, String<span style="color:#f92672">&gt;</span> capitals <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedHashMap<span style="color:#f92672">&lt;&gt;</span>();
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        capitals.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;Việt Nam&#34;</span>, <span style="color:#e6db74">&#34;Hà Nội&#34;</span>);
-</span></span><span style="display:flex;"><span>        capitals.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;Nhật Bản&#34;</span>, <span style="color:#e6db74">&#34;Tokyo&#34;</span>);
-</span></span><span style="display:flex;"><span>        capitals.<span style="color:#a6e22e">put</span>(<span style="color:#e6db74">&#34;Hàn Quốc&#34;</span>, <span style="color:#e6db74">&#34;Seoul&#34;</span>);
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// In ra theo thứ tự đã thêm</span>
-</span></span><span style="display:flex;"><span>        capitals.<span style="color:#a6e22e">forEach</span>((country, capital) <span style="color:#f92672">-&gt;</span> 
-</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(country <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; - &#34;</span> <span style="color:#f92672">+</span> capital)
-</span></span><span style="display:flex;"><span>        );
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="treemap">TreeMap</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.TreeMap;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TreeMapExample</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Tự động sắp xếp theo key</span>
-</span></span><span style="display:flex;"><span>        TreeMap<span style="color:#f92672">&lt;</span>Integer, String<span style="color:#f92672">&gt;</span> students <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeMap<span style="color:#f92672">&lt;&gt;</span>();
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        students.<span style="color:#a6e22e">put</span>(103, <span style="color:#e6db74">&#34;An&#34;</span>);
-</span></span><span style="display:flex;"><span>        students.<span style="color:#a6e22e">put</span>(101, <span style="color:#e6db74">&#34;Bình&#34;</span>);
-</span></span><span style="display:flex;"><span>        students.<span style="color:#a6e22e">put</span>(102, <span style="color:#e6db74">&#34;Cường&#34;</span>);
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// In ra theo thứ tự key</span>
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(students);
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// {101=Bình, 102=Cường, 103=An}</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="4-queue-interface">4. Queue Interface</h2>
-<p>Queue hoạt động theo nguyên tắc FIFO (First-In-First-Out).</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.LinkedList;
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.Queue;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">QueueExample</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
-</span></span><span style="display:flex;"><span>        Queue<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> queue <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedList<span style="color:#f92672">&lt;&gt;</span>();
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Thêm vào queue</span>
-</span></span><span style="display:flex;"><span>        queue.<span style="color:#a6e22e">offer</span>(<span style="color:#e6db74">&#34;Task 1&#34;</span>);
-</span></span><span style="display:flex;"><span>        queue.<span style="color:#a6e22e">offer</span>(<span style="color:#e6db74">&#34;Task 2&#34;</span>);
-</span></span><span style="display:flex;"><span>        queue.<span style="color:#a6e22e">offer</span>(<span style="color:#e6db74">&#34;Task 3&#34;</span>);
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Xem phần tử đầu (không xóa)</span>
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Peek: &#34;</span> <span style="color:#f92672">+</span> queue.<span style="color:#a6e22e">peek</span>());
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Lấy và xóa phần tử đầu</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>queue.<span style="color:#a6e22e">isEmpty</span>()) {
-</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Processing: &#34;</span> <span style="color:#f92672">+</span> queue.<span style="color:#a6e22e">poll</span>());
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="5-các-phương-thức-hữu-ích">5. Các phương thức hữu ích</h2>
-<h3 id="collections-utility-class">Collections Utility Class</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.*;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CollectionsUtilityExample</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
-</span></span><span style="display:flex;"><span>        List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> numbers <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>(Arrays.<span style="color:#a6e22e">asList</span>(5, 2, 8, 1, 9));
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Sắp xếp</span>
-</span></span><span style="display:flex;"><span>        Collections.<span style="color:#a6e22e">sort</span>(numbers);
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Sorted: &#34;</span> <span style="color:#f92672">+</span> numbers);
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Đảo ngược</span>
-</span></span><span style="display:flex;"><span>        Collections.<span style="color:#a6e22e">reverse</span>(numbers);
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Reversed: &#34;</span> <span style="color:#f92672">+</span> numbers);
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Tìm max, min</span>
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Max: &#34;</span> <span style="color:#f92672">+</span> Collections.<span style="color:#a6e22e">max</span>(numbers));
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Min: &#34;</span> <span style="color:#f92672">+</span> Collections.<span style="color:#a6e22e">min</span>(numbers));
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Xáo trộn</span>
-</span></span><span style="display:flex;"><span>        Collections.<span style="color:#a6e22e">shuffle</span>(numbers);
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Shuffled: &#34;</span> <span style="color:#f92672">+</span> numbers);
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Tìm kiếm nhị phân (cần sort trước)</span>
-</span></span><span style="display:flex;"><span>        Collections.<span style="color:#a6e22e">sort</span>(numbers);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> index <span style="color:#f92672">=</span> Collections.<span style="color:#a6e22e">binarySearch</span>(numbers, 5);
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Index of 5: &#34;</span> <span style="color:#f92672">+</span> index);
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Tạo list immutable</span>
-</span></span><span style="display:flex;"><span>        List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> immutableList <span style="color:#f92672">=</span> Collections.<span style="color:#a6e22e">unmodifiableList</span>(
-</span></span><span style="display:flex;"><span>            Arrays.<span style="color:#a6e22e">asList</span>(<span style="color:#e6db74">&#34;A&#34;</span>, <span style="color:#e6db74">&#34;B&#34;</span>, <span style="color:#e6db74">&#34;C&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SinhVien</span> {
+</span></span><span style="display:flex;"><span>    String ten;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">double</span> diem;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">SinhVien</span>(String ten, <span style="color:#66d9ef">double</span> diem) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">ten</span> <span style="color:#f92672">=</span> ten;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">diem</span> <span style="color:#f92672">=</span> diem;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">toString</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ten <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;: &#34;</span> <span style="color:#f92672">+</span> diem;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">QuanLySinhVien</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> List<span style="color:#f92672">&lt;</span>SinhVien<span style="color:#f92672">&gt;</span> danhSach <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">them</span>(SinhVien sv) {
+</span></span><span style="display:flex;"><span>        danhSach.<span style="color:#a6e22e">add</span>(sv);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> List<span style="color:#f92672">&lt;</span>SinhVien<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">timDiemCao</span>(<span style="color:#66d9ef">double</span> nguong) {
+</span></span><span style="display:flex;"><span>        List<span style="color:#f92672">&lt;</span>SinhVien<span style="color:#f92672">&gt;</span> ketQua <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (SinhVien sv : danhSach) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (sv.<span style="color:#a6e22e">diem</span> <span style="color:#f92672">&gt;=</span> nguong) {
+</span></span><span style="display:flex;"><span>                ketQua.<span style="color:#a6e22e">add</span>(sv);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ketQua;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">sapXepTheoDiem</span>() {
+</span></span><span style="display:flex;"><span>        Collections.<span style="color:#a6e22e">sort</span>(danhSach, (a, b) <span style="color:#f92672">-&gt;</span> 
+</span></span><span style="display:flex;"><span>            Double.<span style="color:#a6e22e">compare</span>(b.<span style="color:#a6e22e">diem</span>, a.<span style="color:#a6e22e">diem</span>)  <span style="color:#75715e">// Giảm dần</span>
 </span></span><span style="display:flex;"><span>        );
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        QuanLySinhVien ql <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> QuanLySinhVien();
+</span></span><span style="display:flex;"><span>        ql.<span style="color:#a6e22e">them</span>(<span style="color:#66d9ef">new</span> SinhVien(<span style="color:#e6db74">&#34;Tai&#34;</span>, 8.<span style="color:#a6e22e">5</span>));
+</span></span><span style="display:flex;"><span>        ql.<span style="color:#a6e22e">them</span>(<span style="color:#66d9ef">new</span> SinhVien(<span style="color:#e6db74">&#34;Nam&#34;</span>, 7.<span style="color:#a6e22e">0</span>));
+</span></span><span style="display:flex;"><span>        ql.<span style="color:#a6e22e">them</span>(<span style="color:#66d9ef">new</span> SinhVien(<span style="color:#e6db74">&#34;Linh&#34;</span>, 9.<span style="color:#a6e22e">0</span>));
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        ql.<span style="color:#a6e22e">sapXepTheoDiem</span>();
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Danh sách: &#34;</span> <span style="color:#f92672">+</span> ql.<span style="color:#a6e22e">danhSach</span>);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        List<span style="color:#f92672">&lt;</span>SinhVien<span style="color:#f92672">&gt;</span> gioi <span style="color:#f92672">=</span> ql.<span style="color:#a6e22e">timDiemCao</span>(8.<span style="color:#a6e22e">0</span>);
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Điểm &gt;= 8: &#34;</span> <span style="color:#f92672">+</span> gioi);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="kết-luận">Kết luận</h2>
-<p>Java Collections Framework cung cấp:</p>
-<ul>
-<li><strong>List</strong>: Cho dữ liệu có thứ tự, cho phép trùng lặp</li>
-<li><strong>Set</strong>: Cho dữ liệu không trùng lặp</li>
-<li><strong>Map</strong>: Cho dữ liệu dạng key-value</li>
-<li><strong>Queue</strong>: Cho xử lý dữ liệu theo FIFO</li>
-</ul>
-<p>Việc chọn đúng collection sẽ giúp code hiệu quả và dễ maintain hơn!</p>
+</div><h2 id="chọn-collection-phù-hợp">Chọn Collection phù hợp</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Cần gì?</th>
+          <th>Dùng gì?</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Danh sách có thứ tự</td>
+          <td>ArrayList</td>
+      </tr>
+      <tr>
+          <td>Thêm/xóa nhiều</td>
+          <td>LinkedList</td>
+      </tr>
+      <tr>
+          <td>Không trùng lặp</td>
+          <td>HashSet</td>
+      </tr>
+      <tr>
+          <td>Không trùng + sắp xếp</td>
+          <td>TreeSet</td>
+      </tr>
+      <tr>
+          <td>Key-Value</td>
+          <td>HashMap</td>
+      </tr>
+      <tr>
+          <td>Key-Value + sắp xếp</td>
+          <td>TreeMap</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="lời-khuyên">Lời khuyên</h2>
+<ol>
+<li><strong>Dùng interface</strong> khi khai báo: <code>List&lt;String&gt; list = new ArrayList&lt;&gt;();</code></li>
+<li><strong>Generics</strong> cho type safety</li>
+<li><strong>ArrayList</strong> cho hầu hết trường hợp</li>
+<li><strong>HashSet</strong> khi cần unique elements</li>
+<li><strong>HashMap</strong> cho key-value mapping</li>
+</ol>
+<h2 id="tổng-kết">Tổng kết</h2>
+<p>Collections Framework giúp quản lý dữ liệu hiệu quả. List cho thứ tự, Set cho unique, Map cho key-value. Chọn đúng collection tối ưu performance.</p>
 
         </div>
         
@@ -696,13 +520,13 @@ Map (Interface)
             
             <a href="/22DTHE7_TaiTH_Profile/blog/java-oop/" class="nav-prev">
                 <span class="nav-label">← Bài trước</span>
-                <span class="nav-title">OOP trong Java - Lập trình hướng đối tượng</span>
+                <span class="nav-title">Java OOP - Lập trình Hướng đối tượng</span>
             </a>
             
             
             <a href="/22DTHE7_TaiTH_Profile/blog/java-exception/" class="nav-next">
                 <span class="nav-label">Bài tiếp →</span>
-                <span class="nav-title">Exception Handling trong Java - Xử lý ngoại lệ</span>
+                <span class="nav-title">Java Exception Handling</span>
             </a>
             
         </nav>

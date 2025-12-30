@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tìm hiểu các khái niệm cơ bản của JavaScript: biến, kiểu dữ liệu, hàm và cấu trúc điều khiển">
-    <title>JavaScript Cơ Bản - Bắt đầu với ngôn ngữ web phổ biến nhất - Trần Hữu Tài</title>
+    <meta name="description" content="Biến, kiểu dữ liệu, hàm và vòng lặp">
+    <title>JavaScript Cơ bản - Trần Hữu Tài</title>
     <link rel="stylesheet" href="/22DTHE7_TaiTH_Profile/css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,23 +58,26 @@
 <div class="container">
     <article class="post-single">
         <header class="post-header">
-            <h1 class="post-title">JavaScript Cơ Bản - Bắt đầu với ngôn ngữ web phổ biến nhất</h1>
+            
+            <div class="post-featured-image">
+                <img src="https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=800&amp;h=400&amp;fit=crop" alt="JavaScript Cơ bản" loading="lazy">
+            </div>
+            
+            <h1 class="post-title">JavaScript Cơ bản</h1>
             <div class="post-meta-info">
-                <time datetime="2024-12-25">
+                <time datetime="2025-12-30">
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                         <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
                     </svg>
-                    25 December 2024
+                    30 Tháng 12 2025
                 </time>
                 
                 <div class="post-tags">
                     
-                    <a href="/tags/javascript" class="tag">#JavaScript</a>
+                    <a href="https://tranhuutai2273.github.io/22DTHE7_TaiTH_Profile/tags/javascript/" class="tag">#JavaScript</a>
                     
-                    <a href="/tags/c%C6%A1-b%E1%BA%A3n" class="tag">#Cơ bản</a>
-                    
-                    <a href="/tags/web-development" class="tag">#Web Development</a>
+                    <a href="https://tranhuutai2273.github.io/22DTHE7_TaiTH_Profile/tags/c%C6%A1-b%E1%BA%A3n/" class="tag">#Cơ bản</a>
                     
                 </div>
                 
@@ -82,17 +85,207 @@
         </header>
         
         <div class="post-content">
-            <h2 id="javascript-là-gì">JavaScript là gì?</h2>
-<p>JavaScript là ngôn ngữ lập trình phổ biến nhất cho web development, chạy trên browser và có thể chạy trên server (Node.js).</p>
-<h2 id="đặc-điểm-của-javascript">Đặc điểm của JavaScript</h2>
-<ul>
-<li><strong>Interpreted</strong>: Không cần biên dịch</li>
-<li><strong>Dynamic typing</strong>: Kiểu dữ liệu linh hoạt</li>
-<li><strong>Prototype-based</strong>: OOP dựa trên prototype</li>
-<li><strong>First-class functions</strong>: Hàm là đối tượng</li>
-<li><strong>Event-driven</strong>: Lập trình theo sự kiện</li>
-</ul>
-<h2 id="khai-báo-biến">Khai báo biến</h2>
+            <h2 id="giới-thiệu">Giới thiệu</h2>
+<p>JavaScript là ngôn ngữ lập trình chạy trên trình duyệt và server (Node.js). Dùng để tạo website tương tác.</p>
+<h2 id="biến">Biến</h2>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// let - có thể thay đổi
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">tuoi</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">25</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">tuoi</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">26</span>;  <span style="color:#75715e">// OK
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// const - không thay đổi
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">PI</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.14159</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// PI = 3.14;  // Lỗi!
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// var - cũ, tránh dùng
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ten</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Tai&#34;</span>;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="kiểu-dữ-liệu">Kiểu dữ liệu</h2>
+<h3 id="kiểu-nguyên-thủy">Kiểu nguyên thủy</h3>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">so</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">42</span>;                    <span style="color:#75715e">// Number
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">gia</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">19.99</span>;                <span style="color:#75715e">// Number (không phân biệt int/float)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">ten</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Tai&#34;</span>;                <span style="color:#75715e">// String
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">hoatDong</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;            <span style="color:#75715e">// Boolean
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">khongCo</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;             <span style="color:#75715e">// Null
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">chuaGan</span>;                    <span style="color:#75715e">// Undefined
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Kiểm tra kiểu
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">typeof</span> <span style="color:#ae81ff">42</span>;          <span style="color:#75715e">// &#34;number&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">typeof</span> <span style="color:#e6db74">&#34;text&#34;</span>;      <span style="color:#75715e">// &#34;string&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">typeof</span> <span style="color:#66d9ef">true</span>;        <span style="color:#75715e">// &#34;boolean&#34;
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="object-và-array">Object và Array</h3>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Object
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nguoi</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ten</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Tai&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">tuoi</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">25</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">email</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;tai@example.com&#34;</span>
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">nguoi</span>.<span style="color:#a6e22e">ten</span>);     <span style="color:#75715e">// &#34;Tai&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">nguoi</span>[<span style="color:#e6db74">&#34;tuoi&#34;</span>]); <span style="color:#75715e">// 25
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Array
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">mang</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">mang</span>[<span style="color:#ae81ff">0</span>]);       <span style="color:#75715e">// 1
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">mang</span>.<span style="color:#a6e22e">length</span>);   <span style="color:#75715e">// 5
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="toán-tử">Toán tử</h2>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Số học
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>, <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>);   <span style="color:#75715e">// 13
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">b</span>);   <span style="color:#75715e">// 7
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">b</span>);   <span style="color:#75715e">// 30
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">b</span>);   <span style="color:#75715e">// 3.333...
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">%</span> <span style="color:#a6e22e">b</span>);   <span style="color:#75715e">// 1
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// So sánh
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">5</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;5&#34;</span>);   <span style="color:#75715e">// true (chỉ so giá trị)
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">5</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;5&#34;</span>);  <span style="color:#75715e">// false (so cả kiểu)
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">5</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;5&#34;</span>);   <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">5</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#34;5&#34;</span>);  <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Logic
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">true</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">false</span>);  <span style="color:#75715e">// false
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">true</span> <span style="color:#f92672">||</span> <span style="color:#66d9ef">false</span>);  <span style="color:#75715e">// true
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">!</span><span style="color:#66d9ef">true</span>);          <span style="color:#75715e">// false
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="cấu-trúc-điều-khiển">Cấu trúc điều khiển</h2>
+<h3 id="if-else">If-Else</h3>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">diem</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">85</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">diem</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">90</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Xuất sắc&#34;</span>);
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">diem</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">80</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Giỏi&#34;</span>);
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Khá&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Toán tử 3 ngôi
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">ketQua</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">diem</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">60</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;Đậu&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Rớt&#34;</span>;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="switch">Switch</h3>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">ngay</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">switch</span> (<span style="color:#a6e22e">ngay</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Thứ hai&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Thứ ba&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Không hợp lệ&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="vòng-lặp">Vòng lặp</h3>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -113,25 +306,25 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// var (cũ, tránh dùng)
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Tài&#34;</span>;
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// For
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">5</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">i</span>);
+</span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// let (có thể thay đổi)
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">25</span>;
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">26</span>; <span style="color:#75715e">// OK
-</span></span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// const (không thay đổi)
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">PI</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.14159</span>;
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// PI = 3.14; // Error!
-</span></span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// const với object/array
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">person</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;An&#34;</span> };
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">person</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Bình&#34;</span>; <span style="color:#75715e">// OK, thay đổi thuộc tính
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">person</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">25</span>;      <span style="color:#75715e">// OK, thêm thuộc tính
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// person = {};       // Error! Không thể gán lại
-</span></span></span></code></pre></td></tr></table>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// For...of (duyệt array)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">mang</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">30</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">so</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">mang</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">so</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// While
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> (<span style="color:#a6e22e">j</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">5</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">j</span><span style="color:#f92672">++</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="phạm-vi-biến-scope">Phạm vi biến (Scope)</h3>
+</div><h2 id="hàm">Hàm</h2>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -153,27 +346,26 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Global scope
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">globalVar</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;global&#34;</span>;
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Function declaration
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">tong</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>;
+</span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">testScope</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Function scope
-</span></span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">functionVar</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;function&#34;</span>;
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">true</span>) {
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Block scope
-</span></span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">blockVar</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;block&#34;</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">blockVar</span>);      <span style="color:#75715e">// OK
-</span></span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">functionVar</span>);   <span style="color:#75715e">// OK
-</span></span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">globalVar</span>);     <span style="color:#75715e">// OK
-</span></span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// console.log(blockVar);       // Error!
-</span></span></span><span style="display:flex;"><span>}
-</span></span></code></pre></td></tr></table>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Function expression
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">nhan</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">b</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Arrow function (ngắn gọn)
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">binh</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) =&gt; <span style="color:#a6e22e">a</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">b</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Gọi hàm
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">tong</span>(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">3</span>));    <span style="color:#75715e">// 8
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">nhan</span>(<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">2</span>));    <span style="color:#75715e">// 8
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">binh</span>(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>));    <span style="color:#75715e">// 9
+</span></span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="kiểu-dữ-liệu">Kiểu dữ liệu</h2>
-<h3 id="primitive-types">Primitive Types</h3>
+</div><h2 id="array-methods">Array Methods</h2>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -196,412 +388,31 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Number
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">25</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">price</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">99.99</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">negative</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">10</span>;
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">arr</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>];
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// String
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Tài&#34;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">message</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Hello&#39;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">template</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`Xin chào </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>; <span style="color:#75715e">// Template literal
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// forEach - duyệt
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">num</span> =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">num</span>));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// map - biến đổi
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">doubled</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">num</span> =&gt; <span style="color:#a6e22e">num</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">doubled</span>);  <span style="color:#75715e">// [2, 4, 6, 8, 10]
 </span></span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Boolean
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">isStudent</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">hasJob</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Undefined
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">x</span>;
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">x</span>); <span style="color:#75715e">// undefined
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// filter - lọc
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">chan</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">num</span> =&gt; <span style="color:#a6e22e">num</span> <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">chan</span>);  <span style="color:#75715e">// [2, 4]
 </span></span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Null
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">empty</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Symbol (ES6)
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Symbol</span>(<span style="color:#e6db74">&#39;id&#39;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// BigInt (ES2020)
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">bigNumber</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1234567890123456789012345678901234567890</span><span style="color:#a6e22e">n</span>;
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="kiểm-tra-kiểu-dữ-liệu">Kiểm tra kiểu dữ liệu</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#ae81ff">25</span>);           <span style="color:#75715e">// &#34;number&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#e6db74">&#34;Hello&#34;</span>);      <span style="color:#75715e">// &#34;string&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#66d9ef">true</span>);         <span style="color:#75715e">// &#34;boolean&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#66d9ef">undefined</span>);    <span style="color:#75715e">// &#34;undefined&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#66d9ef">null</span>);         <span style="color:#75715e">// &#34;object&#34; (bug lịch sử)
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> {});           <span style="color:#75715e">// &#34;object&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> []);           <span style="color:#75715e">// &#34;object&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">typeof</span> <span style="color:#66d9ef">function</span>(){}); <span style="color:#75715e">// &#34;function&#34;
-</span></span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="toán-tử">Toán tử</h2>
-<h3 id="toán-tử-số-học">Toán tử số học</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>, <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>);  <span style="color:#75715e">// 13 (Cộng)
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">b</span>);  <span style="color:#75715e">// 7  (Trừ)
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">b</span>);  <span style="color:#75715e">// 30 (Nhân)
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">/</span> <span style="color:#a6e22e">b</span>);  <span style="color:#75715e">// 3.333... (Chia)
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">%</span> <span style="color:#a6e22e">b</span>);  <span style="color:#75715e">// 1  (Chia lấy dư)
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">a</span> <span style="color:#f92672">**</span> <span style="color:#a6e22e">b</span>); <span style="color:#75715e">// 1000 (Lũy thừa)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// reduce - tổng hợp
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">tong</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">reduce</span>((<span style="color:#a6e22e">sum</span>, <span style="color:#a6e22e">num</span>) =&gt; <span style="color:#a6e22e">sum</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">num</span>, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">tong</span>);  <span style="color:#75715e">// 15
 </span></span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Increment/Decrement
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">count</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">count</span><span style="color:#f92672">++</span>;  <span style="color:#75715e">// 6
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">count</span><span style="color:#f92672">--</span>;  <span style="color:#75715e">// 5
-</span></span></span><span style="display:flex;"><span><span style="color:#f92672">++</span><span style="color:#a6e22e">count</span>;  <span style="color:#75715e">// 6
-</span></span></span><span style="display:flex;"><span><span style="color:#f92672">--</span><span style="color:#a6e22e">count</span>;  <span style="color:#75715e">// 5
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// find - tìm phần tử đầu
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">first</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arr</span>.<span style="color:#a6e22e">find</span>(<span style="color:#a6e22e">num</span> =&gt; <span style="color:#a6e22e">num</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">first</span>);  <span style="color:#75715e">// 4
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="toán-tử-so-sánh">Toán tử so sánh</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">5</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;5&#34;</span>);   <span style="color:#75715e">// true  (So sánh giá trị)
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">5</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;5&#34;</span>);  <span style="color:#75715e">// false (So sánh giá trị và kiểu)
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">5</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;5&#34;</span>);   <span style="color:#75715e">// false
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">5</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#34;5&#34;</span>);  <span style="color:#75715e">// true
-</span></span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">10</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span>);     <span style="color:#75715e">// true
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">10</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">10</span>);   <span style="color:#75715e">// true
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">5</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>);     <span style="color:#75715e">// true
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">5</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">5</span>);     <span style="color:#75715e">// true
-</span></span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="toán-tử-logic">Toán tử logic</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>, <span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">x</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">y</span>);  <span style="color:#75715e">// false (AND)
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">x</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">y</span>);  <span style="color:#75715e">// true  (OR)
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">x</span>);      <span style="color:#75715e">// false (NOT)
-</span></span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Short-circuit evaluation
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#34;default&#34;</span>;  <span style="color:#75715e">// &#34;default&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#e6db74">&#34;yes&#34;</span>;       <span style="color:#75715e">// &#34;yes&#34;
-</span></span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="cấu-trúc-điều-khiển">Cấu trúc điều khiển</h2>
-<h3 id="if-else">If-Else</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">score</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">85</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">score</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">90</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Xuất sắc&#34;</span>);
-</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">score</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">80</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Giỏi&#34;</span>);
-</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">score</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">70</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Khá&#34;</span>);
-</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Trung bình&#34;</span>);
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Ternary operator
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">score</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">80</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;Đậu&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Rớt&#34;</span>;
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="switch">Switch</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">day</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Monday&#34;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">switch</span> (<span style="color:#a6e22e">day</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;Monday&#34;</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Thứ Hai&#34;</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;Tuesday&#34;</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Thứ Ba&#34;</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;Saturday&#34;</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;Sunday&#34;</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Cuối tuần&#34;</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Ngày khác&#34;</span>);
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="vòng-lặp">Vòng lặp</h2>
-<h3 id="for-loop">For Loop</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Traditional for
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">5</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">i</span>);
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// For...of (ES6) - duyệt array
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">fruits</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Táo&#34;</span>, <span style="color:#e6db74">&#34;Cam&#34;</span>, <span style="color:#e6db74">&#34;Chuối&#34;</span>];
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">fruit</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">fruits</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">fruit</span>);
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// For...in - duyệt object keys
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">person</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Tài&#34;</span>, <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">25</span> };
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">key</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">person</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">key</span><span style="color:#e6db74">}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">person</span>[<span style="color:#a6e22e">key</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="while-và-do-while">While và Do-While</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// While
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">count</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> (<span style="color:#a6e22e">count</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">5</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">count</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">count</span><span style="color:#f92672">++</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Do-While (chạy ít nhất 1 lần)
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">do</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">num</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">num</span><span style="color:#f92672">++</span>;
-</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">while</span> (<span style="color:#a6e22e">num</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">5</span>);
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="hàm-functions">Hàm (Functions)</h2>
-<h3 id="function-declaration">Function Declaration</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">greet</span>(<span style="color:#a6e22e">name</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`Xin chào, </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">!`</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">greet</span>(<span style="color:#e6db74">&#34;Tài&#34;</span>)); <span style="color:#75715e">// Xin chào, Tài!
-</span></span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="function-expression">Function Expression</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">add</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>;
-</span></span><span style="display:flex;"><span>};
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">add</span>(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">3</span>)); <span style="color:#75715e">// 8
-</span></span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="arrow-function-es6">Arrow Function (ES6)</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Cú pháp ngắn gọn
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">multiply</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) =&gt; <span style="color:#a6e22e">a</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">b</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Nhiều dòng
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">calculate</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>) =&gt; {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">sum</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">b</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">product</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">b</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">sum</span>, <span style="color:#a6e22e">product</span> };
-</span></span><span style="display:flex;"><span>};
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// 1 tham số, bỏ ngoặc
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">square</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">x</span> =&gt; <span style="color:#a6e22e">x</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">x</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Không tham số
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sayHi</span> <span style="color:#f92672">=</span> () =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;Hi!&#34;</span>);
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="default-parameters">Default Parameters</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">greet</span>(<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Khách&#34;</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`Xin chào, </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">!`</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">greet</span>());        <span style="color:#75715e">// Xin chào, Khách!
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">greet</span>(<span style="color:#e6db74">&#34;Tài&#34;</span>));   <span style="color:#75715e">// Xin chào, Tài!
-</span></span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="rest-parameters">Rest Parameters</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">sum</span>(...<span style="color:#a6e22e">numbers</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">numbers</span>.<span style="color:#a6e22e">reduce</span>((<span style="color:#a6e22e">total</span>, <span style="color:#a6e22e">num</span>) =&gt; <span style="color:#a6e22e">total</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">num</span>, <span style="color:#ae81ff">0</span>);
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">sum</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>));        <span style="color:#75715e">// 6
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">sum</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>));  <span style="color:#75715e">// 15
-</span></span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="arrays">Arrays</h2>
+</div><h2 id="ví-dụ-quản-lý-công-việc">Ví dụ: Quản lý Công việc</h2>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
@@ -642,189 +453,65 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Tạo array
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">numbers</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>];
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">mixed</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;two&#34;</span>, <span style="color:#66d9ef">true</span>, <span style="color:#66d9ef">null</span>];
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">todos</span> <span style="color:#f92672">=</span> [];
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Truy cập
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">numbers</span>[<span style="color:#ae81ff">0</span>]);  <span style="color:#75715e">// 1
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">numbers</span>.<span style="color:#a6e22e">length</span>); <span style="color:#75715e">// 5
-</span></span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Thêm phần tử
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">numbers</span>.<span style="color:#a6e22e">push</span>(<span style="color:#ae81ff">6</span>);      <span style="color:#75715e">// Thêm cuối
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">numbers</span>.<span style="color:#a6e22e">unshift</span>(<span style="color:#ae81ff">0</span>);   <span style="color:#75715e">// Thêm đầu
-</span></span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Xóa phần tử
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">numbers</span>.<span style="color:#a6e22e">pop</span>();        <span style="color:#75715e">// Xóa cuối
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">numbers</span>.<span style="color:#a6e22e">shift</span>();      <span style="color:#75715e">// Xóa đầu
-</span></span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Array methods
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">fruits</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Táo&#34;</span>, <span style="color:#e6db74">&#34;Cam&#34;</span>, <span style="color:#e6db74">&#34;Chuối&#34;</span>];
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Map
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">upperFruits</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fruits</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">f</span> =&gt; <span style="color:#a6e22e">f</span>.<span style="color:#a6e22e">toUpperCase</span>());
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Filter
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">longFruits</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fruits</span>.<span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">f</span> =&gt; <span style="color:#a6e22e">f</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Find
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">found</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fruits</span>.<span style="color:#a6e22e">find</span>(<span style="color:#a6e22e">f</span> =&gt; <span style="color:#a6e22e">f</span>.<span style="color:#a6e22e">startsWith</span>(<span style="color:#e6db74">&#34;C&#34;</span>));
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Includes
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">fruits</span>.<span style="color:#a6e22e">includes</span>(<span style="color:#e6db74">&#34;Táo&#34;</span>)); <span style="color:#75715e">// true
-</span></span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Join
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">fruits</span>.<span style="color:#a6e22e">join</span>(<span style="color:#e6db74">&#34;, &#34;</span>)); <span style="color:#75715e">// &#34;Táo, Cam, Chuối&#34;
-</span></span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Spread operator
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">moreFruits</span> <span style="color:#f92672">=</span> [...<span style="color:#a6e22e">fruits</span>, <span style="color:#e6db74">&#34;Dưa&#34;</span>];
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="objects">Objects</h2>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#75715e">// Object literal
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">person</span> <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Tài&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">25</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">isStudent</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">greet</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">`Xin chào, tôi là </span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
-</span></span><span style="display:flex;"><span>    },
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Shorthand method (ES6)
-</span></span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">sayHi</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Hi!&#34;</span>;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Truy cập thuộc tính
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">person</span>.<span style="color:#a6e22e">name</span>);        <span style="color:#75715e">// &#34;Tài&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">person</span>[<span style="color:#e6db74">&#34;age&#34;</span>]);      <span style="color:#75715e">// 25
-</span></span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Thêm/sửa thuộc tính
-</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">person</span>.<span style="color:#a6e22e">email</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;tai@example.com&#34;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">person</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">26</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Xóa thuộc tính
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">delete</span> <span style="color:#a6e22e">person</span>.<span style="color:#a6e22e">isStudent</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Object destructuring
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> { <span style="color:#a6e22e">name</span>, <span style="color:#a6e22e">age</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">person</span>;
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">name</span>); <span style="color:#75715e">// &#34;Tài&#34;
-</span></span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Object spread
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">updatedPerson</span> <span style="color:#f92672">=</span> { ...<span style="color:#a6e22e">person</span>, <span style="color:#a6e22e">city</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Hà Nội&#34;</span> };
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="template-literals">Template Literals</h2>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Tài&#34;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">25</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Multiline string
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">message</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Xin chào, tôi là </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">.
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Tôi </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">age</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> tuổi.
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Expression
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">price</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">total</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`Tổng: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">price</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">1.1</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> VND`</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tagged template
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">highlight</span>(<span style="color:#a6e22e">strings</span>, ...<span style="color:#a6e22e">values</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">strings</span>.<span style="color:#a6e22e">reduce</span>((<span style="color:#a6e22e">result</span>, <span style="color:#a6e22e">str</span>, <span style="color:#a6e22e">i</span>) =&gt; {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">str</span> <span style="color:#f92672">+</span> (<span style="color:#a6e22e">values</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">?</span> <span style="color:#e6db74">`&lt;strong&gt;</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">values</span>[<span style="color:#a6e22e">i</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/strong&gt;`</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>);
-</span></span><span style="display:flex;"><span>    }, <span style="color:#e6db74">&#39;&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">themCongViec</span>(<span style="color:#a6e22e">ten</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">todos</span>.<span style="color:#a6e22e">push</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> Date.<span style="color:#a6e22e">now</span>(),
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">ten</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">ten</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">hoanThanh</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    });
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">html</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">highlight</span><span style="color:#e6db74">`Tên: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">name</span><span style="color:#e6db74">}</span><span style="color:#e6db74">, Tuổi: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">age</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
-</span></span></code></pre></td></tr></table>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">hoanThanhCongViec</span>(<span style="color:#a6e22e">id</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">todo</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">todos</span>.<span style="color:#a6e22e">find</span>(<span style="color:#a6e22e">t</span> =&gt; <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">id</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">todo</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">todo</span>.<span style="color:#a6e22e">hoanThanh</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">hienThiCongViec</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;\n=== DANH SÁCH CÔNG VIỆC ===&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">todos</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">todo</span> =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">trangThai</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">todo</span>.<span style="color:#a6e22e">hoanThanh</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;✓&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;○&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">trangThai</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">todo</span>.<span style="color:#a6e22e">ten</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Sử dụng
+</span></span></span><span style="display:flex;"><span><span style="color:#a6e22e">themCongViec</span>(<span style="color:#e6db74">&#34;Học JavaScript&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">themCongViec</span>(<span style="color:#e6db74">&#34;Làm bài tập&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">themCongViec</span>(<span style="color:#e6db74">&#34;Đọc sách&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">hoanThanhCongViec</span>(<span style="color:#a6e22e">todos</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">id</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">hienThiCongViec</span>();
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// ○ Học JavaScript
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// ○ Làm bài tập
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// ○ Đọc sách
+</span></span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="kết-luận">Kết luận</h2>
-<p>JavaScript cơ bản bao gồm:</p>
-<ul>
-<li>Biến (let, const)</li>
-<li>Kiểu dữ liệu (primitive &amp; reference)</li>
-<li>Toán tử và biểu thức</li>
-<li>Cấu trúc điều khiển (if, switch, loops)</li>
-<li>Hàm (function, arrow function)</li>
-<li>Arrays và Objects</li>
-</ul>
-<p>Đây là nền tảng để học các khái niệm nâng cao như async/await, ES6+, và frameworks!</p>
+</div><h2 id="lời-khuyên">Lời khuyên</h2>
+<ol>
+<li>Dùng <code>const</code> mặc định, <code>let</code> khi cần thay đổi</li>
+<li>Tránh dùng <code>var</code></li>
+<li>Dùng <code>===</code> thay vì <code>==</code></li>
+<li>Arrow function cho callback ngắn gọn</li>
+<li>Array methods thay vì for loop</li>
+</ol>
+<h2 id="tổng-kết">Tổng kết</h2>
+<p>JavaScript cơ bản: biến lưu dữ liệu, hàm thực hiện logic, array methods xử lý danh sách. Nắm vững để học ES6+ và DOM manipulation.</p>
 
         </div>
         
         
         <nav class="post-navigation">
             
-            <a href="/22DTHE7_TaiTH_Profile/blog/java-stream/" class="nav-prev">
+            <a href="/22DTHE7_TaiTH_Profile/blog/javascript-dom/" class="nav-prev">
                 <span class="nav-label">← Bài trước</span>
-                <span class="nav-title">Java Stream API - Xử lý dữ liệu hiện đại</span>
+                <span class="nav-title">JavaScript DOM - Thao tác HTML</span>
             </a>
             
-            
-            <a href="/22DTHE7_TaiTH_Profile/blog/javascript-es6/" class="nav-next">
-                <span class="nav-label">Bài tiếp →</span>
-                <span class="nav-title">JavaScript ES6&#43; Features - Tính năng hiện đại</span>
-            </a>
             
         </nav>
         

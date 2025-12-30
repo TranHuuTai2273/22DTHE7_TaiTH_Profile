@@ -1,341 +1,243 @@
 ---
-title: "Java Collections Framework - Quản lý dữ liệu hiệu quả"
-date: 2024-12-22
-description: "Khám phá Collections Framework trong Java với List, Set, Map và các cấu trúc dữ liệu quan trọng"
-tags: ["Java", "Collections", "Data Structures"]
+title: "Java Collections Framework"
+date: 2025-12-27
+description: "Làm việc với List, Set, Map"
+tags: ["Java", "Collections"]
+image: "https://images.unsplash.com/photo-1509966756634-9c23dd6e6815?w=800&h=400&fit=crop"
 draft: false
 ---
 
-## Collections Framework là gì?
+## Collections là gì?
 
-Java Collections Framework là một kiến trúc thống nhất để lưu trữ và thao tác với nhóm các đối tượng. Nó cung cấp các interface và class để làm việc với dữ liệu một cách hiệu quả.
+Collections Framework cung cấp các cấu trúc dữ liệu để lưu trữ và xử lý nhóm objects.
 
-## Cấu trúc phân cấp Collections
-
-```
-Collection (Interface)
-├── List (Interface)
-│   ├── ArrayList
-│   ├── LinkedList
-│   └── Vector
-├── Set (Interface)
-│   ├── HashSet
-│   ├── LinkedHashSet
-│   └── TreeSet
-└── Queue (Interface)
-    ├── PriorityQueue
-    └── LinkedList
-
-Map (Interface)
-├── HashMap
-├── LinkedHashMap
-├── TreeMap
-└── Hashtable
-```
-
-## 1. List Interface
-
-List là collection có thứ tự, cho phép phần tử trùng lặp.
+## List - Danh sách có thứ tự
 
 ### ArrayList
+
 ```java
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArrayListExample {
-    public static void main(String[] args) {
-        // Tạo ArrayList
-        List<String> fruits = new ArrayList<>();
-        
-        // Thêm phần tử
-        fruits.add("Táo");
-        fruits.add("Cam");
-        fruits.add("Chuối");
-        fruits.add("Cam"); // Cho phép trùng lặp
-        
-        // Truy cập theo index
-        System.out.println("Phần tử đầu: " + fruits.get(0));
-        
-        // Kích thước
-        System.out.println("Số lượng: " + fruits.size());
-        
-        // Duyệt qua List
-        for (String fruit : fruits) {
-            System.out.println(fruit);
-        }
-        
-        // Xóa phần tử
-        fruits.remove("Cam"); // Xóa phần tử đầu tiên = "Cam"
-        fruits.remove(0);      // Xóa theo index
-        
-        // Kiểm tra tồn tại
-        if (fruits.contains("Táo")) {
-            System.out.println("Có táo trong danh sách");
-        }
-    }
+List<String> danhSach = new ArrayList<>();
+
+// Thêm phần tử
+danhSach.add("Java");
+danhSach.add("Python");
+danhSach.add("JavaScript");
+
+// Truy cập
+String first = danhSach.get(0);  // "Java"
+
+// Kích thước
+int size = danhSach.size();  // 3
+
+// Duyệt
+for (String item : danhSach) {
+    System.out.println(item);
 }
+
+// Xóa
+danhSach.remove("Python");
+danhSach.remove(0);  // Xóa theo index
 ```
 
-### LinkedList
-```java
-import java.util.LinkedList;
+**ArrayList vs LinkedList**:
+- ArrayList: Truy cập nhanh `O(1)`, thêm/xóa chậm `O(n)`
+- LinkedList: Thêm/xóa nhanh `O(1)`, truy cập chậm `O(n)`
 
-public class LinkedListExample {
-    public static void main(String[] args) {
-        LinkedList<Integer> numbers = new LinkedList<>();
-        
-        // Thêm vào đầu và cuối
-        numbers.addFirst(10);
-        numbers.addLast(20);
-        numbers.add(15);
-        
-        // Lấy phần tử đầu/cuối
-        System.out.println("Đầu: " + numbers.getFirst());
-        System.out.println("Cuối: " + numbers.getLast());
-        
-        // Xóa đầu/cuối
-        numbers.removeFirst();
-        numbers.removeLast();
-    }
-}
-```
-
-### So sánh ArrayList vs LinkedList
-
-| Đặc điểm | ArrayList | LinkedList |
-|----------|-----------|------------|
-| Cấu trúc | Mảng động | Danh sách liên kết đôi |
-| Truy cập | O(1) | O(n) |
-| Thêm/xóa đầu | O(n) | O(1) |
-| Thêm/xóa cuối | O(1) | O(1) |
-| Bộ nhớ | Ít hơn | Nhiều hơn (lưu con trỏ) |
-
-## 2. Set Interface
-
-Set không cho phép phần tử trùng lặp.
+## Set - Không trùng lặp
 
 ### HashSet
+
 ```java
 import java.util.HashSet;
 import java.util.Set;
 
-public class HashSetExample {
-    public static void main(String[] args) {
-        Set<String> languages = new HashSet<>();
-        
-        // Thêm phần tử
-        languages.add("Java");
-        languages.add("Python");
-        languages.add("JavaScript");
-        languages.add("Java"); // Không thêm được (trùng)
-        
-        System.out.println("Số ngôn ngữ: " + languages.size()); // 3
-        
-        // Kiểm tra
-        if (languages.contains("Java")) {
-            System.out.println("Có Java");
-        }
-        
-        // Duyệt (không đảm bảo thứ tự)
-        for (String lang : languages) {
-            System.out.println(lang);
-        }
-    }
-}
+Set<Integer> soNguyen = new HashSet<>();
+
+soNguyen.add(10);
+soNguyen.add(20);
+soNguyen.add(10);  // Không thêm (trùng lặp)
+
+System.out.println(soNguyen.size());  // 2
+
+// Kiểm tra
+boolean coChua = soNguyen.contains(10);  // true
 ```
 
-### TreeSet
+### TreeSet - Tự động sắp xếp
+
 ```java
 import java.util.TreeSet;
 
-public class TreeSetExample {
-    public static void main(String[] args) {
-        TreeSet<Integer> scores = new TreeSet<>();
-        
-        scores.add(85);
-        scores.add(92);
-        scores.add(78);
-        scores.add(95);
-        scores.add(88);
-        
-        // Tự động sắp xếp
-        System.out.println(scores); // [78, 85, 88, 92, 95]
-        
-        // Các phương thức đặc biệt
-        System.out.println("Điểm cao nhất: " + scores.last());
-        System.out.println("Điểm thấp nhất: " + scores.first());
-        System.out.println("Điểm >= 85: " + scores.tailSet(85));
-        System.out.println("Điểm < 90: " + scores.headSet(90));
-    }
-}
+Set<Integer> sapXep = new TreeSet<>();
+sapXep.add(30);
+sapXep.add(10);
+sapXep.add(20);
+
+System.out.println(sapXep);  // [10, 20, 30]
 ```
 
-## 3. Map Interface
-
-Map lưu trữ dữ liệu dưới dạng cặp key-value.
+## Map - Cặp Key-Value
 
 ### HashMap
+
 ```java
 import java.util.HashMap;
 import java.util.Map;
 
-public class HashMapExample {
-    public static void main(String[] args) {
-        Map<String, Integer> studentScores = new HashMap<>();
-        
-        // Thêm cặp key-value
-        studentScores.put("Tài", 90);
-        studentScores.put("An", 85);
-        studentScores.put("Bình", 92);
-        studentScores.put("Tài", 95); // Ghi đè giá trị cũ
-        
-        // Lấy giá trị
-        System.out.println("Điểm của Tài: " + studentScores.get("Tài"));
-        
-        // Kiểm tra key
-        if (studentScores.containsKey("An")) {
-            System.out.println("An có trong danh sách");
-        }
-        
-        // Duyệt qua Map
-        for (Map.Entry<String, Integer> entry : studentScores.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
-        }
-        
-        // Duyệt chỉ keys
-        for (String name : studentScores.keySet()) {
-            System.out.println(name);
-        }
-        
-        // Duyệt chỉ values
-        for (Integer score : studentScores.values()) {
-            System.out.println(score);
-        }
-        
-        // getOrDefault
-        int score = studentScores.getOrDefault("Nam", 0);
-        System.out.println("Điểm Nam: " + score);
-        
-        // putIfAbsent
-        studentScores.putIfAbsent("Cường", 88);
-    }
+Map<String, Integer> tuoi = new HashMap<>();
+
+// Thêm
+tuoi.put("Tai", 25);
+tuoi.put("Nam", 30);
+tuoi.put("Linh", 22);
+
+// Lấy giá trị
+int tuoiTai = tuoi.get("Tai");  // 25
+
+// Kiểm tra key
+boolean coTai = tuoi.containsKey("Tai");  // true
+
+// Duyệt
+for (Map.Entry<String, Integer> entry : tuoi.entrySet()) {
+    System.out.println(entry.getKey() + ": " + entry.getValue());
 }
+
+// Xóa
+tuoi.remove("Nam");
 ```
 
-### LinkedHashMap
-```java
-import java.util.LinkedHashMap;
+### TreeMap - Tự động sắp xếp theo key
 
-public class LinkedHashMapExample {
-    public static void main(String[] args) {
-        // Giữ thứ tự insertion
-        LinkedHashMap<String, String> capitals = new LinkedHashMap<>();
-        
-        capitals.put("Việt Nam", "Hà Nội");
-        capitals.put("Nhật Bản", "Tokyo");
-        capitals.put("Hàn Quốc", "Seoul");
-        
-        // In ra theo thứ tự đã thêm
-        capitals.forEach((country, capital) -> 
-            System.out.println(country + " - " + capital)
-        );
-    }
-}
-```
-
-### TreeMap
 ```java
 import java.util.TreeMap;
 
-public class TreeMapExample {
-    public static void main(String[] args) {
-        // Tự động sắp xếp theo key
-        TreeMap<Integer, String> students = new TreeMap<>();
-        
-        students.put(103, "An");
-        students.put(101, "Bình");
-        students.put(102, "Cường");
-        
-        // In ra theo thứ tự key
-        System.out.println(students);
-        // {101=Bình, 102=Cường, 103=An}
-    }
-}
+Map<String, Integer> sapXep = new TreeMap<>();
+sapXep.put("C", 3);
+sapXep.put("A", 1);
+sapXep.put("B", 2);
+
+System.out.println(sapXep);  // {A=1, B=2, C=3}
 ```
 
-## 4. Queue Interface
-
-Queue hoạt động theo nguyên tắc FIFO (First-In-First-Out).
+## Generics
 
 ```java
-import java.util.LinkedList;
-import java.util.Queue;
+// Không dùng generics - không an toàn
+List list = new ArrayList();
+list.add("String");
+list.add(123);  // OK nhưng nguy hiểm
 
-public class QueueExample {
-    public static void main(String[] args) {
-        Queue<String> queue = new LinkedList<>();
-        
-        // Thêm vào queue
-        queue.offer("Task 1");
-        queue.offer("Task 2");
-        queue.offer("Task 3");
-        
-        // Xem phần tử đầu (không xóa)
-        System.out.println("Peek: " + queue.peek());
-        
-        // Lấy và xóa phần tử đầu
-        while (!queue.isEmpty()) {
-            System.out.println("Processing: " + queue.poll());
-        }
-    }
-}
+// Dùng generics - type-safe
+List<String> strings = new ArrayList<>();
+strings.add("String");
+// strings.add(123);  // Lỗi compile!
 ```
 
-## 5. Các phương thức hữu ích
+## Collections Utility
 
-### Collections Utility Class
+```java
+import java.util.Collections;
+import java.util.List;
+
+List<Integer> numbers = new ArrayList<>();
+numbers.add(30);
+numbers.add(10);
+numbers.add(20);
+
+// Sắp xếp
+Collections.sort(numbers);  // [10, 20, 30]
+
+// Đảo ngược
+Collections.reverse(numbers);  // [30, 20, 10]
+
+// Tìm max/min
+int max = Collections.max(numbers);  // 30
+int min = Collections.min(numbers);  // 10
+
+// Trộn
+Collections.shuffle(numbers);  // Random order
+```
+
+## Ví dụ: Quản lý Sinh viên
+
 ```java
 import java.util.*;
 
-public class CollectionsUtilityExample {
-    public static void main(String[] args) {
-        List<Integer> numbers = new ArrayList<>(Arrays.asList(5, 2, 8, 1, 9));
-        
-        // Sắp xếp
-        Collections.sort(numbers);
-        System.out.println("Sorted: " + numbers);
-        
-        // Đảo ngược
-        Collections.reverse(numbers);
-        System.out.println("Reversed: " + numbers);
-        
-        // Tìm max, min
-        System.out.println("Max: " + Collections.max(numbers));
-        System.out.println("Min: " + Collections.min(numbers));
-        
-        // Xáo trộn
-        Collections.shuffle(numbers);
-        System.out.println("Shuffled: " + numbers);
-        
-        // Tìm kiếm nhị phân (cần sort trước)
-        Collections.sort(numbers);
-        int index = Collections.binarySearch(numbers, 5);
-        System.out.println("Index of 5: " + index);
-        
-        // Tạo list immutable
-        List<String> immutableList = Collections.unmodifiableList(
-            Arrays.asList("A", "B", "C")
+class SinhVien {
+    String ten;
+    double diem;
+    
+    public SinhVien(String ten, double diem) {
+        this.ten = ten;
+        this.diem = diem;
+    }
+    
+    @Override
+    public String toString() {
+        return ten + ": " + diem;
+    }
+}
+
+public class QuanLySinhVien {
+    private List<SinhVien> danhSach = new ArrayList<>();
+    
+    public void them(SinhVien sv) {
+        danhSach.add(sv);
+    }
+    
+    public List<SinhVien> timDiemCao(double nguong) {
+        List<SinhVien> ketQua = new ArrayList<>();
+        for (SinhVien sv : danhSach) {
+            if (sv.diem >= nguong) {
+                ketQua.add(sv);
+            }
+        }
+        return ketQua;
+    }
+    
+    public void sapXepTheoDiem() {
+        Collections.sort(danhSach, (a, b) -> 
+            Double.compare(b.diem, a.diem)  // Giảm dần
         );
+    }
+    
+    public static void main(String[] args) {
+        QuanLySinhVien ql = new QuanLySinhVien();
+        ql.them(new SinhVien("Tai", 8.5));
+        ql.them(new SinhVien("Nam", 7.0));
+        ql.them(new SinhVien("Linh", 9.0));
+        
+        ql.sapXepTheoDiem();
+        System.out.println("Danh sách: " + ql.danhSach);
+        
+        List<SinhVien> gioi = ql.timDiemCao(8.0);
+        System.out.println("Điểm >= 8: " + gioi);
     }
 }
 ```
 
-## Kết luận
+## Chọn Collection phù hợp
 
-Java Collections Framework cung cấp:
-- **List**: Cho dữ liệu có thứ tự, cho phép trùng lặp
-- **Set**: Cho dữ liệu không trùng lặp
-- **Map**: Cho dữ liệu dạng key-value
-- **Queue**: Cho xử lý dữ liệu theo FIFO
+| Cần gì? | Dùng gì? |
+|---------|----------|
+| Danh sách có thứ tự | ArrayList |
+| Thêm/xóa nhiều | LinkedList |
+| Không trùng lặp | HashSet |
+| Không trùng + sắp xếp | TreeSet |
+| Key-Value | HashMap |
+| Key-Value + sắp xếp | TreeMap |
 
-Việc chọn đúng collection sẽ giúp code hiệu quả và dễ maintain hơn!
+## Lời khuyên
+
+1. **Dùng interface** khi khai báo: `List<String> list = new ArrayList<>();`
+2. **Generics** cho type safety
+3. **ArrayList** cho hầu hết trường hợp
+4. **HashSet** khi cần unique elements
+5. **HashMap** cho key-value mapping
+
+## Tổng kết
+
+Collections Framework giúp quản lý dữ liệu hiệu quả. List cho thứ tự, Set cho unique, Map cho key-value. Chọn đúng collection tối ưu performance.

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog cá nhân chia sẻ về lập trình Java và JavaScript">
+    <title>Trần Hữu Tài</title>
+    <link rel="stylesheet" href="/22DTHE7_TaiTH_Profile/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+    <div class="container">
+        <nav class="navbar">
+            <a href="https://tranhuutai2273.github.io/22DTHE7_TaiTH_Profile/" class="site-logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="32" height="32" rx="6" fill="currentColor"/>
+                    <path d="M10 8h12v4h-4v12h-4V12h-4V8Z" fill="white"/>
+                </svg>
+                <span class="site-name">Trần Hữu Tài</span>
+            </a>
+            
+            <div class="nav-right">
+                <div class="header-search">
+                    <div class="search-container-header" id="search-container-header">
+                        <button id="search-toggle" class="search-toggle" aria-label="Tìm kiếm">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                        </button>
+                        <div class="search-box-header">
+                            <input type="text" id="search-input" class="search-input-header" placeholder="Tìm kiếm bài viết...">
+                            <button id="close-search" class="close-search-header">
+                                <svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="search-results" class="search-dropdown"></div>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li><a href="https://tranhuutai2273.github.io/22DTHE7_TaiTH_Profile/" class="">Home</a></li>
+                    <li><a href="/22DTHE7_TaiTH_Profile/blog" class="">Blog</a></li>
+                    <li><a href="/22DTHE7_TaiTH_Profile/about" class="">Về tôi</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+
+    
+    <main class="main-content">
+        
+<style>
+body {
+    background: #f8f9fa;
+}
+
+.main-content {
+    padding: 0;
+    max-width: 100%;
+}
+
+.cv-container {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 0;
+    max-width: 1200px;
+    margin: 2rem auto;
+    background: white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    min-height: 100vh;
+}
+
+.cv-sidebar {
+    background: linear-gradient(135deg, #ff7b54 0%, #ff9478 100%);
+    padding: 2.5rem 2rem;
+    color: white;
+}
+
+.cv-avatar {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid rgba(255,255,255,0.3);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.cv-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cv-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid rgba(255,255,255,0.3);
+}
+
+.cv-name {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.cv-title {
+    font-size: 1.1rem;
+    opacity: 0.95;
+    font-weight: 500;
+}
+
+.cv-sidebar .cv-section {
+    margin-bottom: 2rem;
+}
+
+.cv-sidebar .cv-section-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cv-contact .contact-item {
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.cv-contact .contact-item:last-child {
+    border-bottom: none;
+}
+
+.cv-contact strong {
+    display: block;
+    font-size: 0.85rem;
+    opacity: 0.9;
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cv-contact p {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.cv-main {
+    padding: 2.5rem 3rem;
+    background: #f8f9fa;
+}
+
+.cv-main .cv-section {
+    margin-bottom: 2.5rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.section-heading {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ff7b54;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 3px solid #ff7b54;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cv-summary {
+    line-height: 1.8;
+    color: #444;
+    font-size: 1rem;
+}
+
+.cv-item {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.cv-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.item-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.item-meta {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 0.75rem;
+    font-style: italic;
+}
+
+.item-list {
+    margin: 0.75rem 0 0 1.5rem;
+    color: #495057;
+}
+
+.item-list li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.skills-grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.skill-category {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #ff7b54;
+}
+
+.skill-category-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.skill-meta {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.skill-list {
+    margin: 0;
+    padding-left: 1.5rem;
+    color: #495057;
+}
+
+.skill-list li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.skill-list.compact li {
+    margin-bottom: 0.75rem;
+}
+
+.skill-list strong {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.references-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.reference-item {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #ff7b54;
+}
+
+.reference-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.reference-title {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.reference-contact {
+    font-size: 0.9rem;
+    color: #495057;
+    margin: 0;
+}
+
+@media print {
+    .cv-container {
+        box-shadow: none;
+        margin: 0;
+    }
+    
+    .cv-main {
+        padding: 2rem;
+    }
+    
+    .cv-sidebar {
+        padding: 2rem 1.5rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .cv-container {
+        grid-template-columns: 1fr;
+        margin: 1rem;
+    }
+    
+    .cv-main {
+        padding: 2rem 1.5rem;
+    }
+}
+</style>
+
+<article class="cv-wrapper">
+    <div class="cv-container">
+    <div class="cv-sidebar">
+        <div class="cv-avatar">
+            <img src="/static/images/avatar.jpg" alt="Trần Hữu Tài" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Ccircle cx=%22100%22 cy=%22100%22 r=%22100%22 fill=%22%234a90e2%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2280%22 fill=%22white%22 font-family=%22Arial%22%3ET%3C/text%3E%3C/svg%3E'">
+        </div>
+        <div class="cv-header">
+            <h1 class="cv-name">Trần Hữu Tài</h1>
+            <p class="cv-title">Lập Trình Viên Web</p>
+        </div>
+<pre><code>    &lt;div class=&quot;cv-section&quot;&gt;
+        &lt;h3 class=&quot;cv-section-title&quot;&gt;Thông tin liên hệ&lt;/h3&gt;
+        &lt;div class=&quot;cv-contact&quot;&gt;
+            &lt;div class=&quot;contact-item&quot;&gt;
+                &lt;strong&gt;Điện thoại:&lt;/strong&gt;
+                &lt;p&gt;03 25153476&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;contact-item&quot;&gt;
+                &lt;strong&gt;Địa chỉ:&lt;/strong&gt;
+                &lt;p&gt;TP. Hồ Chí Minh&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;contact-item&quot;&gt;
+                &lt;strong&gt;Email:&lt;/strong&gt;
+                &lt;p&gt;tranhuutai22072003@gmail.com&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;cv-main&quot;&gt;
+    &lt;div class=&quot;cv-section&quot;&gt;
+        &lt;h2 class=&quot;section-heading&quot;&gt;Lý lịch cá nhân&lt;/h2&gt;
+        &lt;p class=&quot;cv-summary&quot;&gt;
+            Tôi là một nhà phát triển phần mềm với kỹ năng giải quyết vấn đề xuất sắc và kinh nghiệm đã quen với các công việc liên quan đến lập trình web. Tôi thích sự cân bằng giữa việc tạo ra thứ gì đó mới và phát triển chúng theo thời gian. Tôi đang tìm kiếm một môi trường chuyên nghiệp để phát triển kỹ năng của mình.
+        &lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;cv-section&quot;&gt;
+        &lt;h2 class=&quot;section-heading&quot;&gt;Học vấn&lt;/h2&gt;
+        
+        &lt;div class=&quot;cv-item&quot;&gt;
+            &lt;h3 class=&quot;item-title&quot;&gt;Đại học Hutech&lt;/h3&gt;
+            &lt;p class=&quot;item-meta&quot;&gt;Tháng 9/2022 - Hiện tại | Khoa Học Máy tính&lt;/p&gt;
+            &lt;ul class=&quot;item-list&quot;&gt;
+                &lt;li&gt;Thành tích: GPA 3.0/4.0 - điểm loại giỏi&lt;/li&gt;
+                &lt;li&gt;Tham gia các CLB học chuyên ngành về lập trình máy tính như CLB Khoa học máy tính&lt;/li&gt;
+                &lt;li&gt;Đạt các môn tốt nhất như: Lập trình hướng đối tượng, Cấu trúc dữ liệu, Cơ sở dữ liệu&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;cv-section&quot;&gt;
+        &lt;h2 class=&quot;section-heading&quot;&gt;Kỹ năng và Chuyên môn&lt;/h2&gt;
+        
+        &lt;div class=&quot;skills-grid&quot;&gt;
+            &lt;div class=&quot;skill-category&quot;&gt;
+                &lt;h3 class=&quot;skill-category-title&quot;&gt;Kỹ năng phần mềm&lt;/h3&gt;
+                &lt;div class=&quot;skill-meta&quot;&gt;Cấp độ: Trung bình đến nâng cao&lt;/div&gt;
+                &lt;ul class=&quot;skill-list&quot;&gt;
+                    &lt;li&gt;Thiết kế và phát triển phần mềm hướng đối tượng&lt;/li&gt;
+                    &lt;li&gt;Phát triển ứng dụng web full-stack&lt;/li&gt;
+                    &lt;li&gt;Kiểm thử unit testing và tích hợp&lt;/li&gt;
+                    &lt;li&gt;Quản lý mã nguồn với Git/GitHub&lt;/li&gt;
+                    &lt;li&gt;Làm việc theo phương pháp Agile/Scrum&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;skill-category&quot;&gt;
+                &lt;h3 class=&quot;skill-category-title&quot;&gt;Chuyên môn phát triển phần mềm&lt;/h3&gt;
+                &lt;div class=&quot;skill-meta&quot;&gt;Cấp độ: Trung bình đến nâng cao&lt;/div&gt;
+                &lt;ul class=&quot;skill-list&quot;&gt;
+                    &lt;li&gt;Phát triển web với HTML, CSS, JavaScript&lt;/li&gt;
+                    &lt;li&gt;Backend với Java Spring Boot, Node.js&lt;/li&gt;
+                    &lt;li&gt;Frontend với React, Vue.js&lt;/li&gt;
+                    &lt;li&gt;Database: MySQL, PostgreSQL, MongoDB&lt;/li&gt;
+                    &lt;li&gt;RESTful API design và implementation&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;skill-category&quot;&gt;
+                &lt;h3 class=&quot;skill-category-title&quot;&gt;Kỹ năng Chuyên môn&lt;/h3&gt;
+                &lt;ul class=&quot;skill-list compact&quot;&gt;
+                    &lt;li&gt;&lt;strong&gt;Ngôn ngữ Lập trình:&lt;/strong&gt; Java, JavaScript, Python, HTML/CSS&lt;/li&gt;
+                    &lt;li&gt;&lt;strong&gt;Frameworks/Thư viện:&lt;/strong&gt; Spring Boot, React, Vue.js, Node.js, Express&lt;/li&gt;
+                    &lt;li&gt;&lt;strong&gt;Tools &amp; Technologies:&lt;/strong&gt; Git, Docker, Maven, VS Code, IntelliJ IDEA&lt;/li&gt;
+                    &lt;li&gt;&lt;strong&gt;Database:&lt;/strong&gt; MySQL, PostgreSQL, MongoDB&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+</code></pre>
+</div>
+
+</article>
+
+
+    </main>
+    
+    <footer class="site-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-info">
+                <p>&copy; 2025 Trần Hữu Tài. All rights reserved.</p>
+                <p class="footer-subtitle">Chia sẻ kiến thức về lập trình mạng</p>
+            </div>
+            <div class="footer-links">
+                
+                <div class="social-links">
+                    
+                    <a href="https://github.com/TranHuuTai2273" target="_blank" rel="noopener" aria-label="GitHub">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                    </a>
+                    
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</footer>
+
+    
+    <script src="/22DTHE7_TaiTH_Profile/js/search.js"></script>
+</body>
+</html>

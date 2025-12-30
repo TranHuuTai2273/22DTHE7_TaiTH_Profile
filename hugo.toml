@@ -1,8 +1,14 @@
 baseURL = 'https://tranhuutai2273.github.io/22DTHE7_TaiTH_Profile/'
 languageCode = 'vi'
+defaultContentLanguage = 'vi'
 title = 'Trần Hữu Tài'
 theme = 'techblog'
 publishDir = 'docs'
+
+[languages.vi]
+  languageName = 'Tiếng Việt'
+  [languages.vi.params]
+    dateFormat = '2 January 2006'
 
 [params]
   subtitle = 'Chia sẻ kiến thức về lập trình mạng'
@@ -41,3 +47,6 @@ publishDir = 'docs'
     style = 'monokai'
     lineNos = true
     lineNumbersInTable = true
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

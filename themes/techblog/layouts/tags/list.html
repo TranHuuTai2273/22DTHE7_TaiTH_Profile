@@ -1,12 +1,15 @@
-{{ define "title" }}{{ .Title }} - {{ .Site.Title }}{{ end }}
+{{ define "title" }}Tag: {{ .Title }} - {{ .Site.Title }}{{ end }}
 
 {{ define "main" }}
 <div class="container">
     <div class="page-header">
-        <h1 class="page-title">{{ .Title }}</h1>
-        {{ if .Description }}
-        <p class="page-description">{{ .Description }}</p>
-        {{ end }}
+        <h1 class="page-title">
+            <svg width="24" height="24" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: middle; margin-right: 0.5rem;">
+                <path d="M2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586V2zm3.5 4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+            </svg>
+            {{ .Title }}
+        </h1>
+        <p class="page-description">{{ .Pages | len }} bài viết</p>
     </div>
     
     <div class="posts-grid" id="posts-grid">
@@ -27,7 +30,7 @@
                     {{ with .Params.tags }}
                     <div class="post-tags">
                         {{ range . }}
-                        <a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}/" class="tag">{{ . }}</a>
+                        <span class="tag">{{ . }}</span>
                         {{ end }}
                     </div>
                     {{ end }}
@@ -44,6 +47,15 @@
             </div>
         </article>
         {{ end }}
+    </div>
+    
+    <div style="margin-top: 3rem; text-align: center;">
+        <a href="/22DTHE7_TaiTH_Profile/blog" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: var(--primary-color); color: white; text-decoration: none; border-radius: 0.5rem; font-weight: 500; transition: transform 0.2s;">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+            </svg>
+            Về trang Blog
+        </a>
     </div>
 </div>
 {{ end }}

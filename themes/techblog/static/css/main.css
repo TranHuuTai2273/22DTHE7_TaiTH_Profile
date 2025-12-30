@@ -471,6 +471,24 @@ body {
     border-color: var(--primary-color);
 }
 
+.post-card-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.post-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.post-card:hover .post-card-image img {
+    transform: scale(1.05);
+}
+
 .post-card-content {
     padding: 1.75rem;
 }
@@ -499,6 +517,15 @@ body {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s;
+}
+
+.tag:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
 }
 
 .post-title {
@@ -548,6 +575,20 @@ body {
     margin-bottom: 3rem;
     padding-bottom: 2rem;
     border-bottom: 2px solid var(--border-color);
+}
+
+.post-featured-image {
+    width: 100%;
+    max-height: 400px;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    margin-bottom: 2rem;
+}
+
+.post-featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .post-single .post-title {
@@ -601,27 +642,77 @@ body {
 }
 
 .post-content code {
-    background: var(--code-bg);
-    padding: 0.2rem 0.4rem;
+    background: #1e293b;
+    padding: 0.15rem 0.4rem;
     border-radius: var(--radius-sm);
-    font-family: 'Fira Code', monospace;
-    font-size: 0.9em;
-    color: var(--secondary-color);
+    font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
+    font-size: 0.8em;
+    color: #10b981;
+    font-weight: 500;
 }
 
 .post-content pre {
-    background: var(--code-bg);
-    padding: 1.5rem;
+    background: #1e293b;
+    padding: 1rem;
     border-radius: var(--radius-md);
     overflow-x: auto;
-    margin: 1.5rem 0;
+    margin: 1.25rem 0;
     border-left: 4px solid var(--primary-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 0.85rem;
+    line-height: 1.5;
 }
 
 .post-content pre code {
     background: none;
     padding: 0;
-    color: var(--text-primary);
+    color: #e2e8f0;
+    font-weight: normal;
+    font-size: 1em;
+}
+
+/* Syntax highlighting */
+.post-content pre .hljs-keyword,
+.post-content pre .hljs-selector-tag,
+.post-content pre .hljs-literal,
+.post-content pre .hljs-section,
+.post-content pre .hljs-link {
+    color: #7dd3fc;
+}
+
+.post-content pre .hljs-string,
+.post-content pre .hljs-title,
+.post-content pre .hljs-name,
+.post-content pre .hljs-type {
+    color: #fbbf24;
+}
+
+.post-content pre .hljs-number,
+.post-content pre .hljs-symbol,
+.post-content pre .hljs-bullet,
+.post-content pre .hljs-meta {
+    color: #fb923c;
+}
+
+.post-content pre .hljs-comment {
+    color: #94a3b8;
+    font-style: italic;
+}
+
+.post-content pre .hljs-built_in,
+.post-content pre .hljs-builtin-name,
+.post-content pre .hljs-class {
+    color: #a78bfa;
+}
+
+.post-content pre .hljs-function,
+.post-content pre .hljs-params {
+    color: #60a5fa;
+}
+
+.post-content pre .hljs-attr,
+.post-content pre .hljs-attribute {
+    color: #34d399;
 }
 
 .post-content blockquote {

@@ -1,405 +1,244 @@
 ---
-title: "JavaScript Cơ Bản - Bắt đầu với ngôn ngữ web phổ biến nhất"
-date: 2024-12-25
-description: "Tìm hiểu các khái niệm cơ bản của JavaScript: biến, kiểu dữ liệu, hàm và cấu trúc điều khiển"
-tags: ["JavaScript", "Cơ bản", "Web Development"]
+title: "JavaScript Cơ bản"
+date: 2025-12-30
+description: "Biến, kiểu dữ liệu, hàm và vòng lặp"
+tags: ["JavaScript", "Cơ bản"]
+image: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=800&h=400&fit=crop"
 draft: false
 ---
 
-## JavaScript là gì?
+## Giới thiệu
 
-JavaScript là ngôn ngữ lập trình phổ biến nhất cho web development, chạy trên browser và có thể chạy trên server (Node.js).
+JavaScript là ngôn ngữ lập trình chạy trên trình duyệt và server (Node.js). Dùng để tạo website tương tác.
 
-## Đặc điểm của JavaScript
-
-- **Interpreted**: Không cần biên dịch
-- **Dynamic typing**: Kiểu dữ liệu linh hoạt
-- **Prototype-based**: OOP dựa trên prototype
-- **First-class functions**: Hàm là đối tượng
-- **Event-driven**: Lập trình theo sự kiện
-
-## Khai báo biến
+## Biến
 
 ```javascript
-// var (cũ, tránh dùng)
-var name = "Tài";
+// let - có thể thay đổi
+let tuoi = 25;
+tuoi = 26;  // OK
 
-// let (có thể thay đổi)
-let age = 25;
-age = 26; // OK
-
-// const (không thay đổi)
+// const - không thay đổi
 const PI = 3.14159;
-// PI = 3.14; // Error!
+// PI = 3.14;  // Lỗi!
 
-// const với object/array
-const person = { name: "An" };
-person.name = "Bình"; // OK, thay đổi thuộc tính
-person.age = 25;      // OK, thêm thuộc tính
-// person = {};       // Error! Không thể gán lại
-```
-
-### Phạm vi biến (Scope)
-```javascript
-// Global scope
-let globalVar = "global";
-
-function testScope() {
-    // Function scope
-    let functionVar = "function";
-    
-    if (true) {
-        // Block scope
-        let blockVar = "block";
-        console.log(blockVar);      // OK
-        console.log(functionVar);   // OK
-        console.log(globalVar);     // OK
-    }
-    
-    // console.log(blockVar);       // Error!
-}
+// var - cũ, tránh dùng
+var ten = "Tai";
 ```
 
 ## Kiểu dữ liệu
 
-### Primitive Types
+### Kiểu nguyên thủy
+
 ```javascript
-// Number
-let age = 25;
-let price = 99.99;
-let negative = -10;
+let so = 42;                    // Number
+let gia = 19.99;                // Number (không phân biệt int/float)
+let ten = "Tai";                // String
+let hoatDong = true;            // Boolean
+let khongCo = null;             // Null
+let chuaGan;                    // Undefined
 
-// String
-let name = "Tài";
-let message = 'Hello';
-let template = `Xin chào ${name}`; // Template literal
-
-// Boolean
-let isStudent = true;
-let hasJob = false;
-
-// Undefined
-let x;
-console.log(x); // undefined
-
-// Null
-let empty = null;
-
-// Symbol (ES6)
-let id = Symbol('id');
-
-// BigInt (ES2020)
-let bigNumber = 1234567890123456789012345678901234567890n;
+// Kiểm tra kiểu
+typeof 42;          // "number"
+typeof "text";      // "string"
+typeof true;        // "boolean"
 ```
 
-### Kiểm tra kiểu dữ liệu
+### Object và Array
+
 ```javascript
-console.log(typeof 25);           // "number"
-console.log(typeof "Hello");      // "string"
-console.log(typeof true);         // "boolean"
-console.log(typeof undefined);    // "undefined"
-console.log(typeof null);         // "object" (bug lịch sử)
-console.log(typeof {});           // "object"
-console.log(typeof []);           // "object"
-console.log(typeof function(){}); // "function"
+// Object
+const nguoi = {
+    ten: "Tai",
+    tuoi: 25,
+    email: "tai@example.com"
+};
+
+console.log(nguoi.ten);     // "Tai"
+console.log(nguoi["tuoi"]); // 25
+
+// Array
+const mang = [1, 2, 3, 4, 5];
+console.log(mang[0]);       // 1
+console.log(mang.length);   // 5
 ```
 
 ## Toán tử
 
-### Toán tử số học
 ```javascript
+// Số học
 let a = 10, b = 3;
+console.log(a + b);   // 13
+console.log(a - b);   // 7
+console.log(a * b);   // 30
+console.log(a / b);   // 3.333...
+console.log(a % b);   // 1
 
-console.log(a + b);  // 13 (Cộng)
-console.log(a - b);  // 7  (Trừ)
-console.log(a * b);  // 30 (Nhân)
-console.log(a / b);  // 3.333... (Chia)
-console.log(a % b);  // 1  (Chia lấy dư)
-console.log(a ** b); // 1000 (Lũy thừa)
-
-// Increment/Decrement
-let count = 5;
-count++;  // 6
-count--;  // 5
-++count;  // 6
---count;  // 5
-```
-
-### Toán tử so sánh
-```javascript
-console.log(5 == "5");   // true  (So sánh giá trị)
-console.log(5 === "5");  // false (So sánh giá trị và kiểu)
+// So sánh
+console.log(5 == "5");   // true (chỉ so giá trị)
+console.log(5 === "5");  // false (so cả kiểu)
 console.log(5 != "5");   // false
 console.log(5 !== "5");  // true
 
-console.log(10 > 5);     // true
-console.log(10 >= 10);   // true
-console.log(5 < 10);     // true
-console.log(5 <= 5);     // true
-```
-
-### Toán tử logic
-```javascript
-let x = true, y = false;
-
-console.log(x && y);  // false (AND)
-console.log(x || y);  // true  (OR)
-console.log(!x);      // false (NOT)
-
-// Short-circuit evaluation
-let result = null || "default";  // "default"
-let value = true && "yes";       // "yes"
+// Logic
+console.log(true && false);  // false
+console.log(true || false);  // true
+console.log(!true);          // false
 ```
 
 ## Cấu trúc điều khiển
 
 ### If-Else
-```javascript
-let score = 85;
 
-if (score >= 90) {
+```javascript
+let diem = 85;
+
+if (diem >= 90) {
     console.log("Xuất sắc");
-} else if (score >= 80) {
+} else if (diem >= 80) {
     console.log("Giỏi");
-} else if (score >= 70) {
-    console.log("Khá");
 } else {
-    console.log("Trung bình");
+    console.log("Khá");
 }
 
-// Ternary operator
-let result = score >= 80 ? "Đậu" : "Rớt";
+// Toán tử 3 ngôi
+let ketQua = diem >= 60 ? "Đậu" : "Rớt";
 ```
 
 ### Switch
-```javascript
-let day = "Monday";
 
-switch (day) {
-    case "Monday":
-        console.log("Thứ Hai");
+```javascript
+let ngay = 2;
+
+switch (ngay) {
+    case 1:
+        console.log("Thứ hai");
         break;
-    case "Tuesday":
-        console.log("Thứ Ba");
-        break;
-    case "Saturday":
-    case "Sunday":
-        console.log("Cuối tuần");
+    case 2:
+        console.log("Thứ ba");
         break;
     default:
-        console.log("Ngày khác");
+        console.log("Không hợp lệ");
 }
 ```
 
-## Vòng lặp
+### Vòng lặp
 
-### For Loop
 ```javascript
-// Traditional for
+// For
 for (let i = 0; i < 5; i++) {
     console.log(i);
 }
 
-// For...of (ES6) - duyệt array
-let fruits = ["Táo", "Cam", "Chuối"];
-for (let fruit of fruits) {
-    console.log(fruit);
+// For...of (duyệt array)
+const mang = [10, 20, 30];
+for (let so of mang) {
+    console.log(so);
 }
 
-// For...in - duyệt object keys
-let person = { name: "Tài", age: 25 };
-for (let key in person) {
-    console.log(`${key}: ${person[key]}`);
-}
-```
-
-### While và Do-While
-```javascript
 // While
-let count = 0;
-while (count < 5) {
-    console.log(count);
-    count++;
+let j = 0;
+while (j < 5) {
+    console.log(j++);
 }
-
-// Do-While (chạy ít nhất 1 lần)
-let num = 0;
-do {
-    console.log(num);
-    num++;
-} while (num < 5);
 ```
 
-## Hàm (Functions)
+## Hàm
 
-### Function Declaration
 ```javascript
-function greet(name) {
-    return `Xin chào, ${name}!`;
-}
-
-console.log(greet("Tài")); // Xin chào, Tài!
-```
-
-### Function Expression
-```javascript
-const add = function(a, b) {
+// Function declaration
+function tong(a, b) {
     return a + b;
-};
-
-console.log(add(5, 3)); // 8
-```
-
-### Arrow Function (ES6)
-```javascript
-// Cú pháp ngắn gọn
-const multiply = (a, b) => a * b;
-
-// Nhiều dòng
-const calculate = (a, b) => {
-    let sum = a + b;
-    let product = a * b;
-    return { sum, product };
-};
-
-// 1 tham số, bỏ ngoặc
-const square = x => x * x;
-
-// Không tham số
-const sayHi = () => console.log("Hi!");
-```
-
-### Default Parameters
-```javascript
-function greet(name = "Khách") {
-    return `Xin chào, ${name}!`;
 }
 
-console.log(greet());        // Xin chào, Khách!
-console.log(greet("Tài"));   // Xin chào, Tài!
+// Function expression
+const nhan = function(a, b) {
+    return a * b;
+};
+
+// Arrow function (ngắn gọn)
+const binh = (a, b) => a * b;
+
+// Gọi hàm
+console.log(tong(5, 3));    // 8
+console.log(nhan(4, 2));    // 8
+console.log(binh(3, 3));    // 9
 ```
 
-### Rest Parameters
+## Array Methods
+
 ```javascript
-function sum(...numbers) {
-    return numbers.reduce((total, num) => total + num, 0);
+const arr = [1, 2, 3, 4, 5];
+
+// forEach - duyệt
+arr.forEach(num => console.log(num));
+
+// map - biến đổi
+const doubled = arr.map(num => num * 2);
+console.log(doubled);  // [2, 4, 6, 8, 10]
+
+// filter - lọc
+const chan = arr.filter(num => num % 2 === 0);
+console.log(chan);  // [2, 4]
+
+// reduce - tổng hợp
+const tong = arr.reduce((sum, num) => sum + num, 0);
+console.log(tong);  // 15
+
+// find - tìm phần tử đầu
+const first = arr.find(num => num > 3);
+console.log(first);  // 4
+```
+
+## Ví dụ: Quản lý Công việc
+
+```javascript
+const todos = [];
+
+function themCongViec(ten) {
+    todos.push({
+        id: Date.now(),
+        ten: ten,
+        hoanThanh: false
+    });
 }
 
-console.log(sum(1, 2, 3));        // 6
-console.log(sum(1, 2, 3, 4, 5));  // 15
-```
-
-## Arrays
-
-```javascript
-// Tạo array
-let numbers = [1, 2, 3, 4, 5];
-let mixed = [1, "two", true, null];
-
-// Truy cập
-console.log(numbers[0]);  // 1
-console.log(numbers.length); // 5
-
-// Thêm phần tử
-numbers.push(6);      // Thêm cuối
-numbers.unshift(0);   // Thêm đầu
-
-// Xóa phần tử
-numbers.pop();        // Xóa cuối
-numbers.shift();      // Xóa đầu
-
-// Array methods
-let fruits = ["Táo", "Cam", "Chuối"];
-
-// Map
-let upperFruits = fruits.map(f => f.toUpperCase());
-
-// Filter
-let longFruits = fruits.filter(f => f.length > 3);
-
-// Find
-let found = fruits.find(f => f.startsWith("C"));
-
-// Includes
-console.log(fruits.includes("Táo")); // true
-
-// Join
-console.log(fruits.join(", ")); // "Táo, Cam, Chuối"
-
-// Spread operator
-let moreFruits = [...fruits, "Dưa"];
-```
-
-## Objects
-
-```javascript
-// Object literal
-let person = {
-    name: "Tài",
-    age: 25,
-    isStudent: true,
-    greet: function() {
-        return `Xin chào, tôi là ${this.name}`;
-    },
-    // Shorthand method (ES6)
-    sayHi() {
-        return "Hi!";
+function hoanThanhCongViec(id) {
+    const todo = todos.find(t => t.id === id);
+    if (todo) {
+        todo.hoanThanh = true;
     }
-};
-
-// Truy cập thuộc tính
-console.log(person.name);        // "Tài"
-console.log(person["age"]);      // 25
-
-// Thêm/sửa thuộc tính
-person.email = "tai@example.com";
-person.age = 26;
-
-// Xóa thuộc tính
-delete person.isStudent;
-
-// Object destructuring
-let { name, age } = person;
-console.log(name); // "Tài"
-
-// Object spread
-let updatedPerson = { ...person, city: "Hà Nội" };
-```
-
-## Template Literals
-
-```javascript
-let name = "Tài";
-let age = 25;
-
-// Multiline string
-let message = `
-    Xin chào, tôi là ${name}.
-    Tôi ${age} tuổi.
-`;
-
-// Expression
-let price = 100;
-let total = `Tổng: ${price * 1.1} VND`;
-
-// Tagged template
-function highlight(strings, ...values) {
-    return strings.reduce((result, str, i) => {
-        return result + str + (values[i] ? `<strong>${values[i]}</strong>` : '');
-    }, '');
 }
 
-let html = highlight`Tên: ${name}, Tuổi: ${age}`;
+function hienThiCongViec() {
+    console.log("\n=== DANH SÁCH CÔNG VIỆC ===");
+    todos.forEach(todo => {
+        const trangThai = todo.hoanThanh ? "✓" : "○";
+        console.log(`${trangThai} ${todo.ten}`);
+    });
+}
+
+// Sử dụng
+themCongViec("Học JavaScript");
+themCongViec("Làm bài tập");
+themCongViec("Đọc sách");
+
+hoanThanhCongViec(todos[0].id);
+
+hienThiCongViec();
+// ○ Học JavaScript
+// ○ Làm bài tập
+// ○ Đọc sách
 ```
 
-## Kết luận
+## Lời khuyên
 
-JavaScript cơ bản bao gồm:
-- Biến (let, const)
-- Kiểu dữ liệu (primitive & reference)
-- Toán tử và biểu thức
-- Cấu trúc điều khiển (if, switch, loops)
-- Hàm (function, arrow function)
-- Arrays và Objects
+1. Dùng `const` mặc định, `let` khi cần thay đổi
+2. Tránh dùng `var`
+3. Dùng `===` thay vì `==`
+4. Arrow function cho callback ngắn gọn
+5. Array methods thay vì for loop
 
-Đây là nền tảng để học các khái niệm nâng cao như async/await, ES6+, và frameworks!
+## Tổng kết
+
+JavaScript cơ bản: biến lưu dữ liệu, hàm thực hiện logic, array methods xử lý danh sách. Nắm vững để học ES6+ và DOM manipulation.

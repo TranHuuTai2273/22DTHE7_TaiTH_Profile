@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tìm hiểu về Java, một trong những ngôn ngữ lập trình phổ biến nhất thế giới với khả năng đa nền tảng mạnh mẽ">
-    <title>Tổng quan về Java - Ngôn ngữ lập trình hướng đối tượng - Trần Hữu Tài</title>
+    <meta name="description" content="Kiểu dữ liệu, biến, toán tử và cấu trúc điều khiển">
+    <title>Java Cơ bản - Trần Hữu Tài</title>
     <link rel="stylesheet" href="/22DTHE7_TaiTH_Profile/css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,23 +58,26 @@
 <div class="container">
     <article class="post-single">
         <header class="post-header">
-            <h1 class="post-title">Tổng quan về Java - Ngôn ngữ lập trình hướng đối tượng</h1>
+            
+            <div class="post-featured-image">
+                <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800&amp;h=400&amp;fit=crop" alt="Java Cơ bản" loading="lazy">
+            </div>
+            
+            <h1 class="post-title">Java Cơ bản</h1>
             <div class="post-meta-info">
-                <time datetime="2024-12-20">
+                <time datetime="2025-12-25">
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                         <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
                         <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
                     </svg>
-                    20 December 2024
+                    25 Tháng 12 2025
                 </time>
                 
                 <div class="post-tags">
                     
-                    <a href="/tags/java" class="tag">#Java</a>
+                    <a href="https://tranhuutai2273.github.io/22DTHE7_TaiTH_Profile/tags/java/" class="tag">#Java</a>
                     
-                    <a href="/tags/c%C6%A1-b%E1%BA%A3n" class="tag">#Cơ bản</a>
-                    
-                    <a href="/tags/l%E1%BA%ADp-tr%C3%ACnh" class="tag">#Lập trình</a>
+                    <a href="https://tranhuutai2273.github.io/22DTHE7_TaiTH_Profile/tags/c%C6%A1-b%E1%BA%A3n/" class="tag">#Cơ bản</a>
                     
                 </div>
                 
@@ -82,43 +85,25 @@
         </header>
         
         <div class="post-content">
-            <h2 id="java-là-gì">Java là gì?</h2>
-<p>Java là ngôn ngữ lập trình hướng đối tượng, được phát triển bởi Sun Microsystems (nay thuộc Oracle) vào năm 1995. Một trong những đặc điểm nổi bật nhất của Java là khả năng &ldquo;Write Once, Run Anywhere&rdquo; (WORA) - viết một lần, chạy mọi nơi.</p>
-<h2 id="đặc-điểm-chính-của-java">Đặc điểm chính của Java</h2>
-<h3 id="1-hướng-đối-tượng-object-oriented">1. Hướng đối tượng (Object-Oriented)</h3>
-<p>Java được thiết kế hoàn toàn theo mô hình hướng đối tượng, giúp:</p>
-<ul>
-<li>Tổ chức code tốt hơn</li>
-<li>Tái sử dụng code dễ dàng</li>
-<li>Bảo trì và mở rộng ứng dụng hiệu quả</li>
-</ul>
-<h3 id="2-độc-lập-nền-tảng">2. Độc lập nền tảng</h3>
-<p>Java sử dụng Java Virtual Machine (JVM) để thực thi chương trình, cho phép code chạy trên bất kỳ hệ điều hành nào có JVM.</p>
-<h3 id="3-an-toàn-và-bảo-mật">3. An toàn và bảo mật</h3>
-<ul>
-<li>Không có con trỏ (pointers) trực tiếp</li>
-<li>Có cơ chế quản lý bộ nhớ tự động (Garbage Collection)</li>
-<li>Hệ thống bảo mật đa lớp</li>
-</ul>
-<h2 id="cài-đặt-môi-trường-java">Cài đặt môi trường Java</h2>
-<h3 id="bước-1-download-jdk">Bước 1: Download JDK</h3>
-<p>Truy cập trang Oracle hoặc OpenJDK để tải phiên bản JDK phù hợp.</p>
-<h3 id="bước-2-cài-đặt">Bước 2: Cài đặt</h3>
+            <h2 id="giới-thiệu">Giới thiệu</h2>
+<p>Java là ngôn ngữ lập trình hướng đối tượng, ra đời năm 1995. Đặc điểm: &ldquo;Viết một lần, chạy mọi nơi&rdquo; nhờ JVM.</p>
+<h2 id="kiểu-dữ-liệu">Kiểu dữ liệu</h2>
+<h3 id="kiểu-nguyên-thủy">Kiểu nguyên thủy</h3>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Kiểm tra Java đã được cài đặt</span>
-</span></span><span style="display:flex;"><span>java -version
-</span></span><span style="display:flex;"><span>javac -version
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> tuoi <span style="color:#f92672">=</span> 25;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">double</span> gia <span style="color:#f92672">=</span> 99.<span style="color:#a6e22e">99</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">boolean</span> hop le <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">char</span> kyTu <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span>;
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="bước-3-thiết-lập-biến-môi-trường">Bước 3: Thiết lập biến môi trường</h3>
-<p>Thêm JAVA_HOME và PATH vào biến môi trường hệ thống.</p>
-<h2 id="chương-trình-java-đầu-tiên">Chương trình Java đầu tiên</h2>
+</div><h3 id="chuỗi-và-mảng">Chuỗi và mảng</h3>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -128,95 +113,85 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HelloWorld</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Xin chào, Java!&#34;</span>);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="giải-thích-code">Giải thích code:</h3>
-<ul>
-<li><code>public class HelloWorld</code>: Khai báo class public</li>
-<li><code>main()</code>: Điểm bắt đầu của chương trình</li>
-<li><code>System.out.println()</code>: In ra màn hình console</li>
-</ul>
-<h2 id="biên-dịch-và-chạy">Biên dịch và chạy</h2>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Biên dịch</span>
-</span></span><span style="display:flex;"><span>javac HelloWorld.java
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>String ten <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Tai&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> soNguyen <span style="color:#f92672">=</span> {1, 2, 3, 4, 5};
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Chạy</span>
-</span></span><span style="display:flex;"><span>java HelloWorld
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Hằng số</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">final</span> <span style="color:#66d9ef">double</span> PI <span style="color:#f92672">=</span> 3.<span style="color:#a6e22e">14159</span>;
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="kiểu-dữ-liệu-trong-java">Kiểu dữ liệu trong Java</h2>
-<h3 id="kiểu-dữ-liệu-nguyên-thủy">Kiểu dữ liệu nguyên thủy</h3>
-<ul>
-<li><code>byte</code>: 8-bit, từ -128 đến 127</li>
-<li><code>short</code>: 16-bit</li>
-<li><code>int</code>: 32-bit</li>
-<li><code>long</code>: 64-bit</li>
-<li><code>float</code>: 32-bit số thực</li>
-<li><code>double</code>: 64-bit số thực</li>
-<li><code>boolean</code>: true/false</li>
-<li><code>char</code>: 16-bit ký tự Unicode</li>
-</ul>
-<h3 id="ví-dụ">Ví dụ:</h3>
+</div><h2 id="toán-tử">Toán tử</h2>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> age <span style="color:#f92672">=</span> 25;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">double</span> salary <span style="color:#f92672">=</span> 50000.<span style="color:#a6e22e">50</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">boolean</span> isStudent <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
-</span></span><span style="display:flex;"><span>String name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Tài&#34;</span>;
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> 10, b <span style="color:#f92672">=</span> 3;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Số học</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> tong <span style="color:#f92672">=</span> a <span style="color:#f92672">+</span> b;      <span style="color:#75715e">// 13</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> hieu <span style="color:#f92672">=</span> a <span style="color:#f92672">-</span> b;      <span style="color:#75715e">// 7</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> tich <span style="color:#f92672">=</span> a <span style="color:#f92672">*</span> b;      <span style="color:#75715e">// 30</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> thuong <span style="color:#f92672">=</span> a <span style="color:#f92672">/</span> b;    <span style="color:#75715e">// 3</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> du <span style="color:#f92672">=</span> a <span style="color:#f92672">%</span> b;        <span style="color:#75715e">// 1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// So sánh</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">boolean</span> bang <span style="color:#f92672">=</span> (a <span style="color:#f92672">==</span> b);    <span style="color:#75715e">// false</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">boolean</span> lon <span style="color:#f92672">=</span> (a <span style="color:#f92672">&gt;</span> b);      <span style="color:#75715e">// true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Logic</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">boolean</span> va <span style="color:#f92672">=</span> (a <span style="color:#f92672">&gt;</span> 5 <span style="color:#f92672">&amp;&amp;</span> b <span style="color:#f92672">&lt;</span> 5);   <span style="color:#75715e">// true</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">boolean</span> hoac <span style="color:#f92672">=</span> (a <span style="color:#f92672">&lt;</span> 5 <span style="color:#f92672">||</span> b <span style="color:#f92672">&lt;</span> 5); <span style="color:#75715e">// true</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="cấu-trúc-điều-khiển">Cấu trúc điều khiển</h2>
 <h3 id="if-else">If-Else</h3>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (age <span style="color:#f92672">&gt;=</span> 18) {
-</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Đã trưởng thành&#34;</span>);
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> diem <span style="color:#f92672">=</span> 85;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (diem <span style="color:#f92672">&gt;=</span> 90) {
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Xuất sắc&#34;</span>);
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (diem <span style="color:#f92672">&gt;=</span> 80) {
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Giỏi&#34;</span>);
 </span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Chưa trưởng thành&#34;</span>);
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Khá&#34;</span>);
 </span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Toán tử 3 ngôi</span>
+</span></span><span style="display:flex;"><span>String ketQua <span style="color:#f92672">=</span> (diem <span style="color:#f92672">&gt;=</span> 60) <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;Đậu&#34;</span> : <span style="color:#e6db74">&#34;Rớt&#34;</span>;
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="vòng-lặp-for">Vòng lặp For</h3>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0; i <span style="color:#f92672">&lt;</span> 5; i<span style="color:#f92672">++</span>) {
-</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Lần lặp: &#34;</span> <span style="color:#f92672">+</span> i);
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="while-loop">While Loop</h3>
+</div><h3 id="switch">Switch</h3>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -224,32 +199,148 @@
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> count <span style="color:#f92672">=</span> 0;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> (count <span style="color:#f92672">&lt;</span> 5) {
-</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(count);
-</span></span><span style="display:flex;"><span>    count<span style="color:#f92672">++</span>;
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> ngay <span style="color:#f92672">=</span> 2;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>String ten <span style="color:#f92672">=</span> <span style="color:#66d9ef">switch</span> (ngay) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> 1 <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;Thứ hai&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> 2 <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;Thứ ba&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> 3 <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;Thứ tư&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">default</span> <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;Không hợp lệ&#34;</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="vòng-lặp">Vòng lặp</h3>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// For</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0; i <span style="color:#f92672">&lt;</span> 5; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(i);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// For-each</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> mang <span style="color:#f92672">=</span> {1, 2, 3};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> so : mang) {
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(so);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// While</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> 0;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> (j <span style="color:#f92672">&lt;</span> 5) {
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(j<span style="color:#f92672">++</span>);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="kết-luận">Kết luận</h2>
-<p>Java là một ngôn ngữ mạnh mẽ và linh hoạt, phù hợp cho nhiều loại ứng dụng từ desktop, web đến mobile (Android). Việc nắm vững các kiến thức cơ bản về Java sẽ là nền tảng vững chắc cho sự nghiệp lập trình của bạn.</p>
-<h2 id="tài-liệu-tham-khảo">Tài liệu tham khảo</h2>
+</div><h2 id="chuỗi-string">Chuỗi (String)</h2>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>String text <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Xin chào&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> doDai <span style="color:#f92672">=</span> text.<span style="color:#a6e22e">length</span>();           <span style="color:#75715e">// 8</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">char</span> kyTu <span style="color:#f92672">=</span> text.<span style="color:#a6e22e">charAt</span>(0);          <span style="color:#75715e">// &#39;X&#39;</span>
+</span></span><span style="display:flex;"><span>String cat <span style="color:#f92672">=</span> text.<span style="color:#a6e22e">substring</span>(0, 3);   <span style="color:#75715e">// &#34;Xin&#34;</span>
+</span></span><span style="display:flex;"><span>String noi <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Xin&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; chào&#34;</span>;        <span style="color:#75715e">// &#34;Xin chào&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">boolean</span> bang <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hi&#34;</span>.<span style="color:#a6e22e">equals</span>(<span style="color:#e6db74">&#34;Hi&#34;</span>);    <span style="color:#75715e">// true</span>
+</span></span><span style="display:flex;"><span>String thay <span style="color:#f92672">=</span> text.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">&#34;chào&#34;</span>, <span style="color:#e6db74">&#34;kính chào&#34;</span>);
+</span></span><span style="display:flex;"><span>String<span style="color:#f92672">[]</span> tach <span style="color:#f92672">=</span> text.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34; &#34;</span>);     <span style="color:#75715e">// [&#34;Xin&#34;, &#34;chào&#34;]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="ví-dụ-máy-tính">Ví dụ: Máy tính</h2>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MayTinh</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> 10, b <span style="color:#f92672">=</span> 5;
+</span></span><span style="display:flex;"><span>        String phepTinh <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;+&#34;</span>;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> kq <span style="color:#f92672">=</span> <span style="color:#66d9ef">switch</span> (phepTinh) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;+&#34;</span> <span style="color:#f92672">-&gt;</span> a <span style="color:#f92672">+</span> b;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;-&#34;</span> <span style="color:#f92672">-&gt;</span> a <span style="color:#f92672">-</span> b;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;*&#34;</span> <span style="color:#f92672">-&gt;</span> a <span style="color:#f92672">*</span> b;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;/&#34;</span> <span style="color:#f92672">-&gt;</span> (b <span style="color:#f92672">!=</span> 0) <span style="color:#f92672">?</span> a <span style="color:#f92672">/</span> b : 0;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">default</span> <span style="color:#f92672">-&gt;</span> 0;
+</span></span><span style="display:flex;"><span>        };
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(a <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">+</span> phepTinh <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">+</span> b <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; = &#34;</span> <span style="color:#f92672">+</span> kq);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="lời-khuyên">Lời khuyên</h2>
 <ul>
-<li><a href="https://docs.oracle.com/javase/">Oracle Java Documentation</a></li>
-<li><a href="https://docs.oracle.com/javase/tutorial/">Java Tutorials</a></li>
+<li>Đặt tên biến/phương thức: <code>camelCase</code> (vd: <code>tenNguoiDung</code>)</li>
+<li>Đặt tên class: <code>PascalCase</code> (vd: <code>MayTinh</code>)</li>
+<li>Hằng số: <code>UPPER_CASE</code> (vd: <code>MAX_VALUE</code>)</li>
+<li>Đặt tên có ý nghĩa, dễ hiểu</li>
 </ul>
+<h2 id="tổng-kết">Tổng kết</h2>
+<p>Nắm vững kiểu dữ liệu, toán tử, và cấu trúc điều khiển là nền tảng để học OOP và các chủ đề nâng cao.</p>
 
         </div>
         
         
         <nav class="post-navigation">
             
+            <a href="/22DTHE7_TaiTH_Profile/blog/javascript-es6/" class="nav-prev">
+                <span class="nav-label">← Bài trước</span>
+                <span class="nav-title">JavaScript ES6&#43; - Tính năng hiện đại</span>
+            </a>
+            
             
             <a href="/22DTHE7_TaiTH_Profile/blog/java-oop/" class="nav-next">
                 <span class="nav-label">Bài tiếp →</span>
-                <span class="nav-title">OOP trong Java - Lập trình hướng đối tượng</span>
+                <span class="nav-title">Java OOP - Lập trình Hướng đối tượng</span>
             </a>
             
         </nav>

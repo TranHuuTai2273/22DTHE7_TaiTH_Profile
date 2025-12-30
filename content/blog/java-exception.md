@@ -1,375 +1,219 @@
 ---
-title: "Exception Handling trong Java - Xử lý ngoại lệ"
-date: 2024-12-23
-description: "Tìm hiểu cách xử lý exception trong Java với try-catch, throw, throws và custom exceptions"
-tags: ["Java", "Exception", "Error Handling"]
+title: "Java Exception Handling"
+date: 2025-12-28
+description: "Xử lý ngoại lệ và lỗi trong Java"
+tags: ["Java", "Exception"]
+image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=400&fit=crop"
 draft: false
 ---
 
 ## Exception là gì?
 
-Exception (ngoại lệ) là một sự kiện xảy ra trong quá trình thực thi chương trình, làm gián đoạn luồng bình thường của chương trình.
+Exception là sự kiện bất thường xảy ra khi chương trình chạy, làm gián đoạn luồng thực thi.
 
 ## Phân loại Exception
 
 ```
 Throwable
-├── Error (Lỗi hệ thống, không nên catch)
-│   ├── OutOfMemoryError
-│   └── StackOverflowError
+├── Error (Lỗi hệ thống - không xử lý)
 └── Exception
-    ├── IOException (Checked Exception)
-    ├── SQLException
-    └── RuntimeException (Unchecked Exception)
-        ├── NullPointerException
-        ├── ArrayIndexOutOfBoundsException
-        └── ArithmeticException
+    ├── RuntimeException (Unchecked)
+    └── IOException, SQLException... (Checked)
 ```
 
-### Checked Exception vs Unchecked Exception
+**Checked vs Unchecked**:
+- **Checked**: Bắt buộc xử lý (try-catch hoặc throws)
+- **Unchecked**: Không bắt buộc (RuntimeException)
 
-**Checked Exception:**
-- Phải xử lý tại compile time
-- Bắt buộc dùng try-catch hoặc throws
-- Ví dụ: IOException, SQLException
+## Try-Catch-Finally
 
-**Unchecked Exception:**
-- Không bắt buộc xử lý
-- Xảy ra tại runtime
-- Ví dụ: NullPointerException, ArrayIndexOutOfBoundsException
-
-## Xử lý Exception với try-catch
-
-### Cú pháp cơ bản
 ```java
-public class ExceptionExample {
-    public static void main(String[] args) {
-        try {
-            int result = 10 / 0; // ArithmeticException
-            System.out.println(result);
-        } catch (ArithmeticException e) {
-            System.out.println("Lỗi: Không thể chia cho 0!");
-            System.out.println("Chi tiết: " + e.getMessage());
-        }
-        
-        System.out.println("Chương trình tiếp tục chạy...");
-    }
+try {
+    int ketQua = 10 / 0;  // ArithmeticException
+} catch (ArithmeticException e) {
+    System.out.println("Lỗi: " + e.getMessage());
+} finally {
+    System.out.println("Luôn chạy");  // Dù có lỗi hay không
 }
 ```
 
-### Multiple catch blocks
-```java
-public class MultipleCatchExample {
-    public static void main(String[] args) {
-        try {
-            String text = null;
-            System.out.println(text.length()); // NullPointerException
-            
-            int[] arr = new int[5];
-            arr[10] = 100; // ArrayIndexOutOfBoundsException
-            
-        } catch (NullPointerException e) {
-            System.out.println("Lỗi: Biến null!");
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Lỗi: Index vượt quá mảng!");
-        } catch (Exception e) {
-            System.out.println("Lỗi khác: " + e.getMessage());
-        }
-    }
-}
-```
-
-### Multi-catch (Java 7+)
-```java
-public class MultiCatchExample {
-    public static void main(String[] args) {
-        try {
-            // Code có thể gây exception
-            performOperation();
-        } catch (IOException | SQLException e) {
-            System.out.println("Lỗi I/O hoặc SQL: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-## Finally block
-
-Finally block luôn được thực thi, dù có exception hay không.
+### Nhiều catch blocks
 
 ```java
-import java.io.*;
-
-public class FinallyExample {
-    public static void readFile(String filename) {
-        BufferedReader reader = null;
-        try {
-            reader = new BufferedReader(new FileReader(filename));
-            String line = reader.readLine();
-            System.out.println(line);
-        } catch (IOException e) {
-            System.out.println("Lỗi đọc file: " + e.getMessage());
-        } finally {
-            // Luôn đóng resource
-            try {
-                if (reader != null) {
-                    reader.close();
-                    System.out.println("Đã đóng file");
-                }
-            } catch (IOException e) {
-                System.out.println("Lỗi đóng file");
-            }
-        }
-    }
-}
-```
-
-## Try-with-resources (Java 7+)
-
-Tự động đóng resource, code gọn hơn.
-
-```java
-import java.io.*;
-
-public class TryWithResourcesExample {
-    public static void readFile(String filename) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
-            String line = reader.readLine();
-            System.out.println(line);
-        } catch (IOException e) {
-            System.out.println("Lỗi: " + e.getMessage());
-        }
-        // reader tự động đóng
-    }
+try {
+    String text = null;
+    System.out.println(text.length());  // NullPointerException
     
-    // Nhiều resources
-    public static void copyFile(String source, String dest) {
-        try (
-            FileInputStream in = new FileInputStream(source);
-            FileOutputStream out = new FileOutputStream(dest)
-        ) {
-            byte[] buffer = new byte[1024];
-            int length;
-            while ((length = in.read(buffer)) > 0) {
-                out.write(buffer, 0, length);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    int[] mang = {1, 2};
+    System.out.println(mang[5]);  // ArrayIndexOutOfBoundsException
+    
+} catch (NullPointerException e) {
+    System.out.println("Biến null!");
+} catch (ArrayIndexOutOfBoundsException e) {
+    System.out.println("Index vượt quá mảng!");
+} catch (Exception e) {
+    System.out.println("Lỗi khác: " + e);
 }
+```
+
+### Multi-catch
+
+```java
+try {
+    // code có thể lỗi
+} catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
+    System.out.println("Lỗi null hoặc array!");
+}
+```
+
+## Try-with-resources
+
+Tự động đóng resources (file, connection...).
+
+```java
+import java.io.*;
+
+// Tự động đóng file
+try (BufferedReader br = new BufferedReader(new FileReader("file.txt"))) {
+    String line = br.readLine();
+    System.out.println(line);
+} catch (IOException e) {
+    e.printStackTrace();
+}
+// Không cần br.close() - tự động!
 ```
 
 ## Throw và Throws
 
-### throw - Ném exception
+### Throw - Ném exception
+
 ```java
-public class ThrowExample {
-    public static void validateAge(int age) {
-        if (age < 18) {
-            throw new IllegalArgumentException("Tuổi phải >= 18");
-        }
-        System.out.println("Tuổi hợp lệ: " + age);
+public void kiemTraTuoi(int tuoi) {
+    if (tuoi < 18) {
+        throw new IllegalArgumentException("Phải >= 18 tuổi!");
     }
-    
-    public static void main(String[] args) {
-        try {
-            validateAge(15);
-        } catch (IllegalArgumentException e) {
-            System.out.println("Lỗi: " + e.getMessage());
-        }
-    }
+    System.out.println("Hợp lệ");
 }
 ```
 
-### throws - Khai báo exception
-```java
-import java.io.*;
+### Throws - Khai báo exception
 
-public class ThrowsExample {
-    // Khai báo method có thể throw exception
-    public static void readFile(String filename) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(filename));
-        String line = reader.readLine();
-        System.out.println(line);
-        reader.close();
-    }
-    
-    public static void main(String[] args) {
-        try {
-            readFile("data.txt");
-        } catch (IOException e) {
-            System.out.println("Không thể đọc file: " + e.getMessage());
-        }
+```java
+public void docFile(String path) throws IOException {
+    BufferedReader br = new BufferedReader(new FileReader(path));
+    String line = br.readLine();
+    br.close();
+}
+
+// Người gọi phải xử lý
+public void su dung() {
+    try {
+        docFile("data.txt");
+    } catch (IOException e) {
+        e.printStackTrace();
     }
 }
 ```
 
 ## Custom Exception
 
-Tạo exception riêng cho ứng dụng.
-
 ```java
-// Tạo custom exception
-public class InsufficientBalanceException extends Exception {
-    private double amount;
-    
-    public InsufficientBalanceException(double amount) {
-        super("Số dư không đủ. Thiếu: " + amount);
-        this.amount = amount;
-    }
-    
-    public double getAmount() {
-        return amount;
+// Tạo exception riêng
+public class KhongDuTienException extends Exception {
+    public KhongDuTienException(String message) {
+        super(message);
     }
 }
 
-// Sử dụng custom exception
-public class BankAccount {
-    private double balance;
+public class TaiKhoan {
+    private double soDu;
     
-    public BankAccount(double initialBalance) {
-        this.balance = initialBalance;
+    public TaiKhoan(double soDuBanDau) {
+        this.soDu = soDuBanDau;
     }
     
-    public void withdraw(double amount) throws InsufficientBalanceException {
-        if (amount > balance) {
-            double shortage = amount - balance;
-            throw new InsufficientBalanceException(shortage);
+    public void rutTien(double soTien) throws KhongDuTienException {
+        if (soTien > soDu) {
+            throw new KhongDuTienException(
+                "Số dư không đủ! Còn: " + soDu + ", cần: " + soTien
+            );
         }
-        balance -= amount;
-        System.out.println("Rút thành công: " + amount);
-        System.out.println("Số dư còn lại: " + balance);
+        soDu -= soTien;
+        System.out.println("Rút thành công: " + soTien);
     }
     
-    public static void main(String[] args) {
-        BankAccount account = new BankAccount(1000);
-        
-        try {
-            account.withdraw(500);  // OK
-            account.withdraw(700);  // Exception
-        } catch (InsufficientBalanceException e) {
-            System.out.println("Lỗi: " + e.getMessage());
-            System.out.println("Thiếu: " + e.getAmount());
-        }
+    public double getSoDu() {
+        return soDu;
     }
 }
 ```
+
+## Ví dụ: Quản lý Tài khoản
+
+```java
+public class QuanLyTaiKhoan {
+    public static void main(String[] args) {
+        TaiKhoan tk = new TaiKhoan(1000000);
+        
+        try {
+            tk.rutTien(500000);   // OK
+            System.out.println("Còn: " + tk.getSoDu());
+            
+            tk.rutTien(800000);   // Lỗi!
+            
+        } catch (KhongDuTienException e) {
+            System.out.println("Lỗi: " + e.getMessage());
+        } finally {
+            System.out.println("Số dư cuối: " + tk.getSoDu());
+        }
+    }
+}
+
+// Output:
+// Rút thành công: 500000
+// Còn: 500000.0
+// Lỗi: Số dư không đủ! Còn: 500000.0, cần: 800000.0
+// Số dư cuối: 500000.0
+```
+
+## Common Exceptions
+
+| Exception | Nguyên nhân |
+|-----------|-------------|
+| NullPointerException | Truy cập object null |
+| ArrayIndexOutOfBoundsException | Index vượt quá mảng |
+| ArithmeticException | Chia cho 0 |
+| NumberFormatException | Parse string thành số thất bại |
+| IllegalArgumentException | Tham số không hợp lệ |
+| IOException | Lỗi I/O (file, network) |
 
 ## Best Practices
 
-### 1. Catch specific exceptions
+1. **Catch cụ thể**: Catch exception cụ thể trước, Exception chung sau
+2. **Không bỏ qua**: Không để catch block trống
+3. **Throw sớm**: Ném exception ngay khi phát hiện lỗi
+4. **Catch muộn**: Xử lý ở nơi có đủ context
+5. **Custom exception**: Tạo exception riêng cho logic nghiệp vụ
+6. **Try-with-resources**: Dùng cho resources cần đóng
+7. **Logging**: Log exception thay vì chỉ printStackTrace
+
 ```java
-// ❌ Tránh
+// Tốt
+try {
+    // code
+} catch (SpecificException e) {
+    logger.error("Chi tiết lỗi", e);
+    throw new CustomException("Message rõ ràng", e);
+}
+
+// Tránh
 try {
     // code
 } catch (Exception e) {
-    // Quá chung chung
-}
-
-// ✅ Nên
-try {
-    // code
-} catch (FileNotFoundException e) {
-    // Xử lý cụ thể
-} catch (IOException e) {
-    // Xử lý cụ thể
+    // Bỏ qua - RẤT TỆ!
 }
 ```
 
-### 2. Đừng catch và không làm gì
-```java
-// ❌ Tránh
-try {
-    // code
-} catch (Exception e) {
-    // Im lặng, rất nguy hiểm!
-}
+## Tổng kết
 
-// ✅ Nên
-try {
-    // code
-} catch (Exception e) {
-    e.printStackTrace();
-    // hoặc log error
-    logger.error("Error occurred", e);
-}
-```
-
-### 3. Đóng resources
-```java
-// ✅ Tốt nhất
-try (Resource resource = new Resource()) {
-    // Sử dụng resource
-}
-
-// ✅ Hoặc dùng finally
-Resource resource = null;
-try {
-    resource = new Resource();
-    // Sử dụng
-} finally {
-    if (resource != null) {
-        resource.close();
-    }
-}
-```
-
-### 4. Tạo meaningful exception messages
-```java
-// ❌ Tránh
-throw new Exception("Error");
-
-// ✅ Nên
-throw new IllegalArgumentException(
-    "User ID không hợp lệ: " + userId + ". Phải là số dương."
-);
-```
-
-## Ví dụ thực tế
-
-```java
-public class UserService {
-    public User findUser(int userId) throws UserNotFoundException {
-        if (userId <= 0) {
-            throw new IllegalArgumentException("User ID phải > 0");
-        }
-        
-        User user = database.findById(userId);
-        if (user == null) {
-            throw new UserNotFoundException("Không tìm thấy user: " + userId);
-        }
-        
-        return user;
-    }
-    
-    public void updateUser(User user) {
-        try {
-            validateUser(user);
-            database.update(user);
-            logger.info("Updated user: " + user.getId());
-        } catch (ValidationException e) {
-            logger.error("Validation failed: " + e.getMessage());
-            throw e;
-        } catch (DatabaseException e) {
-            logger.error("Database error: " + e.getMessage());
-            throw new ServiceException("Không thể cập nhật user", e);
-        }
-    }
-}
-```
-
-## Kết luận
-
-Exception handling giúp:
-- Xử lý lỗi một cách có tổ chức
-- Tăng tính ổn định của ứng dụng
-- Debug dễ dàng hơn
-- Code dễ maintain
-
-Nhớ:
-- Luôn catch specific exceptions
-- Không bỏ qua exceptions
-- Sử dụng try-with-resources cho resources
-- Tạo custom exceptions khi cần thiết
+Exception handling giúp chương trình xử lý lỗi gracefully. Sử dụng try-catch cho lỗi có thể xảy ra, throw cho validate, và custom exception cho logic riêng.
